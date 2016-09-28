@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+ 
+<tiles-definitions>  
+  
+   <!-- Base Definition -->
+   <definition name="base-definition"
+       template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultMenu.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />  
+   </definition>  
+  
+   <!-- Home Page -->
+   <definition name="home" extends="base-definition">  
+       <put-attribute name="title" value="Home" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />  
+   </definition>  
+  
+   <!-- Management -->
+   <!-- client -->
+   <definition name="management/client" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client.jsp" />  
+   </definition>  
+  
+   <!-- Monitoring -->
+   <!-- Dashboard -->
+   <definition name="monitoring/dashboard" extends="base-definition">  
+       <put-attribute name="title" value="Dashboard" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/monitoring/dashboard.jsp" />  
+   </definition>  
+   <!-- Terminals -->
+   <definition name="monitoring/terminals" extends="base-definition">  
+       <put-attribute name="title" value="Terminals" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/monitoring/terminals.jsp" />  
+   </definition>  
+
+   <!-- Query -->
+   <!-- Users -->
+   <definition name="query/users" extends="base-definition">  
+       <put-attribute name="title" value="Dashboard" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/query/users.jsp" />  
+   </definition>  
+   <!-- Terminals -->
+   <definition name="query/terminals" extends="base-definition">  
+       <put-attribute name="title" value="Terminals" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/query/terminals.jsp" />  
+   </definition>  
+
+   <!-- Report -->
+   <!-- movimento dos cofres -->
+   <definition name="report/cashflow" extends="base-definition">  
+       <put-attribute name="title" value="Movimento dos Cofres" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/report/cashflow.jsp" />  
+   </definition>  
+   <!-- deposit -->
+   <definition name="report/deposit" extends="base-definition">  
+       <put-attribute name="title" value="Depósito" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/report/deposit.jsp" />  
+   </definition>  
+   <!-- Fechamento -->
+   <definition name="report/closing" extends="base-definition">  
+       <put-attribute name="title" value="Fechamento" />
+       <put-attribute name="body" value="/WEB-INF/views/pages/report/closing.jsp" />  
+   </definition>  
+   <!-- numerario -->
+   <definition name="report/totalcash" extends="base-definition">
+       <put-attribute name="title" value="Numerário" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/report/totalcash.jsp" />  
+   </definition>  
+   <!-- usuarios -->
+   <definition name="report/users" extends="base-definition">  
+       <put-attribute name="title" value="Usuários" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/report/users.jsp" />  
+   </definition>  
+
+   <!-- System -->
+   <!-- Features -->
+   <definition name="system/features" extends="base-definition">  
+       <put-attribute name="title" value="Funcionalidades" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/system/features.jsp" />  
+   </definition>  
+
+</tiles-definitions>
