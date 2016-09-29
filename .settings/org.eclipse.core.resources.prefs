@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/views/tiles/layouts/defaultLayout.jsp=ISO-8859-1
+encoding//WebContent/resources/js/angularApp.js=ISO-8859-1
 encoding/<project>=UTF-8
 encoding/src=UTF-8

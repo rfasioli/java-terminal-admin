@@ -2,48 +2,37 @@
 
 <header class="main-header" >
   <a href="#" class="logo">
-    <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini">e<b>S</b>afe</span>
-    <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><text font-family="lucida calligraphy"><b>eSafe</b> Orion</text></span>
-    <!-- LOGO -->
+    <span class="logo-mini">eSf</span>
+    <span class="logo-lg"><text font-family="lucida calligraphy"><span><b>eSafe</b></span> Orion</text></span>
   </a>
-  <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
-    <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
       <span class="sr-only">Toggle navigation</span>
     </a>
-    <!-- User Account menu -->
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <!-- Language menu -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            <!-- <div data-translatable> -->
-              <span><img class="img-circle" src="<c:url value='/img/pt-br.png'/>" /><span class="caret"></span></span>
-            <!-- 
-              <span><img class="img-circle" src="<c:url value='/img/en.png'/>" /><span class="caret"></span></span>
-              <span><img class="img-circle" src="<c:url value='/img/es.png'/>" /><span class="caret"></span></span>
-            </div>
-            -->
+              <span><img class="img-circle" src="<c:url value='/'/>{{'LANG_IMAGE' | translate}}" /><span class="caret"></span></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a id="pt-btn" href="#"><img class="img-circle" src="<c:url value='/img/pt-br.png'/>"/> Português</a></li>
-            <li><a id="en-btn" href="#"><img class="img-circle" src="<c:url value='/img/en.png'/>"/> English</a></li>
-            <li><a id="es-btn" href="#"><img class="img-circle" src="<c:url value='/img/es.png'/>"/> Español</a></li>
+            <li><a id="pt-btn" href="#" ng-click="changeLanguage('pt-BR')"><img class="img-circle" src="<c:url value='/img/pt-br.png'/>"/> Português</a></li>
+            <li><a id="en-btn" href="#" ng-click="changeLanguage('en')"><img class="img-circle" src="<c:url value='/img/en.png'/>"/> English</a></li>
+            <li><a id="es-btn" href="#" ng-click="changeLanguage('es')"><img class="img-circle" src="<c:url value='/img/es.png'/>"/> Español</a></li>
           </ul>
         </li>
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="<c:url value='/img/avatar5.png'/>" class="user-image" alt="User Image">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <img src="<c:url value='/img/avatar5.png'/>" class="user-image" alt="?">
             <span class="hidden-xs">USER <!--%= user.name %--></span>
+            <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="<c:url value='/img/avatar5.png'/>" class="img-circle" alt="User Image">
+              <img src="<c:url value='/img/avatar5.png'/>" class="img-circle" alt="?">
               <p>
                 <!-- %= user.name %-->User name - <!-- %= user.login %> --> login
                 <small><!--%= user.profile.description %-->Perfil do usuário</small>

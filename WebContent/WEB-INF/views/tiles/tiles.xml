@@ -23,7 +23,12 @@
    <!-- client -->
    <definition name="management/client" extends="base-definition">  
        <put-attribute name="title" value="Client registration" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/management/client.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/index.jsp" />  
+   </definition>  
+   <!-- profile -->
+   <definition name="management/profile" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/index.jsp" />  
    </definition>  
   
    <!-- Monitoring -->

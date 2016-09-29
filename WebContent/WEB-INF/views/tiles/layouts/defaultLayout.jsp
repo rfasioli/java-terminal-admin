@@ -23,18 +23,16 @@
 
 </head>
 
-<body class="hold-transition skin-orion sidebar-mini">
+<body class="hold-transition skin-orion sidebar-mini" ng-app="app" ng-controller="translationCtrl" >
 
-    <div class="preloader">
-        <div class="preloader-wrap">
-            <div class="preloader-inner">
-                <center>
-                    <img class="preloader-logo" src="<c:url value='/img/logo/Orion-Logo-Small.png'/>" alt="Orion">
-                    <i class="fa fa-spinner fa-pulse fa-4x fa-fw" aria-hidden="true"></i>
-                </center>
-            </div>
-        </div>
-    </div><!--/.preloader-->
+	<div class="preloader">
+		<div class="preloader-wrap">
+			<div class="preloader-inner">
+				<img class="preloader-logo"	src="<c:url value='/img/logo/Orion-Logo-Small.png'/>" alt="Orion">
+				<i class="fa fa-spinner fa-pulse fa-4x fa-fw" aria-hidden="true"></i>
+			</div>
+		</div>
+	</div> <!--preloader-->
 
 
 	<div class="wrapper">
@@ -47,24 +45,29 @@
 		</section>
 
 		<section id="site-content">
-			<tiles:insertAttribute name="body" />
+			<div class="container body-content content-wrapper">
+				<tiles:insertAttribute name="body" />
+			</div>
 		</section>
 
 		<footer id="footer">
 			<tiles:insertAttribute name="footer" />
 		</footer>
-
+		
 		<!-- Control Sidebar -->
 		<div class="control-sidebar-bg"></div>
 
 		<script type="text/javascript" src="<c:url value='/webjars/jquery/2.2.4/jquery.js'/>"></script>
 		<script type="text/javascript" src="<c:url value='/webjars/angularjs/1.5.8/angular.min.js'/>"></script>
 		<script type="text/javascript" src="<c:url value='/webjars/angularjs/1.5.8/angular-resource.min.js'/>"></script>
+		<script type="text/javascript" src="<c:url value='/webjars/angular-translate/2.5.0/angular-translate.min.js'/>"></script>
+		<script type="text/javascript" src="<c:url value='/webjars/angularjs/1.5.8/angular-sanitize.min.js'/>"></script>
 		<script type="text/javascript" src="<c:url value='/webjars/bootstrap/3.3.6/js/bootstrap.js'/>"></script>
 		<script type="text/javascript" src="<c:url value='/webjars/chartjs/2.1.3/Chart.min.js'/>"></script>
 		<script type="text/javascript" src="<c:url value='/webjars/angular-chart.js/0.7.1/angular-chart.min.js'/>"></script>
 		<script type="text/javascript" src="<c:url value='/js/app.js' />"></script>
 		<script type="text/javascript" src="<c:url value='/js/preloader.js' />"></script>
+		<script type="text/javascript" src="<c:url value='/js/angularApp.js' />"></script>
 	</div>
 </body>
 </html>

@@ -16,6 +16,7 @@ textarea {
 .logo-lg span,
 .navbar-brand span {
     font-family: "lucida calligraphy";
+    font-style: italic;
 }
 
 .fixed-panel {

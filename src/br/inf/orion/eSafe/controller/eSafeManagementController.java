@@ -13,4 +13,9 @@ public class eSafeManagementController {
 		return "management/client";
 	}
 
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public String getProfilePage() {
+		return "management/profile";
+	}
+	
 }
