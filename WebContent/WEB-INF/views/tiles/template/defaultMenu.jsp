@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="main-sidebar">
   <!-- Inner sidebar -->
@@ -15,12 +16,13 @@
       <li class="treeview">
         <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i><span>{{'MENU_MANAGEMENT' | translate}}</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
+          <li><a href="<c:url value='/management/client'/>"><i class="fa fa-institution"></i>{{'MENU_MANAGEMENT_CLIENT' | translate}}</a></li>
+          <li><a href="<c:url value='/management/profile'/>"><i class="fa fa-user-plus"></i>{{'MENU_MANAGEMENT_PROFILES' | translate}}</a></li>
           <li class="disabled"><a href="/gerenciamento/usuario"><i class="fa fa-user-plus"></i>{{'MENU_MANAGEMENT_USERS' | translate}}</a></li>
           <li class="disabled"><a href="/gerenciamento/fornecedor"><i class="fa fa-industry"></i>{{'MENU_MANAGEMENT_PROVIDER' | translate}}</a></li>
           <li class="disabled"><a href="/gerenciamento/regiao"><i class="fa fa-globe"></i>{{'MENU_MANAGEMENT_REGION' | translate}}</a></li>
           <li class="disabled"><a href="/gerenciamento/terminal"><i class="fa fa-laptop"></i>{{'MENU_MANAGEMENT_TERMINAL' | translate}}</a></li>
           <li class="disabled"><a href="/gerenciamento/estabelecimento"><i class="fa fa-home"></i>{{'MENU_MANAGEMENT_STORE' | translate}}</a></li>
-          <li><a href="/management/cadastraCliente"><i class="fa fa-institution"></i>{{'MENU_MANAGEMENT_CLIENT' | translate}}</a></li>
         </ul>
       </li>
       <li class="treeview">

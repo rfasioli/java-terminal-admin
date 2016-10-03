@@ -16,5 +16,6 @@
   </environments>
   <mappers>
     <mapper class="br.inf.orion.eSafe.model.mapper.PerfilMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.ClienteMapper" />
   </mappers>
 </configuration> 

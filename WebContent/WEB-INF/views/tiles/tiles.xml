@@ -18,20 +18,61 @@
        <put-attribute name="title" value="Home" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />  
    </definition>  
+
   
+   <!-- Management -->
+   <!-- Management -->
    <!-- Management -->
    <!-- client -->
    <definition name="management/client" extends="base-definition">  
        <put-attribute name="title" value="Client registration" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/management/client/index.jsp" />  
    </definition>  
+   <definition name="management/client/create" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/create.jsp" />  
+   </definition>  
+   <definition name="management/client/delete" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/delete.jsp" />  
+   </definition>  
+   <definition name="management/client/details" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/details.jsp" />  
+   </definition>  
+   <definition name="management/client/edit" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/edit.jsp" />  
+   </definition>
+   
    <!-- profile -->
    <definition name="management/profile" extends="base-definition">  
        <put-attribute name="title" value="Cadastro de Perfis" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/index.jsp" />  
    </definition>  
+   <definition name="management/profile/create" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/create.jsp" />  
+   </definition>  
+   <definition name="management/profile/delete" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/delete.jsp" />  
+   </definition>  
+   <definition name="management/profile/details" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/details.jsp" />  
+   </definition>  
+   <definition name="management/profile/edit" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/edit.jsp" />  
+   </definition>  
+  
+  
   
    <!-- Monitoring -->
+   <!-- Monitoring -->
+   <!-- Monitoring -->
+
    <!-- Dashboard -->
    <definition name="monitoring/dashboard" extends="base-definition">  
        <put-attribute name="title" value="Dashboard" />  
@@ -43,7 +84,11 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/monitoring/terminals.jsp" />  
    </definition>  
 
+
    <!-- Query -->
+   <!-- Query -->
+   <!-- Query -->
+
    <!-- Users -->
    <definition name="query/users" extends="base-definition">  
        <put-attribute name="title" value="Dashboard" />  
@@ -55,7 +100,11 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/query/terminals.jsp" />  
    </definition>  
 
+
    <!-- Report -->
+   <!-- Report -->
+   <!-- Report -->
+
    <!-- movimento dos cofres -->
    <definition name="report/cashflow" extends="base-definition">  
        <put-attribute name="title" value="Movimento dos Cofres" />  
@@ -82,7 +131,11 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/report/users.jsp" />  
    </definition>  
 
+
    <!-- System -->
+   <!-- System -->
+   <!-- System -->
+
    <!-- Features -->
    <definition name="system/features" extends="base-definition">  
        <put-attribute name="title" value="Funcionalidades" />  

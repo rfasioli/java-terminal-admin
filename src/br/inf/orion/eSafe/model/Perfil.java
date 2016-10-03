@@ -1,69 +1,77 @@
 package br.inf.orion.eSafe.model;
 
-public class Perfil {
-	private int id;
-	private String descricao;
-	private int tipo;
-	private int nivel;
-	private int acesso;
+import java.io.Serializable;
 
-	public int getId() {
+
+@SuppressWarnings("serial")
+public class Perfil implements Serializable {
+	
+	private Integer id;
+	private String descricao;
+	private Integer tipo;
+	private Integer nivel;
+	private Integer acesso;
+
+	
+	public Integer getId() {
 		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getDescricao() {
 		return descricao;
 	}
-
-	public int getTipo() {
-		return tipo;
-	}
-
-	public int getNivel() {
-		return nivel;
-	}
-
-	public int getAcesso() {
-		return acesso;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	public void setTipo(int tipo) {
+	public Integer getTipo() {
+		return tipo;
+	}
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
 
-	public void setNivel(int nivel) {
+	public Integer getNivel() {
+		return nivel;
+	}
+	public void setNivel(Integer nivel) {
 		this.nivel = nivel;
 	}
 
-	public void setAcesso(int acesso) {
+	public Integer getAcesso() {
+		return acesso;
+	}
+	public void setAcesso(Integer acesso) {
 		this.acesso = acesso;
 	}
 
-	public Perfil () {
+	public Perfil(){
 		super();
 	}
-
-	public Perfil (String descricao, int tipo, int nivel, int acesso) {
+	
+	public Perfil(Integer id, 
+				  String descricao, 
+				  Integer tipo,
+				  Integer nivel,
+				  Integer acesso)
+	{
 		super();
+		this.id = id;
 		this.descricao = descricao;
 		this.tipo = tipo;
 		this.nivel = nivel;
 		this.acesso = acesso;
 	}
 
+
 	@Override
 	public String toString(){
-		return "Perfil: id[" + this.id + "] Descrição[" + this.descricao + "]"
-				    + " Tipo[" + this.tipo + "] Nivel[" + this.nivel + "]"
-				    + " Acesso[" + this.acesso + "]";
+		return "Perfil: [id=" + this.id + ", descricao=" + this.descricao + ","
+				    + " tipo=" + this.tipo + ", nivel=" + this.nivel + ","
+				    + " acesso=" + this.acesso + "]";
 	}
 
 }
