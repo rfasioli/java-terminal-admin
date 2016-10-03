@@ -1,4 +1,4 @@
-package br.inf.orion.eSafe.controller;
+package br.inf.orion.eSafe.controller.management;
 
 import java.util.List;
 
@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
-import br.inf.orion.eSafe.model.Perfil;
-import br.inf.orion.eSafe.service.dao.PerfilServiceDao;
+import br.inf.orion.eSafe.model.master.Perfil;
+import br.inf.orion.eSafe.service.dao.master.PerfilServiceDao;
 
 @Controller
-@RequestMapping(eSafeManagementProfileController.base_url)
+@RequestMapping("/" + eSafeManagementProfileController.base_url)
 public class eSafeManagementProfileController {
 
-	protected final static String base_url = "/management/profile";
+	protected final static String base_url = "management/profile";
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getProfilePage(ModelMap model) {

@@ -13,41 +13,50 @@
 	<form action="<c:url value=''/>" method="POST" class="form-horizontal">
 		<div class="box-header with-border">
 			<input type="submit" value="{{'SAVE' | translate}}"	class="btn btn-success btn-flat pull-right" />
-			<h5>{{'PROFILE' | translate}}</h5>
+			<h5>{{'CLIENT' | translate}}</h5>
 		</div>
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="id">{{'PROFILE_ID' | translate}}:</label>
+					<label class="control-label col-sm-2" for="id">{{'CLIENT_ID' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="id" id="id">${profile.id}</label>
+						<label for="id" id="id">${client.id}</label>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="descricao">{{'PROFILE_DESCRIPTION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="nomeFantasia">{{'CLIENT_FANTASY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="descricao" value="${profile.descricao}" id="descricao" />
+						<input type="text" name="nomeFantasia" value="${client.nomeFantasia}" id="nomeFantasia" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="tipo">{{'PROFILE_TYPE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="razaoSocial">{{'CLIENT_COMPANY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="tipo" value="${profile.tipo}" id="tipo" />
+						<input type="text" name="razaoSocial" value="${client.razaoSocial}" id="razaoSocial" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="nivel">{{'PROFILE_LEVEL' | translate}}:</label>
+					<label class="control-label col-sm-2" for="cnpj">{{'CLIENT_DOCUMENT' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="nivel" value="${profile.nivel}" id="nivel" />
+						<input type="text" name="cnpj" value="${client.cnpj}" id="cnpj" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="acesso">{{'PROFILE_ACCESS' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dataCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
 					<div class="col-sm-10">
-					    <select class="form-control" id="acesso" name="acesso">
-					      <option value="1" <c:if test="${profile.acesso == 1}">selected</c:if>>Master</option>
-					      <option value="2" <c:if test="${profile.acesso == 2}">selected</c:if>>Cliente</option>
-					    </select>
+						<input type="text" name="dataCadastro" value="${client.dataCadastro}" id="dataCadastro" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="ativo">{{'CLIENT_ACTIVE' | translate}}:</label>
+					<div class="col-sm-10">
+						<input type="text" name="ativo" value="${client.ativo}" id="ativo" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="conexao">{{'CLIENT_CONNECTION' | translate}}:</label>
+					<div class="col-sm-10">
+						<input type="text" name="conexao" value="${client.conexao}" id="conexao" />
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-package br.inf.orion.eSafe.model.mapper;
+package br.inf.orion.eSafe.model.mapper.master;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import br.inf.orion.eSafe.model.Cliente;
+import br.inf.orion.eSafe.model.master.Cliente;
 
 public interface ClienteMapper {
 

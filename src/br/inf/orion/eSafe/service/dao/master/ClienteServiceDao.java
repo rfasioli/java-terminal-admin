@@ -1,11 +1,11 @@
-package br.inf.orion.eSafe.service.dao;
+package br.inf.orion.eSafe.service.dao.master;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import br.inf.orion.eSafe.model.Cliente;
-import br.inf.orion.eSafe.model.mapper.ClienteMapper;
+import br.inf.orion.eSafe.model.mapper.master.ClienteMapper;
+import br.inf.orion.eSafe.model.master.Cliente;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
 

@@ -1,10 +1,10 @@
-package br.inf.orion.eSafe.model.mapper;
+package br.inf.orion.eSafe.model.mapper.master;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.*;
 
-import br.inf.orion.eSafe.model.Perfil;
+import br.inf.orion.eSafe.model.master.Perfil;
 
 public interface PerfilMapper {
 

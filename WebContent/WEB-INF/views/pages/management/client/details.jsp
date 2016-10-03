@@ -12,44 +12,59 @@
 <div class="box box-primary">
 	<form action="<c:url value=''/>" method="POST" class="form-horizontal">
 		<div class="box-header with-border">
-			<h5>{{'PROFILE' | translate}}</h5>
+			<h5>{{'CLIENT' | translate}}</h5>
 		</div>
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">{{'PROFILE_ID' | translate}}:</label>
+					<label class="control-label col-sm-2" for="email">{{'CLIENTE_ID' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="id" id="id">${profile.id}</label>
+						<label for="id" id="id">${client.id}</label>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">{{'PROFILE_DESCRIPTION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="nomeFantasia">{{'CLIENT_FANTASY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="descricao" id="descricao">${profile.descricao}</label>
+						<label for="nomeFantasia" id="nomeFantasia">${client.nomeFantasia}</label>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">{{'PROFILE_TYPE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="razaoSocial">{{'CLIENT_COMPANY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="tipo" id="tipo">${profile.tipo}</label>
+						<label for="razaoSocial" id="razaoSocial">${client.razaoSocial}</label>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">{{'PROFILE_LEVEL' | translate}}:</label>
+					<label class="control-label col-sm-2" for="cnpj">{{'CLIENT_DOCUMENT' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="nivel" id="nivel">${profile.nivel}</label>
+						<label for="cnpj" id="cnpj">${client.cnpj}</label>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">{{'PROFILE_ACCESS' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dataCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="acesso" id="acesso">${profile.acesso}</label>
+						<label for="dataCadastro" id="dataCadastro">${client.dataCadastro}</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="ativo">{{'CLIENT_ACTIVE' | translate}}:</label>
+					<div class="col-sm-10">
+						<label for="ativo" id="ativo">${client.ativo}</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="conexao">{{'CLIENT_CONNECTION' | translate}}:</label>
+					<div class="col-sm-10">
+						<label for="conexao" id="conexao">${client.conexao}</label>
 					</div>
 				</div>
 			</div>
 		</div>
 	</form>
 </div>
+
+
+
 
 
 

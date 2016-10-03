@@ -38,13 +38,13 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="dataCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="dataCadastro" value="${client.dataCadastro}" id="dataCadastro" />
+						<input type="date" name="dataCadastro" value="${client.dataCadastro}" id="dataCadastro" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="ativo">{{'CLIENT_ACTIVE' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="ativo" value="${client.ativo}" id="ativo" />
+						<input type="checkbox" name="ativo" value="${client.ativo}" id="ativo" >
 					</div>
 				</div>
 				<div class="form-group">

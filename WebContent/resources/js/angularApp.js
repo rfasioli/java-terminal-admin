@@ -53,6 +53,7 @@ app.config(function ($translateProvider) {
 		CLIENT_ACTIVE: 'Ativo',
 		CLIENT_DATE_INCLUSION: 'Data de Cadastro',
 		CLIENT_CONNECTION: 'Conexão',
+		CLIENT_DELETE_MESSAGE: 'Deseja apagar o registro do cliente?',
 		PROFILE: 'Perfil',
 		PROFILES: 'Perfis',
 		PROFILE_ID: 'ID',
@@ -60,7 +61,7 @@ app.config(function ($translateProvider) {
 		PROFILE_TYPE: 'Tipo',
 		PROFILE_LEVEL: 'Nível',
 		PROFILE_ACCESS: 'Acesso',
-		PROFILE_DELETE_MESSAGE: 'Deseja apagar o registro?'		
+		PROFILE_DELETE_MESSAGE: 'Deseja apagar o registro do perfil?'		
 	});
 	$translateProvider.translations('en', {
 		LANG_IMAGE: '/img/en.png',

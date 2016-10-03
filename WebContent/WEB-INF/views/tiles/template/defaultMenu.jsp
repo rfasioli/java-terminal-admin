@@ -9,8 +9,8 @@
       <li class="treeview">
         <a href="#"><i class="fa fa-area-chart"></i><span>{{'MENU_MONITORING' | translate}}</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-          <li class="active"><a href="/geral"><i class="fa fa-user-plus"></i>{{'MENU_MONITORING_OVERVIEW' | translate}}</a></li>
-          <li><a href="/monitoramento"><i class="fa fa-key"></i>{{'MENU_MONITORING_TERMINALS' | translate}}</a></li>
+          <li class="active"><a href="<c:url value='/monitoring/dashboard'/>"><i class="fa fa-user-plus"></i>{{'MENU_MONITORING_OVERVIEW' | translate}}</a></li>
+          <li><a href="<c:url value='/monitoring/terminals'/>"><i class="fa fa-key"></i>{{'MENU_MONITORING_TERMINALS' | translate}}</a></li>
         </ul>
       </li>
       <li class="treeview">

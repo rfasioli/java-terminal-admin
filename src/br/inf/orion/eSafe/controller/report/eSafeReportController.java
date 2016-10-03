@@ -1,4 +1,4 @@
-package br.inf.orion.eSafe.controller;
+package br.inf.orion.eSafe.controller.report;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

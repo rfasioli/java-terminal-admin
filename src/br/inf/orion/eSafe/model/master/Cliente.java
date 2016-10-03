@@ -1,4 +1,4 @@
-package br.inf.orion.eSafe.model;
+package br.inf.orion.eSafe.model.master;
 
 import java.sql.Timestamp;
 
@@ -54,6 +54,9 @@ public class Cliente {
 		this.conexao = conexao;
 	}
 
+	public Cliente() {
+		super();
+	}
 	
 	public Cliente (Integer id,
 					String nomeFantasia,
