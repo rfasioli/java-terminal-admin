@@ -39,8 +39,13 @@
 					<label class="control-label col-sm-2" for="acesso">{{'PROFILE_ACCESS' | translate}}:</label>
 					<div class="col-sm-10">
 					    <select class="form-control" id="acesso" name="acesso">
+					      <c:forEach items="${profileTypes}" var="option">
+					      	<option><c:out value="${option}"></c:out></option> 
+						  </c:forEach>
+					    <!-- 
 					      <option value="1" <c:if test="${profile.acesso == 1}">selected</c:if>>Master</option>
 					      <option value="2" <c:if test="${profile.acesso == 2}">selected</c:if>>Cliente</option>
+					     -->
 					    </select>
 					</div>
 				</div>

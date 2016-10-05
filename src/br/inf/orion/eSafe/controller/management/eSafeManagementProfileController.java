@@ -1,5 +1,7 @@
 package br.inf.orion.eSafe.controller.management;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -16,7 +18,29 @@ import br.inf.orion.eSafe.service.dao.master.PerfilServiceDao;
 @Controller
 @RequestMapping("/" + eSafeManagementProfileController.base_url)
 public class eSafeManagementProfileController {
-
+	
+	 public enum ProfileTypeEnum{
+        MASTER(0, "Master"),
+        CLIENTE(1, "Cliente");
+ 
+        private final int id;
+        private final String description;
+ 
+        ProfileTypeEnum(int _id, String desc){
+            this.id = _id;
+            this.description = desc;
+        }
+        
+        public int getStatus() {
+            return this.id;
+        }
+        public String getDescription() {
+            return this.description;
+        }
+        
+    }
+	 
+	 
 	protected final static String base_url = "management/profile";
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -30,6 +54,8 @@ public class eSafeManagementProfileController {
 	public String getProfileCreatePage(ModelMap model) {
 		Perfil profile = new Perfil();
 		model.addAttribute("profile", profile);
+		List<ProfileTypeEnum> profileTypes = new ArrayList<ProfileTypeEnum>(Arrays.asList(ProfileTypeEnum.values()));
+		model.addAttribute("profileTypes", profileTypes);
 		return base_url + "/create";
 	}
 	
