@@ -22,8 +22,16 @@
 					<tr>
 						<td><c:out value="${profile.id}"/></td>
 						<td><c:out value="${profile.descricao}"/></td>
-						<td><c:out value="${profile.tipo}"/></td>
-						<td><c:out value="${profile.nivel}"/></td>
+						<td>
+					      <c:forEach items="${profileTypes}" var="option">
+					      	<c:if test="${profile.tipo == option.valor}">{{"<c:out value='${option.tag}'></c:out>" | translate}}</c:if> 
+						  </c:forEach>
+						</td>
+						<td>
+					      <c:forEach items="${profileLevels}" var="option">
+					      	<c:if test="${profile.nivel == option.valor}">{{"<c:out value='${option.tag}'></c:out>" | translate}}</c:if> 
+						  </c:forEach>
+						</td>						
 						<td><c:out value="${profile.acesso}"/></td>
 						<td><a href="<c:url value='/management/profile/edit'/>?id=${profile.id}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 						  | <a href="<c:url value='/management/profile/details'/>?id=${profile.id}"><i class="fa fa-search" aria-hidden="true"></i></a>

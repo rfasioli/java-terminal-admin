@@ -33,13 +33,21 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">{{'PROFILE_TYPE' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="tipo" id="tipo">${profile.tipo}</label>
+						<label for="tipo" id="tipo">
+					      <c:forEach items="${profileTypes}" var="option">
+					      	<c:if test="${profile.tipo == option.valor}">{{"<c:out value='${option.tag}'></c:out>" | translate}}</c:if> 
+						  </c:forEach>
+						</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">{{'PROFILE_LEVEL' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="nivel" id="nivel">${profile.nivel}</label>
+						<label for="nivel" id="nivel">
+					      <c:forEach items="${profileLevels}" var="option">
+					      	<c:if test="${profile.nivel == option.valor}">{{"<c:out value='${option.tag}'></c:out>" | translate}}</c:if> 
+						  </c:forEach>
+						</label>
 					</div>
 				</div>
 				<div class="form-group">

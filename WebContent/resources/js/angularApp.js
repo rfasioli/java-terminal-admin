@@ -61,7 +61,15 @@ app.config(function ($translateProvider) {
 		PROFILE_TYPE: 'Tipo',
 		PROFILE_LEVEL: 'Nível',
 		PROFILE_ACCESS: 'Acesso',
-		PROFILE_DELETE_MESSAGE: 'Deseja apagar o registro do perfil?'		
+		PROFILE_DELETE_MESSAGE: 'Deseja apagar o registro do perfil?',
+		TIPO_PERFIL_MASTER: 'Master',
+		TIPO_PERFIL_CLIENTE: 'Cliente',
+		NIVEL_PERFIL_MASTER: 'Master',
+		NIVEL_PERFIL_CLIENTE: 'Cliente',
+		NIVEL_PERFIL_REGIAO: 'Região',
+		NIVEL_PERFIL_FILIAL: 'Filial',
+		NIVEL_PERFIL_FORNECEDOR: 'Fornecedor',
+		NIVEL_PERFIL_ESTABELECIMENTO: 'Estabelecimento'
 	});
 	$translateProvider.translations('en', {
 		LANG_IMAGE: '/img/en.png',
