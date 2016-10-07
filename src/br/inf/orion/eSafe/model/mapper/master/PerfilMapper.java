@@ -8,7 +8,7 @@ import br.inf.orion.eSafe.model.master.Perfil;
 
 public interface PerfilMapper {
 
-	final String getAll = "SELECT \"idPerfil\", \"dsPerfil\", \"tpPerfil\", \"icNivel\", \"tpAcesso\" FROM \"TB_PERFIL\"";
+	final String getAll = "SELECT \"idPerfil\", \"dsPerfil\", \"tpPerfil\", \"icNivel\", \"tpAcesso\" FROM \"TB_PERFIL\" ORDER BY \"idPerfil\"";
 	final String getById = "SELECT \"idPerfil\", \"dsPerfil\", \"tpPerfil\", \"icNivel\", \"tpAcesso\" FROM \"TB_PERFIL\" WHERE \"idPerfil\" = #{id}";
 	final String deleteById = "DELETE FROM \"TB_PERFIL\" WHERE \"idPerfil\" = #{id}";
 	final String update = "UPDATE \"TB_PERFIL\" SET \"dsPerfil\"=#{descricao}, \"tpPerfil\"=#{tipo}, \"icNivel\"=#{nivel}, \"tpAcesso\"=#{acesso} WHERE \"idPerfil\" = #{id}";
