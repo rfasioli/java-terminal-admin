@@ -1,4 +1,5 @@
 'use strict';
+
 var app = angular.module('app', ['pascalprecht.translate']);
 
 app.config(function ($translateProvider) {
@@ -9,7 +10,7 @@ app.config(function ($translateProvider) {
 	});
 	//TODO - Usar o angular-translate-loader-url para carregar arquivos de bundle para os idiomas
 	$translateProvider.translations('pt-BR', {
-		LANG_IMAGE: '/img/pt-br.png',
+		LANG_IMAGE: 'img/pt-br.png',
 		LANG_NAME: 'Português', 
 		NEW: 'Novo',
 		EDIT: 'Alterar',
@@ -72,7 +73,7 @@ app.config(function ($translateProvider) {
 		NIVEL_PERFIL_ESTABELECIMENTO: 'Estabelecimento'
 	});
 	$translateProvider.translations('en', {
-		LANG_IMAGE: '/img/en.png',
+		LANG_IMAGE: 'img/en.png',
 		LANG_NAME: 'English',
 		MENU_TITLE: 'Administrative Panel',
 		MENU_MANAGEMENT: 'Management',
@@ -93,7 +94,7 @@ app.config(function ($translateProvider) {
 		NEW: 'New'
 	});
 	$translateProvider.translations('es', {
-		LANG_IMAGE: '/img/es.png',
+		LANG_IMAGE: 'img/es.png',
 		LANG_NAME: 'Español'
 	});
 	$translateProvider.useSanitizeValueStrategy('escape');

@@ -43,6 +43,7 @@ public class eSafeManagementProfileController {
 	public String postProfileCreatePage(@Valid @ModelAttribute(value="profile") Perfil profile, BindingResult result, ModelMap model){
 		if(result.hasErrors()) {
 			model.addAttribute("profile", profile);
+			model.addAttribute("error", result);
 			AddListData(model);
 			return base_url + "/create";
 		}
@@ -86,7 +87,7 @@ public class eSafeManagementProfileController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public String postProfileEditPage(@ModelAttribute(value="profile") Perfil profile, BindingResult result, ModelMap model) {
+	public String postProfileEditPage(@Valid @ModelAttribute(value="profile") Perfil profile, BindingResult result, ModelMap model) {
 		if(result.hasErrors()){
 			model.addAttribute("profile", profile);
 			AddListData(model);

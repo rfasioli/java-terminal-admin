@@ -1,22 +1,27 @@
 var carregaDadosGrafico = function($scope, $http, $timeout) {
-    $http.get('/model/cliente/TotaisDeposito')
+    $http.get('/eSafe/monitoring/service/TotaisDeposito')
         .success(function(data) {
 			var labels = [], dinheiro = [], cheque = [], envelope = [];
 			for (var i = 0; i < data.length; i++) {
-				labels.push(data[i].DATA);
-				dinheiro.push(data[i].VL_DINHEIRO);
-				cheque.push(data[i].VL_CHEQUE);
-				envelope.push(data[i].VL_ENVELOPE);
+				labels.push(data[i].data);
+				dinheiro.push(data[i].dinheiro);
+				cheque.push(data[i].cheque);
+				envelope.push(data[i].envelope);
 			}
 			$scope.series = ['Dinheiro', 'Envelope', 'Cheque'];
 			$scope.labels = labels;
 			$scope.data = [dinheiro, envelope, cheque];
+			
+			console.log(JSON.stringify($scope.series));
+			console.log(JSON.stringify($scope.labels));
+			console.log(JSON.stringify($scope.data));
 			
 			$timeout(function () {carregaDadosGrafico($scope, $http, $timeout);}, 10000);
         })
         .error(function(data) {
             console.log('carregaDadosGrafico - Error: ' + data);
         });	
+    console.log("EXECUTANDO CONTROLLER >>> analitico.js >>> carregaDadosGrafico [FIM]");	  
 }
 
 var carregaDadosGraficoTerminais = function($scope, $http, $timeout) {
@@ -112,7 +117,7 @@ var carregaNumerarioRecolhidoAnalitico = function($scope, $http, $timeout) {
         });
 }
 
-angular.module("monitoramentoApp", ["chart.js"])
+angular.module('monitoramentoApp', ['chart.js'])
   // Optional configuration
   .config(['ChartJsProvider', function (ChartJsProvider) {
 	// Configure all charts
@@ -125,19 +130,18 @@ angular.module("monitoramentoApp", ["chart.js"])
 	  datasetFill: true
 	});
   }])
-  .controller("monitoramentoAnaliticoCtrl", ['$scope', '$http', '$timeout', function ($scope, $http, $timeout){
+  .controller('monitoramentoAnaliticoCtrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout){
     $scope.formData = {};
 	
 	carregaDadosGrafico($scope, $http, $timeout);
-	carregaDadosGraficoTerminais($scope, $http, $timeout)
-	carregaMonitoramentoAnalitico($scope, $http, $timeout);
-	carregaNumerarioSaldoAnalitico($scope, $http, $timeout);
-	carregaNumerarioRecolhidoAnalitico($scope, $http, $timeout);
+//	carregaDadosGraficoTerminais($scope, $http, $timeout)
+//	carregaMonitoramentoAnalitico($scope, $http, $timeout);
+//	carregaNumerarioSaldoAnalitico($scope, $http, $timeout);
+//	carregaNumerarioRecolhidoAnalitico($scope, $http, $timeout);
 
 	$scope.onClick = function (points, evt) {
 		console.log(points, evt);
-	};
-	
+	};	
   }]);
 
-  
+angular.bootstrap(document.getElementById("monitoramento"), ['monitoramentoApp']);

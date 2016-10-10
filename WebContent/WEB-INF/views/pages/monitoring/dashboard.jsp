@@ -12,7 +12,7 @@
 		<li class="active">Geral</li>
 	</ol>
 </section>
-<section class="content" ng-app="monitoramentoApp"
+<section class="content"  id="monitoramento" ng-app="monitoramentoApp"
 	ng-controller="monitoramentoAnaliticoCtrl">
 	<!-- Small boxes (Stat box) -->
 	<!-- Small boxes (Stat box) -->
@@ -164,3 +164,5 @@
 	</div>
 	<!-- /.row -->
 </section>
+
+<script type="text/javascript" src="<c:url value='/js/controller/analitico.js' />"></script>
