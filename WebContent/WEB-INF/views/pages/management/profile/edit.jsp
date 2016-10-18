@@ -52,13 +52,6 @@
 						<form:errors path="nivel" cssClass="error" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="acesso">{{'PROFILE_ACCESS' | translate}}:</label>
-					<div class="col-sm-10">
-						<input type="text" name="acesso" value="${profile.acesso}" id="acesso" />
-						<form:errors path="acesso" cssClass="error" />
-					</div>
-				</div>
 			</div>
 		</div>
 	</form:form>

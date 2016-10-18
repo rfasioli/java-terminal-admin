@@ -50,12 +50,6 @@
 						</label>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">{{'PROFILE_ACCESS' | translate}}:</label>
-					<div class="col-sm-10">
-						<label for="acesso" id="acesso">${profile.acesso}</label>
-					</div>
-				</div>
 			</div>
 		</div>
 	</form>

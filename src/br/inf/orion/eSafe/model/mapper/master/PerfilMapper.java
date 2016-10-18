@@ -8,19 +8,18 @@ import br.inf.orion.eSafe.model.master.Perfil;
 
 public interface PerfilMapper {
 
-	final String getAll = "SELECT \"idPerfil\", \"dsPerfil\", \"tpPerfil\", \"icNivel\", \"tpAcesso\" FROM \"TB_PERFIL\" ORDER BY \"idPerfil\"";
-	final String getById = "SELECT \"idPerfil\", \"dsPerfil\", \"tpPerfil\", \"icNivel\", \"tpAcesso\" FROM \"TB_PERFIL\" WHERE \"idPerfil\" = #{id}";
+	final String getAll = "SELECT \"idPerfil\", \"dsPerfil\", \"tpPerfil\", \"icNivel\" FROM \"TB_PERFIL\" ORDER BY \"idPerfil\"";
+	final String getById = "SELECT \"idPerfil\", \"dsPerfil\", \"tpPerfil\", \"icNivel\" FROM \"TB_PERFIL\" WHERE \"idPerfil\" = #{id}";
 	final String deleteById = "DELETE FROM \"TB_PERFIL\" WHERE \"idPerfil\" = #{id}";
-	final String update = "UPDATE \"TB_PERFIL\" SET \"dsPerfil\"=#{descricao}, \"tpPerfil\"=#{tipo}, \"icNivel\"=#{nivel}, \"tpAcesso\"=#{acesso} WHERE \"idPerfil\" = #{id}";
-	final String insert = "INSERT INTO \"TB_PERFIL\"(\"dsPerfil\", \"tpPerfil\", \"icNivel\", \"tpAcesso\") VALUES (#{descricao}, #{tipo}, #{nivel}, #{acesso})";
+	final String update = "UPDATE \"TB_PERFIL\" SET \"dsPerfil\"=#{descricao}, \"tpPerfil\"=#{tipo}, \"icNivel\"=#{nivel} WHERE \"idPerfil\" = #{id}";
+	final String insert = "INSERT INTO \"TB_PERFIL\"(\"dsPerfil\", \"tpPerfil\", \"icNivel\") VALUES (#{descricao}, #{tipo}, #{nivel})";
 
 	@Select(getAll)
 	   @Results(value = {
 	      @Result(property = "id", column = "idPerfil"),
 	      @Result(property = "descricao", column = "dsPerfil"),
 	      @Result(property = "tipo", column = "tpPerfil"),
-	      @Result(property = "nivel", column = "icNivel"),       
-	      @Result(property = "acesso", column = "tpAcesso")
+	      @Result(property = "nivel", column = "icNivel")
 	   })
 	
 	List<Perfil> getAll();
@@ -31,8 +30,7 @@ public interface PerfilMapper {
 	      @Result(property = "id", column = "idPerfil"),
 	      @Result(property = "descricao", column = "dsPerfil"),
 	      @Result(property = "tipo", column = "tpPerfil"),
-	      @Result(property = "nivel", column = "icNivel"),       
-	      @Result(property = "acesso", column = "tpAcesso")
+	      @Result(property = "nivel", column = "icNivel")
 	   })
 	
 	Perfil getById(int id);

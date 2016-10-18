@@ -68,10 +68,6 @@ public class Perfil implements Serializable {
 	@Max(5)
 	private Integer nivel;
 
-	@NotNull
-	@Min(0)
-	private Integer acesso;
-
 
 	public Integer getId() {
 		return id;
@@ -101,12 +97,6 @@ public class Perfil implements Serializable {
 		this.nivel = nivel;
 	}
 
-	public Integer getAcesso() {
-		return acesso;
-	}
-	public void setAcesso(Integer acesso) {
-		this.acesso = acesso;
-	}
 
 	public Perfil(){
 		super();
@@ -115,23 +105,20 @@ public class Perfil implements Serializable {
 	public Perfil(Integer id, 
 			String descricao, 
 			Integer tipo,
-			Integer nivel,
-			Integer acesso)
+			Integer nivel)
 	{
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.tipo = tipo;
 		this.nivel = nivel;
-		this.acesso = acesso;
 	}
 
 
 	@Override
 	public String toString(){
 		return "Perfil: [id=" + this.id + ", descricao=" + this.descricao + ","
-				+ " tipo=" + this.tipo + ", nivel=" + this.nivel + ","
-				+ " acesso=" + this.acesso + "]";
+				+ " tipo=" + this.tipo + ", nivel=" + this.nivel + "]";
 	}
 
 }

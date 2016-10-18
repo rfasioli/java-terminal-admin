@@ -13,7 +13,6 @@
 				<th>{{'PROFILE_DESCRIPTION' | translate}}</th>
 				<th>{{'PROFILE_TYPE' | translate}}</th>
 				<th>{{'PROFILE_LEVEL' | translate}}</th>
-				<th>{{'PROFILE_ACCESS' | translate}}</th>
 				<th></th>
 			</tr>
 
@@ -32,7 +31,6 @@
 					      	<c:if test="${profile.nivel == option.valor}">{{"<c:out value='${option.tag}'></c:out>" | translate}}</c:if> 
 						  </c:forEach>
 						</td>						
-						<td><c:out value="${profile.acesso}"/></td>
 						<td><a href="<c:url value='/management/profile/edit'/>?id=${profile.id}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 						  | <a href="<c:url value='/management/profile/details'/>?id=${profile.id}"><i class="fa fa-search" aria-hidden="true"></i></a>
 						  | <a href="<c:url value='/management/profile/delete'/>?id=${profile.id}"><i class="fa fa-eraser" aria-hidden="true"></i></a>
