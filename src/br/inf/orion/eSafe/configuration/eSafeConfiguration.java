@@ -20,12 +20,6 @@ public class eSafeConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-//		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//		viewResolver.setViewClass(JstlView.class);
-//		viewResolver.setPrefix("/WEB-INF/views/");
-//		viewResolver.setSuffix(".jsp");
-//		registry.viewResolver(viewResolver);
-
 		TilesViewResolver tilesViewResolver = new TilesViewResolver();
         registry.viewResolver(tilesViewResolver);
 	}
@@ -60,15 +54,5 @@ public class eSafeConfiguration extends WebMvcConfigurerAdapter {
         tilesConfigurer.setCheckRefresh(true);
         return tilesConfigurer;
     }
-	
-//	@Bean
-//	public ViewResolver viewResolver() {
-//		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//		viewResolver.setViewClass(JstlView.class);
-//		viewResolver.setPrefix("/WEB-INF/views/");
-//		viewResolver.setSuffix(".jsp");
-//
-//		return viewResolver;
-//	}
 	
 }

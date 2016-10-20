@@ -33,7 +33,7 @@
 
 </head>
 
-<body class="hold-transition skin-orion sidebar-mini" ng-app="app" ng-controller="translationCtrl" >
+<body class="transition skin-orion layout-top-nav">
 
 	<div class="preloader">
 		<div class="preloader-wrap">
@@ -48,10 +48,6 @@
 		<header id="header">
 			<tiles:insertAttribute name="header" />
 		</header>
-
-		<section id="sidemenu">
-			<tiles:insertAttribute name="menu" />
-		</section>
 
 		<section id="site-content">
 			<div class="container body-content content-wrapper">

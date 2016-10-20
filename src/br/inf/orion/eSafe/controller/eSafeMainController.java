@@ -13,4 +13,9 @@ public class eSafeMainController {
 		return "home";
 	}
 
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String getLoginPage() {
+		return "login";
+	}
+	
 }
