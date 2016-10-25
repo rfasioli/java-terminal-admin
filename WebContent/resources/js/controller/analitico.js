@@ -25,59 +25,31 @@ var carregaDadosGrafico = function($scope, $http, $timeout) {
 }
 
 var carregaDadosGraficoTerminais = function($scope, $http, $timeout) {
-	
-    $http.get('/model/cliente/TerminaisDisponiveis')
+    $http.get('/eSafe/monitoring/service/StatusTerminais')
         .success(function(data) {
 			var labels = [], erro = [], ok = [];
 			for (var i = 0; i < data.length; i++) {
-				if (data[i].ST == 0) ok.push(data[i].QTD);
-				else                 erro.push(data[i].QTD);
+				labels.push(data[i].tag);
+				var status = data[i].status, sucesso = 0, falha = 0;
+				for (var j = 0; j < status.length; j++) {
+					if (status[j].status % 10 === 0)
+						sucesso += status[j].quantidade;
+					else
+						falha += status[j].quantidade;
+				}
+				ok.push(sucesso);
+				erro.push(falha);
 			}
-			$http.get('/model/cliente/ValidadoresDisponiveis')
-				.success(function(data) {
-					for (var i = 0; i < data.length; i++) {
-						if (data[i].ST == 0) ok.push(data[i].QTD);
-						else                 erro.push(data[i].QTD);
-					}
-					$http.get('/model/cliente/ImpressorasDisponiveis')
-						.success(function(data) {
-							for (var i = 0; i < data.length; i++) {
-								if (data[i].ST == 0) ok.push(data[i].QTD);
-								else                 erro.push(data[i].QTD);
-							}
-							$http.get('/model/cliente/BiometriasDisponiveis')
-								.success(function(data) {
-									for (var i = 0; i < data.length; i++) {
-										if (data[i].ST == 0) ok.push(data[i].QTD);
-										else                 erro.push(data[i].QTD);
-									}
-									$http.get('/model/cliente/PortasDisponiveis')
-										.success(function(data) {
-											for (var i = 0; i < data.length; i++) {
-												if (data[i].ST == 0) ok.push(data[i].QTD);
-												else                 erro.push(data[i].QTD);
-												$scope.terminal = [];
-												$scope.terminal.series = ['OK', 'Erro'];
-												$scope.terminal.labels = ['Terminal', 'Validador', 'Impressora', 'Biometria', 'Porta'];
-												$scope.terminal.data = [ok, erro];
-												$timeout(function () {carregaDadosGraficoTerminais($scope, $http, $timeout);}, 10000);
-											}
-										})
-										.error(function(data) {
-											console.log('carregaDadosGraficoTerminais - Error: ' + data);
-										});
-								})
-								.error(function(data) {
-									console.log('carregaDadosGraficoTerminais - Error: ' + data);
-								});
-						})
-						.error(function(data) {
-							console.log('carregaDadosGraficoTerminais - Error: ' + data);
-						});
-				})
-				.error(function(data) {
-					console.log('carregaDadosGraficoTerminais - Error: ' + data);
-				});
+			$scope.terminal = [];
+			$scope.terminal.labels = labels;
+			$scope.terminal.series = ['OK', 'Erro'];
+			$scope.terminal.data = [ok, erro];
+			
+			console.log(JSON.stringify($scope.terminal.series));
+			console.log(JSON.stringify($scope.terminal.labels));
+			console.log(JSON.stringify($scope.terminal.data));
+			
+			$timeout(function () {carregaDadosGraficoTerminais($scope, $http, $timeout);}, 10000);
 		})
         .error(function(data) {
             console.log('carregaDadosGraficoTerminais - Error: ' + data);
@@ -134,7 +106,7 @@ angular.module('monitoramentoApp', ['chart.js'])
     $scope.formData = {};
 	
 	carregaDadosGrafico($scope, $http, $timeout);
-//	carregaDadosGraficoTerminais($scope, $http, $timeout)
+	carregaDadosGraficoTerminais($scope, $http, $timeout)
 //	carregaMonitoramentoAnalitico($scope, $http, $timeout);
 //	carregaNumerarioSaldoAnalitico($scope, $http, $timeout);
 //	carregaNumerarioRecolhidoAnalitico($scope, $http, $timeout);

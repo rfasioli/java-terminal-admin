@@ -38,31 +38,31 @@ public class eSafeMonitoringRestController {
 	@RequestMapping(value = "/StatusTerminais", method = RequestMethod.GET)
 	public ResponseEntity<List<StatusDeviceAnalitico>> getTerminaisDisponiveis() {
 		List<StatusDeviceAnalitico> statusTerminais = new ArrayList<StatusDeviceAnalitico>() {{
-			add(new StatusDeviceAnalitico(DeviceEnum.TERMINAL.getValor(), new ArrayList<StatusAnalitico>() {{
+			add(new StatusDeviceAnalitico(DeviceEnum.TERMINAL, new ArrayList<StatusAnalitico>() {{
 				add(new StatusAnalitico(10, 15));
 				add(new StatusAnalitico(11, 2));
 				add(new StatusAnalitico(12, 0));
 				add(new StatusAnalitico(19, 1));
 			}}));
-			add(new StatusDeviceAnalitico(DeviceEnum.VALIDADOR.getValor(), new ArrayList<StatusAnalitico>() {{
+			add(new StatusDeviceAnalitico(DeviceEnum.VALIDADOR, new ArrayList<StatusAnalitico>() {{
 				add(new StatusAnalitico(20, 14));
 				add(new StatusAnalitico(21, 1));
 				add(new StatusAnalitico(22, 3));
 				add(new StatusAnalitico(29, 0));
 			}}));
-			add(new StatusDeviceAnalitico(DeviceEnum.IMPRESSORA.getValor(), new ArrayList<StatusAnalitico>() {{
+			add(new StatusDeviceAnalitico(DeviceEnum.IMPRESSORA, new ArrayList<StatusAnalitico>() {{
 				add(new StatusAnalitico(10, 18));
 				add(new StatusAnalitico(11, 0));
 				add(new StatusAnalitico(12, 0));
 				add(new StatusAnalitico(19, 0));
 			}}));
-			add(new StatusDeviceAnalitico(DeviceEnum.BIOMETRIA.getValor(), new ArrayList<StatusAnalitico>() {{
+			add(new StatusDeviceAnalitico(DeviceEnum.BIOMETRIA, new ArrayList<StatusAnalitico>() {{
 				add(new StatusAnalitico(10, 17));
 				add(new StatusAnalitico(11, 0));
 				add(new StatusAnalitico(12, 0));
 				add(new StatusAnalitico(19, 1));
 			}}));
-			add(new StatusDeviceAnalitico(DeviceEnum.PORTA.getValor(), new ArrayList<StatusAnalitico>() {{
+			add(new StatusDeviceAnalitico(DeviceEnum.PORTA, new ArrayList<StatusAnalitico>() {{
 				add(new StatusAnalitico(10, 18));
 				add(new StatusAnalitico(11, 0));
 				add(new StatusAnalitico(12, 0));

@@ -35,6 +35,7 @@ public class StatusDeviceAnalitico {
 	
 	
 	private Integer device;
+	private String tag;
 	private List<StatusAnalitico> status;
 
 	public Integer getDevice() {
@@ -44,6 +45,13 @@ public class StatusDeviceAnalitico {
 		this.device = device;
 	}
 
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+	
 	public List<StatusAnalitico> getStatus() {
 		return status;
 	}
@@ -54,14 +62,21 @@ public class StatusDeviceAnalitico {
 	public StatusDeviceAnalitico() {
 	}	
 
-	public StatusDeviceAnalitico(Integer device, List<StatusAnalitico> status) {
+	public StatusDeviceAnalitico(Integer device, String tag, List<StatusAnalitico> status) {
 		this.device = device;
+		this.tag = tag;
+		this.status = status;
+	}	
+
+	public StatusDeviceAnalitico(DeviceEnum device, List<StatusAnalitico> status) {
+		this.device = device.getValor();
+		this.tag = device.getTag();
 		this.status = status;
 	}	
 	
 	@Override
 	public String toString() {
-		String ret = "StatusDeviceAnalitico - Device[" + this.device + "]\n";
+		String ret = "StatusDeviceAnalitico - Device[" + this.device + "] - Tag[" + this.tag + "]\n";
 		for (StatusAnalitico statusAnalitico : this.status) {
 			ret += "\t" + statusAnalitico.toString() + "\n";
 		} 
