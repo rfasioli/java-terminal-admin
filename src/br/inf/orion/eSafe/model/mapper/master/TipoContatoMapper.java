@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -21,14 +22,14 @@ public interface TipoContatoMapper {
 
 	@Select(getAll)
 		@Results(value = {
-				@Result(property = "tipo", column = "tpContato"),
+				@Result(id=true, property = "tipo", column = "tpContato"),
 				@Result(property = "descricao", column = "dsTipoContato")
 		})	
 	List<TipoContato> getAll();
 
 	@Select(getByType)
 		@Results(value = {
-				@Result(property = "tipo", column = "tpContato"),
+				@Result(id=true, property = "tipo", column = "tpContato"),
 				@Result(property = "descricao", column = "dsTipoContato")
 		})	
 	TipoContato getByType(int tipo);
@@ -40,6 +41,7 @@ public interface TipoContatoMapper {
 	void delete(int tipo);
 
 	@Insert(insert)
+	@Options(useGeneratedKeys=true, keyProperty="tipo")
 	void insert(TipoContato tipoContato);	
 
 }

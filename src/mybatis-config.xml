@@ -17,5 +17,11 @@
   <mappers>
     <mapper class="br.inf.orion.eSafe.model.mapper.master.PerfilMapper" />
     <mapper class="br.inf.orion.eSafe.model.mapper.master.ClienteMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.master.FuncionalidadeMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.master.TipoContatoMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.master.TipoEnderecoMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.master.ClienteContatoMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.master.ClienteEnderecoMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.master.SistemaMapper" />
   </mappers>
 </configuration> 

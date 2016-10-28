@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -22,7 +23,7 @@ public interface ClienteMapper {
 	
 	@Select(getAll)
 	   @Results(value = {
-	      @Result(property = "id", column = "idCliente"),
+	      @Result(id=true, property = "id", column = "idCliente"),
 	      @Result(property = "nomeFantasia", column = "dsNomeFantasia"),
 	      @Result(property = "razaoSocial", column = "dsRazaoSocial"),
 	      @Result(property = "cnpj", column = "dsCnpj"),       
@@ -35,7 +36,7 @@ public interface ClienteMapper {
 	
 	@Select(getById)
 	   @Results(value = {
-	      @Result(property = "id", column = "idCliente"),
+	      @Result(id=true, property = "id", column = "idCliente"),
 	      @Result(property = "nomeFantasia", column = "dsNomeFantasia"),
 	      @Result(property = "razaoSocial", column = "dsRazaoSocial"),
 	      @Result(property = "cnpj", column = "dsCnpj"),       
@@ -52,6 +53,7 @@ public interface ClienteMapper {
 	void delete(int id);
 
 	@Insert(insert)
+	@Options(useGeneratedKeys=true, keyProperty="id")
 	void insert(Cliente cliente);
 		
 }

@@ -16,7 +16,7 @@ public interface PerfilMapper {
 
 	@Select(getAll)
 	   @Results(value = {
-	      @Result(property = "id", column = "idPerfil"),
+	      @Result(id=true, property = "id", column = "idPerfil"),
 	      @Result(property = "descricao", column = "dsPerfil"),
 	      @Result(property = "tipo", column = "tpPerfil"),
 	      @Result(property = "nivel", column = "icNivel")
@@ -27,7 +27,7 @@ public interface PerfilMapper {
 	
 	@Select(getById)
 	   @Results(value = {
-	      @Result(property = "id", column = "idPerfil"),
+	      @Result(id=true, property = "id", column = "idPerfil"),
 	      @Result(property = "descricao", column = "dsPerfil"),
 	      @Result(property = "tipo", column = "tpPerfil"),
 	      @Result(property = "nivel", column = "icNivel")
@@ -42,6 +42,7 @@ public interface PerfilMapper {
 	void delete(int id);
 
 	@Insert(insert)
+	@Options(useGeneratedKeys=true, keyProperty="id")
 	void insert(Perfil perfil);
 		
 }

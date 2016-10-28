@@ -10,8 +10,7 @@ public class ClienteEndereco {
 	private String cidade;
 	private String estado;
 	private String cep;
-	
-	
+		
 	public ClienteEndereco () {
 		super();
 	}
