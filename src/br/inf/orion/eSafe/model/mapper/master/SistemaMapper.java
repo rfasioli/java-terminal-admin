@@ -31,7 +31,7 @@ public interface SistemaMapper {
 		@Result(id=true, property = "id", column = "idSistema"),
 		@Result(property = "descricao", column = "dsSistema")
 	})	
-	Sistema getByType(int id);
+	Sistema getById(int id);
 
 	@Update(update)
 	void update(Sistema sistema);

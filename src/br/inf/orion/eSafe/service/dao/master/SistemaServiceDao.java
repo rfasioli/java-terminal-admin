@@ -36,7 +36,7 @@ public class SistemaServiceDao {
 	public static Sistema getByType(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		SistemaMapper mapper = session.getMapper(SistemaMapper.class);
-		Sistema Sistema = mapper.getByType(id);
+		Sistema Sistema = mapper.getById(id);
 		session.commit();
 		session.close();
 		return Sistema;
