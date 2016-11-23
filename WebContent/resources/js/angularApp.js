@@ -1,6 +1,7 @@
 'use strict';
 
-var app = angular.module('app', ['pascalprecht.translate']);
+var app = angular.module('app', ['pascalprecht.translate',
+                                 'ngMaterial']);
 
 app.config(function ($translateProvider) {
 	$translateProvider.fallbackLanguage('pt-BR');
@@ -105,4 +106,28 @@ app.controller('translationCtrl', ['$scope', '$translate', function ($scope, $tr
 	$scope.changeLanguage = function (key) {
 		$translate.use(key);
 	}
+}]);
+
+app.controller('loadDate', ['$scope', '$element', function ($scope, $element) {
+	$scope.myDate = new Date();
+	$scope.Today = new Date();
+	var setDate = function() {
+		console.log('setDate');
+		var dateInput = angular.element($element[0].querySelector('dataCadastro'));
+		if (dateInput != null) {
+			console.log(JSON.stringify(dateInput));
+		}
+	}
+	/*
+	var myDatePicker = angular.element($element[0].querySelector('#dataCadastro'));
+	if (myDatePicker != null && myDatePicker[0] != null && myDatePicker[0].children[1] != null) {
+		var myDatePickerInputContainer = angular.element(myDatePicker[0].children[1]);
+		if (myDatePickerInputContainer != null && myDatePickerInputContainer[0] != null && myDatePickerInputContainer[0].children[0] != null) {
+			var myDatePickerInput = angular.element(myDatePickerInputContainer[0].children[0]);
+			if (myDatePickerInput != null) {
+				myDatePickerInput.attr("name", "dataCadastro2");
+			}
+		}
+	}
+	*/
 }]);

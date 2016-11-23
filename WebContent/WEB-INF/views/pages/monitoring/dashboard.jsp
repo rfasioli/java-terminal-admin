@@ -24,7 +24,7 @@
 				<div class="inner">
 					<h3>
 						<sup style="font-size: 20px">R$</sup>{{ transito / 1000 | number :
-						1 }}<sup style="font-size: 20px">k</sup>
+						0 }}<sup style="font-size: 20px">k</sup>
 					</h3>
 					<p>
 						Numerário em campo <small> em 29 terminais</small>
@@ -45,7 +45,7 @@
 				<div class="inner">
 					<h3>
 						<sup style="font-size: 20px">R$</sup>{{ recolhido / 1000 | number
-						: 1 }}<sup style="font-size: 20px">k</sup>
+						: 0 }}<sup style="font-size: 20px">k</sup>
 					</h3>
 					<p>
 						Numerário Recolhido <small> de {{estado.OK +

@@ -33,7 +33,7 @@
 
 </head>
 
-<body class="transition skin-orion layout-top-nav">
+<body class="transition skin-orion layout-top-nav" ng-app="app" ng-controller="translationCtrl">
 
 	<div class="preloader">
 		<div class="preloader-wrap">

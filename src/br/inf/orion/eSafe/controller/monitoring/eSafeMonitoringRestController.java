@@ -74,18 +74,24 @@ public class eSafeMonitoringRestController {
 	}
 
 	@RequestMapping(value = "/MonitoramentoAnalitico", method = RequestMethod.GET)
-	public ResponseEntity<List<StatusDeviceAnalitico>> getMonitoramentoAnalitico() {
-		return null;
+	public ResponseEntity<List<StatusAnalitico>> getMonitoramentoAnalitico() {
+		List<StatusAnalitico> statusAnalitico = new ArrayList<StatusAnalitico>() {{
+			add(new StatusAnalitico(10, 15));
+			add(new StatusAnalitico(11, 0));
+			add(new StatusAnalitico(12, 1));
+			add(new StatusAnalitico(19, 2));
+		}};
+		return new ResponseEntity<List<StatusAnalitico>>(statusAnalitico, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/NumerarioSaldoAnalitico", method = RequestMethod.GET)
-	public ResponseEntity<List<StatusDeviceAnalitico>> getNumerarioSaldoAnalitico() {
-		return null;
+	public ResponseEntity<Double> getNumerarioSaldoAnalitico() {
+		return new ResponseEntity<Double>(12345678.90, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/NumerarioRecolhidoAnalitico", method = RequestMethod.GET)
-	public ResponseEntity<List<StatusDeviceAnalitico>> getNumerarioRecolhidoAnalitico() {
-		return null;
+	public ResponseEntity<List<Double>> getNumerarioRecolhidoAnalitico() {
+		return new ResponseEntity<List<Double>>(new ArrayList<Double>() {{ add(67854321.90); }}, HttpStatus.OK);
 	}
 	
 }

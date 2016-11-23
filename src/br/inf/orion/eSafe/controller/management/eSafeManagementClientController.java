@@ -2,6 +2,8 @@ package br.inf.orion.eSafe.controller.management;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.inf.orion.eSafe.model.master.Cliente;
 import br.inf.orion.eSafe.service.dao.master.ClienteServiceDao;
@@ -34,15 +37,28 @@ public class eSafeManagementClientController {
 	}
 	
 	@RequestMapping(value="/create", method=RequestMethod.POST)
-	public String postCreatePage(@ModelAttribute(value="client") Cliente client, BindingResult result, ModelMap model){
-		//validator.validate(user, result);
+	public ModelAndView postCreatePage(@Valid @ModelAttribute(value="client") Cliente client, BindingResult result, ModelMap model){
 		if(!result.hasErrors()){
 			ClienteServiceDao.save(client);
+			return new ModelAndView(base_url, "clients", ClienteServiceDao.getAll());
 		}
-		model.addAttribute("clients", ClienteServiceDao.getAll());
-		return base_url;
+		else {
+			model.addAttribute("client", client);
+			return new ModelAndView(base_url + "/create", "client", client);
+		}
 	}	
-	
+//	public String postCreatePage(@Valid @ModelAttribute(value="client") Cliente client, BindingResult result, ModelMap model){
+//		//validator.validate(user, result);
+//		if(!result.hasErrors()){
+//			ClienteServiceDao.save(client);
+//		}
+//		else {
+//			return base_url + "/create";
+//		}
+//		model.addAttribute("clients", ClienteServiceDao.getAll());
+//		return base_url;
+//	}	
+
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String getDeletePage(ModelMap model, @RequestParam int id) {
 		Cliente client = ClienteServiceDao.getById(id);
