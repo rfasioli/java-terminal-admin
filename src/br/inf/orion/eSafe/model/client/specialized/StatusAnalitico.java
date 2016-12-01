@@ -1,4 +1,4 @@
-package br.inf.orion.eSafe.model.client;
+package br.inf.orion.eSafe.model.client.specialized;
 
 public class StatusAnalitico {
 	private Integer status;

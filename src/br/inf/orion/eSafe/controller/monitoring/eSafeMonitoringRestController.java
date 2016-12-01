@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.inf.orion.eSafe.model.client.StatusAnalitico;
-import br.inf.orion.eSafe.model.client.StatusDeviceAnalitico;
-import br.inf.orion.eSafe.model.client.StatusDeviceAnalitico.DeviceEnum;
-import br.inf.orion.eSafe.model.client.TotalDeposito;
+import br.inf.orion.eSafe.model.client.specialized.StatusAnalitico;
+import br.inf.orion.eSafe.model.client.specialized.StatusDeviceAnalitico;
+import br.inf.orion.eSafe.model.client.specialized.TotalDeposito;
+import br.inf.orion.eSafe.model.client.specialized.StatusDeviceAnalitico.DeviceEnum;
 
 @SuppressWarnings("serial")
 @RestController
