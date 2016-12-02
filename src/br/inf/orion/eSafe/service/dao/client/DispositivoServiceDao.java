@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import br.inf.orion.eSafe.model.client.Dispositivo;
-import br.inf.orion.eSafe.model.mapper.client.DispositivoMapper;
+import br.inf.orion.eSafe.model.client.bkp.Dispositivo;
+import br.inf.orion.eSafe.model.mapper.client.bkp.DispositivoMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
 public class DispositivoServiceDao {

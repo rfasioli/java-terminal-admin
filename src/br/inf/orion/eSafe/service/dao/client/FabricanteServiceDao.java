@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import br.inf.orion.eSafe.model.client.Fabricante;
-import br.inf.orion.eSafe.model.mapper.client.FabricanteMapper;
+import br.inf.orion.eSafe.model.client.bkp.Fabricante;
+import br.inf.orion.eSafe.model.mapper.client.bkp.FabricanteMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
 public class FabricanteServiceDao {

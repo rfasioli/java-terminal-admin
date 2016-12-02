@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <classPathEntry location="/home/orion/.m2/repository/postgresql/postgresql/9.1-901.jdbc4/postgresql-9.1-901.jdbc4.jar" />
+  <context id="eSafe.Client">
+    <jdbcConnection connectionURL="jdbc:postgresql://127.0.0.1:5432/DB_ESAFE_CLIENT" driverClass="org.postgresql.Driver" password="Orion@123" userId="postgres" />
+    <javaModelGenerator targetPackage="br.inf.orion.eSafe.model.client" targetProject="eSafe" />
+    <sqlMapGenerator targetPackage="myBatisConfig-Client.xml" targetProject="eSafe" />
+    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="br.inf.orion.eSafe.service.dao.client" targetProject="eSafe" />
+    
+    <!-- <table schema="public" tableName="tb_modelo"></table> -->
+    <table schema="public" tableName="tb_fornecedor"></table>
+    <table schema="public" tableName="tb_tipo_contato"></table>
+    <table schema="public" tableName="tb_fabricante"></table>
+    <table schema="public" tableName="tb_contato_estabelecimento"></table>
+    <table schema="public" tableName="tb_contato_fornecedor"></table>
+    <table schema="public" tableName="tb_regiao"></table>
+    <table schema="public" tableName="tb_contato_filial"></table>
+    <table schema="public" tableName="tb_acesso_usuario_regiao"></table>
+    <table schema="public" tableName="tb_acesso_usuario_fornecedor"></table>
+    <table schema="public" tableName="tb_acesso_usuario_filial"></table>
+    <table schema="public" tableName="tb_usuario_externo"></table>
+    <table schema="public" tableName="tb_acesso_usuario_estabelecimento"></table>
+    <table schema="public" tableName="tb_acesso_usuario_terminal"></table>
+    <table schema="public" tableName="tb_endereco_estabelecimento"></table>
+    <table schema="public" tableName="tb_usuario_externo_terminal"></table>
+    <table schema="public" tableName="tb_autenticacao_usuario_externo"></table>
+    <table schema="public" tableName="tb_terminal"></table>
+    <table schema="public" tableName="tb_dispositivo"></table>
+    <table schema="public" tableName="tb_estabelecimento"></table>
+    <table schema="public" tableName="tb_dispositivo_modelo"></table>
+    <table schema="public" tableName="tb_contato_fabricante"></table>
+    <table schema="public" tableName="tb_monitoracao"></table>
+    <table schema="public" tableName="tb_filial"></table>
+    <table schema="public" tableName="tb_status_dispositivo"></table>
+    <table schema="public" tableName="tb_status_monitoracao"></table>
+    <table schema="public" tableName="tb_fornecedor"></table>
+    <table schema="public" tableName="tb_tipo_contato"></table>
+    <table schema="public" tableName="tb_fabricante"></table>
+    <table schema="public" tableName="tb_contato_estabelecimento"></table>
+    <table schema="public" tableName="tb_contato_fornecedor"></table>
+    <table schema="public" tableName="tb_regiao"></table>
+    <table schema="public" tableName="tb_contato_filial"></table>
+    <table schema="public" tableName="tb_acesso_usuario_regiao"></table>
+    <table schema="public" tableName="tb_acesso_usuario_fornecedor"></table>
+    <table schema="public" tableName="tb_acesso_usuario_filial"></table>
+    <table schema="public" tableName="tb_usuario_externo"></table>
+    <table schema="public" tableName="tb_acesso_usuario_estabelecimento"></table>
+    <table schema="public" tableName="tb_acesso_usuario_terminal"></table>
+    <table schema="public" tableName="tb_endereco_estabelecimento"></table>
+    <table schema="public" tableName="tb_usuario_externo_terminal"></table>
+    <table schema="public" tableName="tb_autenticacao_usuario_externo"></table>
+    <table schema="public" tableName="tb_terminal"></table>
+    <table schema="public" tableName="tb_dispositivo"></table>
+    <table schema="public" tableName="tb_estabelecimento"></table>
+    <table schema="public" tableName="tb_dispositivo_modelo"></table>
+    <table schema="public" tableName="tb_contato_fabricante"></table>
+    <table schema="public" tableName="tb_monitoracao"></table>
+    <table schema="public" tableName="tb_filial"></table>
+    <table schema="public" tableName="tb_status_dispositivo"></table>
+    <table schema="public" tableName="tb_status_monitoracao"></table>    
+  </context>
+</generatorConfiguration>
