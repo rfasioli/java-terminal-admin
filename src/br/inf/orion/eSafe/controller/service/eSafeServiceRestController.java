@@ -1,4 +1,4 @@
-package br.inf.orion.eSafe.controller;
+package br.inf.orion.eSafe.controller.service;
 
 import java.util.List;
 

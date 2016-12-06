@@ -9,6 +9,7 @@
     <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="br.inf.orion.eSafe.service.dao.client" targetProject="eSafe" />
     
     <!-- <table schema="public" tableName="tb_modelo"></table> -->
+    <!-- 
     <table schema="public" tableName="tb_fornecedor"></table>
     <table schema="public" tableName="tb_tipo_contato"></table>
     <table schema="public" tableName="tb_fabricante"></table>
@@ -58,6 +59,7 @@
     <table schema="public" tableName="tb_monitoracao"></table>
     <table schema="public" tableName="tb_filial"></table>
     <table schema="public" tableName="tb_status_dispositivo"></table>
-    <table schema="public" tableName="tb_status_monitoracao"></table>    
+    <table schema="public" tableName="tb_status_monitoracao"></table>
+     -->    
   </context>
 </generatorConfiguration>

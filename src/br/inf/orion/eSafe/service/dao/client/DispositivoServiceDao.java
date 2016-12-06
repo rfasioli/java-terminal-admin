@@ -4,51 +4,52 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import br.inf.orion.eSafe.model.client.bkp.Dispositivo;
-import br.inf.orion.eSafe.model.mapper.client.bkp.DispositivoMapper;
+import br.inf.orion.eSafe.model.client.Dispositivo;
+import br.inf.orion.eSafe.model.client.example.TbDispositivoExample;
+import br.inf.orion.eSafe.model.mapper.client.DispositivoMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
 public class DispositivoServiceDao {
-	public static void save(Dispositivo dispositivo) {
-		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+	public static void save(int idCliente, Dispositivo dispositivo) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory(idCliente).openSession();
 		DispositivoMapper mapper = session.getMapper(DispositivoMapper.class);
 		mapper.insert(dispositivo);
 		session.commit();
 		session.close();
 	}
 
-	public static void update(Dispositivo dispositivo) {
-		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+	public static void update(int idCliente, Dispositivo dispositivo) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory(idCliente).openSession();
 		DispositivoMapper mapper = session.getMapper(DispositivoMapper.class);
-		mapper.update(dispositivo);
+		mapper.updateByPrimaryKey(dispositivo);
 		session.commit();
 		session.close();
 	}
 
-	public static void delete(int id) {
-		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+	public static void delete(int idCliente, int id) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory(idCliente).openSession();
 		DispositivoMapper mapper = session.getMapper(DispositivoMapper.class);
-		mapper.delete(id);
+		mapper.deleteByPrimaryKey(id);
 		session.commit();
 		session.close();
 	}
 
-	public static Dispositivo getById(int id) {
-		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+	public static Dispositivo getById(int idCliente, int id) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory(idCliente).openSession();
 		DispositivoMapper mapper = session.getMapper(DispositivoMapper.class);
-		Dispositivo dispositivo = mapper.getById(id);
+		Dispositivo dispositivo = mapper.selectByPrimaryKey(id);
 		session.commit();
 		session.close();
 		return dispositivo;
 	}
 
-	public static List<Dispositivo> getAll() {
-		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+	public static List<Dispositivo> getAll(int idCliente) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory(idCliente).openSession();
 		DispositivoMapper mapper = session.getMapper(DispositivoMapper.class);
-		List<Dispositivo> clienteContatos = mapper.getAll();
+		List<Dispositivo> dispositivos = mapper.selectByExample(new TbDispositivoExample());
 		session.commit();
 		session.close();
-		return clienteContatos;
+		return dispositivos;
 	}
 
 }

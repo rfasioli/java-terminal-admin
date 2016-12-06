@@ -2,7 +2,7 @@ package br.inf.orion.eSafe.model.mapper.client.bkp;
 
 import br.inf.orion.eSafe.model.client.bkp.Modelo;
 import br.inf.orion.eSafe.model.client.example.TbModeloExample;
-import br.inf.orion.eSafe.service.dao.client.ModeloServiceDao;
+import br.inf.orion.eSafe.service.provider.client.ModeloSqlProvider;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
@@ -19,10 +19,10 @@ import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
 
 public interface ModeloMapper {
-    @SelectProvider(type=ModeloServiceDao.class, method="countByExample")
+    @SelectProvider(type=ModeloSqlProvider.class, method="countByExample")
     long countByExample(TbModeloExample example);
 
-    @DeleteProvider(type=ModeloServiceDao.class, method="deleteByExample")
+    @DeleteProvider(type=ModeloSqlProvider.class, method="deleteByExample")
     int deleteByExample(TbModeloExample example);
 
     @Delete({
@@ -39,10 +39,10 @@ public interface ModeloMapper {
     })
     int insert(Modelo record);
 
-    @InsertProvider(type=ModeloServiceDao.class, method="insertSelective")
+    @InsertProvider(type=ModeloSqlProvider.class, method="insertSelective")
     int insertSelective(Modelo record);
 
-    @SelectProvider(type=ModeloServiceDao.class, method="selectByExample")
+    @SelectProvider(type=ModeloSqlProvider.class, method="selectByExample")
     @Results({
         @Result(column="id_modelo", property="idModelo", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="id_fabricante", property="idFabricante", jdbcType=JdbcType.INTEGER),
@@ -65,13 +65,13 @@ public interface ModeloMapper {
     })
     Modelo selectByPrimaryKey(Integer idModelo);
 
-    @UpdateProvider(type=ModeloServiceDao.class, method="updateByExampleSelective")
+    @UpdateProvider(type=ModeloSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") Modelo record, @Param("example") TbModeloExample example);
 
-    @UpdateProvider(type=ModeloServiceDao.class, method="updateByExample")
+    @UpdateProvider(type=ModeloSqlProvider.class, method="updateByExample")
     int updateByExample(@Param("record") Modelo record, @Param("example") TbModeloExample example);
 
-    @UpdateProvider(type=ModeloServiceDao.class, method="updateByPrimaryKeySelective")
+    @UpdateProvider(type=ModeloSqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(Modelo record);
 
     @Update({

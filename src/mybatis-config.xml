@@ -32,8 +32,10 @@
     <mapper class="br.inf.orion.eSafe.model.mapper.master.UsuarioTerminalMapper" />
     
     <mapper class="br.inf.orion.eSafe.model.mapper.client.DispositivoMapper" />
+
+<!--     <mapper class="br.inf.orion.eSafe.model.mapper.client.DispositivoMapper" />
     <mapper class="br.inf.orion.eSafe.model.mapper.client.FabricanteMapper" />
     <mapper class="br.inf.orion.eSafe.model.mapper.client.ModeloMapper" />
-    
+ -->    
   </mappers>
 </configuration> 

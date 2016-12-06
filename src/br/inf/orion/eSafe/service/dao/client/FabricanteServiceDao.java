@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import br.inf.orion.eSafe.model.client.bkp.Fabricante;
-import br.inf.orion.eSafe.model.mapper.client.bkp.FabricanteMapper;
+import br.inf.orion.eSafe.model.client.Fabricante;
+import br.inf.orion.eSafe.model.client.example.TbFabricanteExample;
+import br.inf.orion.eSafe.model.mapper.client.FabricanteMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
 public class FabricanteServiceDao {
@@ -20,7 +21,7 @@ public class FabricanteServiceDao {
 	public static void update(Fabricante fabricante) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		FabricanteMapper mapper = session.getMapper(FabricanteMapper.class);
-		mapper.update(fabricante);
+		mapper.updateByPrimaryKey(fabricante);
 		session.commit();
 		session.close();
 	}
@@ -28,7 +29,7 @@ public class FabricanteServiceDao {
 	public static void delete(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		FabricanteMapper mapper = session.getMapper(FabricanteMapper.class);
-		mapper.delete(id);
+		mapper.deleteByPrimaryKey(id);
 		session.commit();
 		session.close();
 	}
@@ -36,7 +37,7 @@ public class FabricanteServiceDao {
 	public static Fabricante getById(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		FabricanteMapper mapper = session.getMapper(FabricanteMapper.class);
-		Fabricante fabricante = mapper.getById(id);
+		Fabricante fabricante = mapper.selectByPrimaryKey(id);
 		session.commit();
 		session.close();
 		return fabricante;
@@ -45,7 +46,7 @@ public class FabricanteServiceDao {
 	public static List<Fabricante> getAll() {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		FabricanteMapper mapper = session.getMapper(FabricanteMapper.class);
-		List<Fabricante> clienteContatos = mapper.getAll();
+		List<Fabricante> clienteContatos = mapper.selectByExample(new TbFabricanteExample());
 		session.commit();
 		session.close();
 		return clienteContatos;
