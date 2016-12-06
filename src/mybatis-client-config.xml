@@ -20,6 +20,10 @@
 		</environment>
 	</environments>
 	<mappers>
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.ContatoEstabelecimentoMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.ContatoFabricanteMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.ContatoFilialMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.ContatoFornecedorMapper" />
 		<mapper class="br.inf.orion.eSafe.client.model.mapper.DispositivoModeloMapper" />
 		<mapper class="br.inf.orion.eSafe.client.model.mapper.DispositivoMapper" />
 		<mapper class="br.inf.orion.eSafe.client.model.mapper.EstabelecimentoMapper" />
@@ -27,7 +31,11 @@
 		<mapper class="br.inf.orion.eSafe.client.model.mapper.FilialMapper" />
 		<mapper class="br.inf.orion.eSafe.client.model.mapper.FornecedorMapper" />
 		<mapper class="br.inf.orion.eSafe.client.model.mapper.ModeloMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.MonitoracaoMapper" />
 		<mapper class="br.inf.orion.eSafe.client.model.mapper.RegiaoMapper" />
 		<mapper class="br.inf.orion.eSafe.client.model.mapper.StatusDispositivoMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.StatusMonitoracaoMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.TerminalMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.TipoContatoMapper" />
 	</mappers>
 </configuration> 

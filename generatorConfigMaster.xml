@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <classPathEntry location="/home/orion/.m2/repository/postgresql/postgresql/9.1-901.jdbc4/postgresql-9.1-901.jdbc4.jar" />
+  <context id="eSafe.Client">
+    <jdbcConnection connectionURL="jdbc:postgresql://127.0.0.1:5432/DB_ESAFE_MASTER" driverClass="org.postgresql.Driver" password="Orion@123" userId="postgres" />
+    <javaModelGenerator targetPackage="br.inf.orion.eSafe.model.gen" targetProject="eSafe" />
+    <sqlMapGenerator targetPackage="myBatisConfig-Client.xml" targetProject="eSafe" />
+    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="br.inf.orion.eSafe.model.mapper.gen" targetProject="eSafe" />
+    
+    <table schema="public" tableName="TB_USUARIO"></table>
+  </context>
+</generatorConfiguration>
