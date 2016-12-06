@@ -20,6 +20,14 @@
 		</environment>
 	</environments>
 	<mappers>
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.DispositivoModeloMapper" />
 		<mapper class="br.inf.orion.eSafe.client.model.mapper.DispositivoMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.EstabelecimentoMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.FabricanteMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.FilialMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.FornecedorMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.ModeloMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.RegiaoMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.StatusDispositivoMapper" />
 	</mappers>
 </configuration> 

@@ -1,7 +1,7 @@
 package br.inf.orion.eSafe.client.model.mapper;
 
 import br.inf.orion.eSafe.client.model.Dispositivo;
-import br.inf.orion.eSafe.client.model.example.TbDispositivoExample;
+import br.inf.orion.eSafe.client.model.example.DispositivoExample;
 import br.inf.orion.eSafe.client.service.provider.DispositivoSqlProvider;
 
 import java.util.List;
@@ -21,10 +21,10 @@ import org.apache.ibatis.type.JdbcType;
 public interface DispositivoMapper {
 
 	@SelectProvider(type = DispositivoSqlProvider.class, method = "countByExample")
-	long countByExample(TbDispositivoExample example);
+	long countByExample(DispositivoExample example);
 
 	@DeleteProvider(type = DispositivoSqlProvider.class, method = "deleteByExample")
-	int deleteByExample(TbDispositivoExample example);
+	int deleteByExample(DispositivoExample example);
 
 	@Delete({ "delete from public.tb_dispositivo", "where id_dispositivo = #{idDispositivo,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer idDispositivo);
@@ -39,7 +39,7 @@ public interface DispositivoMapper {
 	@SelectProvider(type = DispositivoSqlProvider.class, method = "selectByExample")
 	@Results({ @Result(column = "id_dispositivo", property = "idDispositivo", jdbcType = JdbcType.INTEGER, id = true),
 			@Result(column = "ds_dispositivo", property = "dsDispositivo", jdbcType = JdbcType.VARCHAR) })
-	List<Dispositivo> selectByExample(TbDispositivoExample example);
+	List<Dispositivo> selectByExample(DispositivoExample example);
 
 	@Select({ "select", "id_dispositivo, ds_dispositivo", "from public.tb_dispositivo",
 			"where id_dispositivo = #{idDispositivo,jdbcType=INTEGER}" })
@@ -48,10 +48,10 @@ public interface DispositivoMapper {
 	Dispositivo selectByPrimaryKey(Integer idDispositivo);
 
 	@UpdateProvider(type = DispositivoSqlProvider.class, method = "updateByExampleSelective")
-	int updateByExampleSelective(@Param("record") Dispositivo record, @Param("example") TbDispositivoExample example);
+	int updateByExampleSelective(@Param("record") Dispositivo record, @Param("example") DispositivoExample example);
 
 	@UpdateProvider(type = DispositivoSqlProvider.class, method = "updateByExample")
-	int updateByExample(@Param("record") Dispositivo record, @Param("example") TbDispositivoExample example);
+	int updateByExample(@Param("record") Dispositivo record, @Param("example") DispositivoExample example);
 
 	@UpdateProvider(type = DispositivoSqlProvider.class, method = "updateByPrimaryKeySelective")
 	int updateByPrimaryKeySelective(Dispositivo record);

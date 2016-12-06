@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import br.inf.orion.eSafe.client.model.Fabricante;
-import br.inf.orion.eSafe.client.model.example.TbFabricanteExample;
+import br.inf.orion.eSafe.client.model.example.FabricanteExample;
 import br.inf.orion.eSafe.client.model.mapper.FabricanteMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
@@ -46,7 +46,7 @@ public class FabricanteServiceDao {
 	public static List<Fabricante> getAll(int idCliente) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory(idCliente).openSession();
 		FabricanteMapper mapper = session.getMapper(FabricanteMapper.class);
-		List<Fabricante> clienteContatos = mapper.selectByExample(new TbFabricanteExample());
+		List<Fabricante> clienteContatos = mapper.selectByExample(new FabricanteExample());
 		session.commit();
 		session.close();
 		return clienteContatos;

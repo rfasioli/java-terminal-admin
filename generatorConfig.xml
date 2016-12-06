@@ -4,11 +4,11 @@
   <classPathEntry location="/home/orion/.m2/repository/postgresql/postgresql/9.1-901.jdbc4/postgresql-9.1-901.jdbc4.jar" />
   <context id="eSafe.Client">
     <jdbcConnection connectionURL="jdbc:postgresql://127.0.0.1:5432/DB_ESAFE_CLIENT" driverClass="org.postgresql.Driver" password="Orion@123" userId="postgres" />
-    <javaModelGenerator targetPackage="br.inf.orion.eSafe.model.client" targetProject="eSafe" />
+    <javaModelGenerator targetPackage="br.inf.orion.eSafe.client.model.gen" targetProject="eSafe" />
     <sqlMapGenerator targetPackage="myBatisConfig-Client.xml" targetProject="eSafe" />
-    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="br.inf.orion.eSafe.service.dao.client" targetProject="eSafe" />
+    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="br.inf.orion.eSafe.client.model.mapper.gen" targetProject="eSafe" />
     
-    <!-- <table schema="public" tableName="tb_modelo"></table> -->
+    <table schema="public" tableName="tb_modelo"></table>
     <!-- 
     <table schema="public" tableName="tb_fornecedor"></table>
     <table schema="public" tableName="tb_tipo_contato"></table>
