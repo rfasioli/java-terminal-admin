@@ -12,9 +12,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class MyBatisUtil {
 	private static Map<Integer, SqlSessionFactory> sqlSessionClients;
- 	private static SqlSessionFactory sqlSessionFactory;
 	static {
 		sqlSessionClients = new Hashtable<Integer, SqlSessionFactory>();
+	}
+	
+	private static SqlSessionFactory sqlSessionFactory;
+	static {
 		String resource = "mybatis-config.xml";
 		InputStream inputStream;
 		try {
@@ -24,6 +27,7 @@ public class MyBatisUtil {
 			e.printStackTrace();
 		}
 	}
+	
 	public static SqlSessionFactory getSqlSessionFactory(){
 		return sqlSessionFactory;
 	}

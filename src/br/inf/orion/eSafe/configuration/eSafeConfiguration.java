@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "br.inf.orion.eSafe.controller" })
+@ComponentScan(basePackages = { "br.inf.orion.eSafe.controller", "br.inf.orion.eSafe.client.controller" })
 public class eSafeConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override

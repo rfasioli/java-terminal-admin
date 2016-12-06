@@ -20,6 +20,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper class="br.inf.orion.eSafe.model.mapper.client.DispositivoMapper" />
+		<mapper class="br.inf.orion.eSafe.client.model.mapper.DispositivoMapper" />
 	</mappers>
 </configuration> 

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.inf.orion.eSafe.model.master.Cliente;
-import br.inf.orion.eSafe.service.dao.master.ClienteServiceDao;
+import br.inf.orion.eSafe.model.Cliente;
+import br.inf.orion.eSafe.service.dao.ClienteServiceDao;
 
 @Controller
 @RequestMapping("/" + eSafeManagementClientController.base_url)

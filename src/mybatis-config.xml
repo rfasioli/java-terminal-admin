@@ -15,27 +15,20 @@
     </environment>
   </environments>
   <mappers>
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.ClienteMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.ClienteContatoMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.ClienteEnderecoMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.FuncionalidadeMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.FuncionalidadeClienteMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.FuncionalidadePerfilMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.PerfilMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.SistemaMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.SistemaClienteMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.TerminalMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.TipoContatoMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.TipoEnderecoMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.UsuarioMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.UsuarioClienteMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.master.UsuarioTerminalMapper" />
-    
-    <mapper class="br.inf.orion.eSafe.model.mapper.client.DispositivoMapper" />
-
-<!--     <mapper class="br.inf.orion.eSafe.model.mapper.client.DispositivoMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.client.FabricanteMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.client.ModeloMapper" />
- -->    
+    <mapper class="br.inf.orion.eSafe.model.mapper.ClienteMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.ClienteContatoMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.ClienteEnderecoMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.FuncionalidadeMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.FuncionalidadeClienteMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.FuncionalidadePerfilMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.PerfilMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.SistemaMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.SistemaClienteMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.TerminalMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.TipoContatoMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.TipoEnderecoMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.UsuarioMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.UsuarioClienteMapper" />
+    <mapper class="br.inf.orion.eSafe.model.mapper.UsuarioTerminalMapper" />
   </mappers>
 </configuration> 

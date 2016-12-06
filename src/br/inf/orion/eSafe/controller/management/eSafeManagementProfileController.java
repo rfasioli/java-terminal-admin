@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.inf.orion.eSafe.model.master.Perfil;
-import br.inf.orion.eSafe.service.dao.master.PerfilServiceDao;
+import br.inf.orion.eSafe.model.Perfil;
+import br.inf.orion.eSafe.service.dao.PerfilServiceDao;
 
 @Controller
 @RequestMapping("/" + eSafeManagementProfileController.base_url)
