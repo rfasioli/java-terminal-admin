@@ -7,70 +7,66 @@
 			class="fa fa-circle-thin fa-stack-2x"></i> <i
 			class="fa fa-reply fa-stack-1x"></i>
 	</span>
-	</a>&nbsp; {{'NEW' | translate}}
+	</a>&nbsp; {{'DELETE' | translate}}
 </h4>
 <div class="box box-primary">
-	<c:url var="post_url" value="/management/client/create" />	
-	<form:form method="POST" modelAttribute="client" class="form-horizontal" action="${post_url}">
+	<form action="<c:url value=''/>" method="POST" class="form-horizontal">
 		<div class="box-header with-border">
-			<input type="submit" value="{{'SAVE' | translate}}" class="btn btn-success btn-flat pull-right" />
-			<h5>{{'CLIENT' | translate}}</h5>
+			<input type="submit" value="{{'CONFIRM' | translate}}"
+				class="btn btn-success btn-flat pull-right" />
+			<h5>{{'CLIENT' | translate}} - {{'CLIENT_DELETE_MESSAGE' | translate}}</h5>
 		</div>
-		<form:errors path="*" cssClass="errorblock" element="div" />
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
+					<label class="control-label col-sm-2" for="email">{{'CLIENTE_ID' | translate}}:</label>
+					<div class="col-sm-10">
+						<label for="id" id="id">${client.id}</label>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label col-sm-2" for="nomeFantasia">{{'CLIENT_FANTASY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<!--
-						<input type="text" name="nomeFantasia" value="${client.nomeFantasia}" id="nomeFantasia" />
-						-->
-						<form:input type="text" path="nomeFantasia" id="nomeFantasia"  class="form-control input-sm"/>
-						<form:errors path="nomeFantasia" cssStyle="error" />
+						<label for="nomeFantasia" id="nomeFantasia">${client.nomeFantasia}</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="razaoSocial">{{'CLIENT_COMPANY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="razaoSocial" value="${client.razaoSocial}" id="razaoSocial" />
-						<form:errors path="razaoSocial" cssClass="error" />
+						<label for="razaoSocial" id="razaoSocial">${client.razaoSocial}</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="cnpj">{{'CLIENT_DOCUMENT' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="cnpj" value="${client.cnpj}" id="cnpj" />
-						<form:errors path="cnpj" cssClass="error" />
+						<label for="cnpj" id="cnpj">${client.cnpj}</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="dataCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
-					<div class="col-sm-10" ng-controller="loadDate">
-					  <input class="datepicker" type="date" name="dataCadastro" value="${myDate}" id="dataCadastro" readonly />
-					  <form:errors path="dataCadastro" cssClass="error" />
+					<div class="col-sm-10">
+						<label for="dataCadastro" id="dataCadastro">${client.dataCadastro}</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="ativo">{{'CLIENT_ACTIVE' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:checkbox path="ativo" />
-						<!-- <input type="checkbox" name="ativo" value="${client.ativo}" id="ativo" />  -->
+						<label for="ativo" id="ativo">${client.ativo}</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="conexao">{{'CLIENT_CONNECTION' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="conexao" value="${client.conexao}" id="conexao" />
-						<form:errors path="conexao" cssClass="error" />
+						<label for="conexao" id="conexao">${client.conexao}</label>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form:form>
+	</form>
 </div>
 
-<script>
-	$("#dataCadastro").datepicker();
-</script>
+
+
+
 
 

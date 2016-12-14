@@ -26,16 +26,14 @@
        <put-attribute name="scripts" value="/WEB-INF/views/tiles/template/defaultScripts.jsp" />  
    </definition>  
   
-   <!-- Home Page -->
-   <definition name="home" extends="base-definition">  
-       <put-attribute name="title" value="Home" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />  
-   </definition>  
+   <!-- System -->
+   <!-- System -->
+   <!-- System -->
 
-   <!-- Login -->
-   <definition name="login" extends="anonymous-definition">  
-       <put-attribute name="title" value="User Login" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />
+   <!-- Features -->
+   <definition name="system/features" extends="base-definition">  
+       <put-attribute name="title" value="Funcionalidades" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/system/features.jsp" />  
    </definition>  
 
 </tiles-definitions>

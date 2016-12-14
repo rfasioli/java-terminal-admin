@@ -1,7 +1,15 @@
 'use strict';
 
 var app = angular.module('app', ['pascalprecht.translate',
-                                 'ngMaterial']);
+                                 'ngMaterial',
+                                 'datatables']);
+
+app.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.html5Mode({
+    	  enabled: true,
+    	  requireBase: false
+    	});
+}]);
 
 app.config(function ($translateProvider) {
 	$translateProvider.fallbackLanguage('pt-BR');
@@ -71,7 +79,25 @@ app.config(function ($translateProvider) {
 		NIVEL_PERFIL_REGIAO: 'Região',
 		NIVEL_PERFIL_FILIAL: 'Filial',
 		NIVEL_PERFIL_FORNECEDOR: 'Fornecedor',
-		NIVEL_PERFIL_ESTABELECIMENTO: 'Estabelecimento'
+		NIVEL_PERFIL_ESTABELECIMENTO: 'Estabelecimento',
+		USERS: 'Usuários',
+		USER: 'Usuário',
+		USER_ID: 'ID',
+		USER_LOGIN: 'Identificação',
+		USER_EMAIL: 'eMail',
+		USER_PASSWORD: 'Senha',
+		USER_NAME: 'Nome',
+		USER_DT_CREATE: 'Criação',
+		USER_DT_UPDATE: 'Alteração',
+		USER_ACTIVE: 'Ativo',
+		USER_PROFILE: 'Perfil',
+		USER_TOKEN: 'Controle para Troca de Senha',
+		USER_DT_TOKEN: 'Geração do Controle',
+		TERMINAL_ID: 'Identificação',
+		NR_TERMINAL: 'Número',
+		DS_TERMINAL: 'Descrição',
+		AVAILABLE_TERMINALS: 'Terminais Disponíveis',
+		AUTHORIZED_TERMINALS: 'Terminais Autorizados'
 	});
 	$translateProvider.translations('en', {
 		LANG_IMAGE: 'img/en.png',

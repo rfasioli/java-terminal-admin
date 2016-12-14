@@ -42,7 +42,7 @@ public class TerminalServiceDao {
 		return terminals;
 	}
 
-	public static Terminal ge(int id) {
+	public static Terminal getByTerminal(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		TerminalMapper mapper = session.getMapper(TerminalMapper.class);
 		Terminal terminal = mapper.getById(id);
@@ -51,4 +51,13 @@ public class TerminalServiceDao {
 		return terminal;
 	}
 
+	public static List<Terminal> getByClient(int id) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+		TerminalMapper mapper = session.getMapper(TerminalMapper.class);
+		List<Terminal> terminal = mapper.getByClient(id);
+		session.commit();
+		session.close();
+		return terminal;
+	}
+	
 }

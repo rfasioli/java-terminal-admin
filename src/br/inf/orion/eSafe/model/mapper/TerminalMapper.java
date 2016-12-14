@@ -15,6 +15,7 @@ import br.inf.orion.eSafe.model.Terminal;
 public interface TerminalMapper {
 	final String getAll = "SELECT \"idTerminal\", \"idCliente\", \"nrTerminal\"  FROM \"TB_TERMINAL\"";
 	final String getById = "SELECT \"idTerminal\", \"idCliente\", \"nrTerminal\"  FROM \"TB_TERMINAL\" WHERE \"idTerminal\" = #{id}";
+	final String getByClient = "SELECT \"idTerminal\", \"idCliente\", \"nrTerminal\"  FROM \"TB_TERMINAL\" WHERE \"idCliente\" = #{id}";
 	final String deleteById = "DELETE FROM \"TB_TERMINAL\" WHERE \"idTerminal\" = #{id}";
 	final String update = "UPDATE \"TB_TERMINAL\"  SET \"idCliente\"=#{idCliente}, \"nrTerminal\" = #{nrTerminal} WHERE \"idTerminal\" = #{idTerminal}";
 	final String insert = "INSERT INTO \"TB_TERMINAL\"(\"idCliente\", \"nrTerminal\") VALUES (#{idCliente}, #{nrTerminal})";
@@ -35,6 +36,14 @@ public interface TerminalMapper {
 	})	
 	Terminal getById(int id);
 
+	@Select(getByClient)
+	@Results(value = {
+		@Result(id=true, property = "idTerminal", column = "idTerminal"),
+		@Result(property = "idCliente", column = "idCliente"),
+		@Result(property = "nrTerminal", column = "nrTerminal")
+	})	
+	List<Terminal> getByClient(int id);
+	
 	@Update(update)
 	void update(Terminal terminal);
 

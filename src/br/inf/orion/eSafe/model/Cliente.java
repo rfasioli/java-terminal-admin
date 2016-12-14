@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CNPJ;
 
@@ -13,17 +14,17 @@ public class Cliente {
 	
 //	@NotBlank(message = "VALIDATION_NOME_FANTASIA_NOT_BLANK")
 //	@Min(message = "VALIDATION_NOME_FANTASIA_MIN_SIZE", value = 2)
-	@NotBlank @Min(2)
+	@NotBlank @Length(min=2)
 	private String nomeFantasia;
 
 //	@NotBlank(message = "VALIDATION_RAZAO_SOCIAL_NOT_BLANK")
 //	@Min(message = "VALIDATION_RAZAO_SOCIAL_MIN_SIZE", value = 3)
-	@NotBlank @Min(3)
+	@NotBlank @Length(min=3)
 	private String razaoSocial;
 	
 //	@NotNull(message = "VALIDATION_CNPJ_NOT_NULL")
 //	@CNPJ(message = "VALIDADION_CNPJ_INVALID")
-	@NotNull @CNPJ
+	@NotNull //@CNPJ
 	private String cnpj;
 	
 //	@DateTimeFormat(pattern="dd/MM/yyyy")

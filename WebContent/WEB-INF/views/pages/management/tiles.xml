@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+ 
+<tiles-definitions>  
+  
+   <!-- Base Definition -->
+   <definition name="base-definition"
+       template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultMenu.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />
+       <put-attribute name="styles" value="/WEB-INF/views/tiles/template/defaultStyles.jsp" />  
+       <put-attribute name="scripts" value="/WEB-INF/views/tiles/template/defaultScripts.jsp" />  
+   </definition>  
+
+   <definition name="modal-definition"
+       template="/WEB-INF/views/tiles/layouts/noLayout.jsp">  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="styles" value="/WEB-INF/views/tiles/template/defaultStyles.jsp" />  
+       <put-attribute name="scripts" value="/WEB-INF/views/tiles/template/defaultScripts.jsp" />  
+   </definition>  
+
+   <!-- Management -->
+   <!-- Management -->
+   <!-- Management -->
+   <!-- client -->
+   <definition name="management/client" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/index.jsp" />  
+   </definition>  
+   <definition name="management/client/create" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/create.jsp" />  
+   </definition>  
+   <definition name="management/client/delete" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/delete.jsp" />  
+   </definition>  
+   <definition name="management/client/details" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/details.jsp" />  
+   </definition>  
+   <definition name="management/client/edit" extends="base-definition">  
+       <put-attribute name="title" value="Client registration" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/edit.jsp" />  
+   </definition>
+   
+   <!-- profile -->
+   <definition name="management/profile" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/index.jsp" />  
+   </definition>  
+   <definition name="management/profile/create" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/create.jsp" />  
+   </definition>  
+   <definition name="management/profile/delete" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/delete.jsp" />  
+   </definition>  
+   <definition name="management/profile/details" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/details.jsp" />  
+   </definition>  
+   <definition name="management/profile/edit" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Perfis" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/profile/edit.jsp" />  
+   </definition>  
+  
+   <!-- user -->
+   <definition name="management/user" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Usuarios" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/user/index.jsp" />  
+   </definition>  
+   <definition name="management/user/create" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Usuarios" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/user/create.jsp" />  
+   </definition>  
+   <definition name="management/user/delete" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Usuarios" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/user/delete.jsp" />  
+   </definition>  
+   <definition name="management/user/details" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Usuarios" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/user/details.jsp" />  
+   </definition>  
+   <definition name="management/user/edit" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Usuarios" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/user/edit.jsp" />  
+   </definition>  
+   <definition name="management/user/terminals" extends="modal-definition">  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/user/terminals/index.jsp" />  
+   </definition>  
+  
+ 
+</tiles-definitions>

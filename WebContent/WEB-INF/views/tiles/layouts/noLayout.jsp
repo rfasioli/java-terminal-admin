@@ -10,15 +10,11 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><tiles:getAsString name="title" /></title>
-
 <tiles:insertAttribute name="styles" />
-
 <tiles:insertAttribute name="scripts" />
-
 </head>
 
-<body class="hold-transition skin-orion sidebar-mini" ng-app="app" ng-controller="translationCtrl" >
+<body class="skin-orion layout-top-nav" ng-app="app" ng-controller="translationCtrl" >
 
 	<div class="preloader">
 		<div class="preloader-wrap">
@@ -30,27 +26,11 @@
 	</div> <!--preloader-->
 
 	<div class="wrapper">
-		<header id="header">
-			<tiles:insertAttribute name="header" />
-		</header>
-
-		<section id="sidemenu">
-			<tiles:insertAttribute name="menu" />
-		</section>
-
 		<section id="site-content">
 			<div class="container body-content content-wrapper">
 				<tiles:insertAttribute name="body" />
 			</div>
 		</section>
-
-		<footer id="footer">
-			<tiles:insertAttribute name="footer" />
-		</footer>
-		
-		<!-- Control Sidebar -->
-		<div class="control-sidebar-bg"></div>
-
 	</div>
 </body>
 </html>

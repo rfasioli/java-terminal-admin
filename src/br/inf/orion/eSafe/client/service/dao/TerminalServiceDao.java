@@ -52,4 +52,15 @@ public class TerminalServiceDao {
 		return terminals;
 	}
 
+	public static List<Terminal> getByIdNotIn(int idCliente, List<Integer> terminais) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory(idCliente).openSession();
+		TerminalMapper mapper = session.getMapper(TerminalMapper.class);
+		TerminalExample filter = new TerminalExample();
+		filter.createCriteria().andIdTerminalNotIn(terminais);
+		List<Terminal> terminals = mapper.selectByExample(filter);
+		session.commit();
+		session.close();
+		return terminals;
+	}
+	
 }

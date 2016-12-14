@@ -18,7 +18,7 @@
         <ul class="treeview-menu">
           <li><a href="<c:url value='/management/client'/>"><i class="fa fa-institution"></i>{{'MENU_MANAGEMENT_CLIENT' | translate}}</a></li>
           <li><a href="<c:url value='/management/profile'/>"><i class="fa fa-user-plus"></i>{{'MENU_MANAGEMENT_PROFILES' | translate}}</a></li>
-          <li class="disabled"><a href="/gerenciamento/usuario"><i class="fa fa-user-plus"></i>{{'MENU_MANAGEMENT_USERS' | translate}}</a></li>
+          <li><a href="<c:url value='/management/user'/>"><i class="fa fa-user"></i>{{'MENU_MANAGEMENT_USERS' | translate}}</a></li>
           <li class="disabled"><a href="/gerenciamento/fornecedor"><i class="fa fa-industry"></i>{{'MENU_MANAGEMENT_PROVIDER' | translate}}</a></li>
           <li class="disabled"><a href="/gerenciamento/regiao"><i class="fa fa-globe"></i>{{'MENU_MANAGEMENT_REGION' | translate}}</a></li>
           <li class="disabled"><a href="/gerenciamento/terminal"><i class="fa fa-laptop"></i>{{'MENU_MANAGEMENT_TERMINAL' | translate}}</a></li>

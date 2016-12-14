@@ -1,18 +1,30 @@
 package br.inf.orion.eSafe.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Usuario {
 	private Integer id;
+	
+	@NotBlank @Length(min=3, max=10, message="Tamanho deve ser entre 3 e 10")
 	private String login;
+	
+	@NotEmpty(message="{{EMAIL_NOT_EMPTY | translate}}") @Email
 	private String email;
+	
+	@NotEmpty(message="Senha obrigatória") @Length(min=6, message="Senha deve ter ao menos 6 caracteres")
 	private String senha;
+	
 	private String nome;
-	private Timestamp dataCriacao;
-	private Timestamp dataAlteracao;
+	private Date dataCriacao;
+	private Date dataAlteracao;
 	private Boolean ativo;
 	private String token;
-	private Timestamp dataGeracaoToken;
+	private Date dataGeracaoToken;
 	private Integer idPerfil;
 	
 	public Integer getId() {
@@ -45,16 +57,16 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Timestamp getDataCriacao() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
-	public void setDataCriacao(Timestamp dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	public Timestamp getDataAlteracao() {
+	public Date getDataAlteracao() {
 		return dataAlteracao;
 	}
-	public void setDataAlteracao(Timestamp dataAlteracao) {
+	public void setDataAlteracao(Date dataAlteracao) {
 		this.dataAlteracao = dataAlteracao;
 	}
 	public Boolean getAtivo() {
@@ -69,10 +81,10 @@ public class Usuario {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public Timestamp getDataGeracaoToken() {
+	public Date getDataGeracaoToken() {
 		return dataGeracaoToken;
 	}
-	public void setDataGeracaoToken(Timestamp dataGeracaoToken) {
+	public void setDataGeracaoToken(Date dataGeracaoToken) {
 		this.dataGeracaoToken = dataGeracaoToken;
 	}
 	public Integer getIdPerfil() {
@@ -92,11 +104,11 @@ public class Usuario {
 					 String email,
 					 String senha,
 					 String nome,
-					 Timestamp dataCriacao,
-					 Timestamp dataAlteracao,
+					 Date dataCriacao,
+					 Date dataAlteracao,
 					 Boolean ativo,
 					 String token,
-					 Timestamp dataGeracaoToken,
+					 Date dataGeracaoToken,
 					 Integer idPerfil) 
 	{
 		super();
