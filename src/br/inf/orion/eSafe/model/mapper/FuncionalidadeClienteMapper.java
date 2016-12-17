@@ -8,12 +8,14 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
+import br.inf.orion.eSafe.model.Cliente;
 import br.inf.orion.eSafe.model.FuncionalidadeCliente;
 
 public interface FuncionalidadeClienteMapper {
 	final String getAll = "SELECT \"idCliente\", \"idFuncionalidade\"  FROM \"TB_FUNCIONALIDADE_CLIENTE\"";
 	final String getByCliente = "SELECT \"idCliente\", \"idFuncionalidade\"  FROM \"TB_FUNCIONALIDADE_CLIENTE\" WHERE \"idCliente\" = #{idCliente}";
 	final String getByFuncionalidade = "SELECT \"idCliente\", \"idFuncionalidade\"  FROM \"TB_FUNCIONALIDADE_CLIENTE\" WHERE \"idFuncionalidade\" = #{idFuncionalidade}";
+	final String getCliByFuncionalidade = "SELECT cli.\"idCliente\", cli.\"dsNomeFantasia\", cli.\"dsRazaoSocial\", cli.\"dsCnpj\", cli.\"dtCadastro\", cli.\"icAtivo\", cli.\"dsConexao\" FROM \"TB_FUNCIONALIDADE_CLIENTE\" fcl INNER JOIN \"TB_CLIENTE\" cli ON cli.\"idCliente\" = fcl.\"idCliente\" WHERE fcl.\"idFuncionalidade\" = #{idFuncionalidade}";
 	final String deleteByCliente = "DELETE FROM \"TB_FUNCIONALIDADE_CLIENTE\" WHERE \"idCliente\" = #{idCliente}";
 	final String deleteByFuncionalidade = "DELETE FROM \"TB_FUNCIONALIDADE_CLIENTE\" WHERE \"idFuncionalidade\" = #{idFuncionalidade}";
 	final String deleteUnique = "DELETE FROM \"TB_FUNCIONALIDADE_CLIENTE\" WHERE \"idCliente\" = #{idCliente} AND \"idFuncionalidade\" = #{idFuncionalidade}";
@@ -39,6 +41,18 @@ public interface FuncionalidadeClienteMapper {
 		@Result(property = "idFuncionalidade", column = "idFuncionalidade")
 	})	
 	List<FuncionalidadeCliente> getByFuncionalidade(int idFuncionalidade);
+
+	@Select(getCliByFuncionalidade)
+	@Results(value = {
+		@Result(id=true, property = "id", column = "idCliente"),
+		@Result(property = "nomeFantasia", column = "dsNomeFantasia"),
+		@Result(property = "razaoSocial", column = "dsRazaoSocial"),
+		@Result(property = "cnpj", column = "dsCnpj"),       
+		@Result(property = "dataCadastro", column = "dtCadastro"),
+		@Result(property = "ativo", column = "icAtivo"),
+		@Result(property = "conexao", column = "dsConexao")	      
+	})
+	List<Cliente> getCliByFuncionalidade(int idFuncionalidade);
 	
 	@Delete(deleteByCliente)
 	void deleteByCliente(int idCliente);

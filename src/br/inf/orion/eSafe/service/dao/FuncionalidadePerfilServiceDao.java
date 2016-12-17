@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import br.inf.orion.eSafe.model.FuncionalidadePerfil;
+import br.inf.orion.eSafe.model.Perfil;
 import br.inf.orion.eSafe.model.mapper.FuncionalidadePerfilMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
@@ -66,6 +67,15 @@ public class FuncionalidadePerfilServiceDao {
 		session.commit();
 		session.close();
 		return funcionalidadePerfis;
+	}
+	
+	public static List<Perfil> getPerfilByFuncionalidade(int idFuncionalidade) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+		FuncionalidadePerfilMapper mapper = session.getMapper(FuncionalidadePerfilMapper.class);
+		List<Perfil> perfis = mapper.getPerfilByFuncionalidade(idFuncionalidade);
+		session.commit();
+		session.close();
+		return perfis;
 	}
 	
 }

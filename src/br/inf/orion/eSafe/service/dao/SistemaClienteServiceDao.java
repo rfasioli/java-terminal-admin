@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import br.inf.orion.eSafe.model.Cliente;
 import br.inf.orion.eSafe.model.SistemaCliente;
 import br.inf.orion.eSafe.model.mapper.SistemaClienteMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
@@ -50,7 +51,7 @@ public class SistemaClienteServiceDao {
 		return sistemaClientes;
 	}
 
-	public static List<SistemaCliente> getByFuncionalidade(int idCliente) {
+	public static List<SistemaCliente> getByCliente(int idCliente) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		SistemaClienteMapper mapper = session.getMapper(SistemaClienteMapper.class);
 		List<SistemaCliente> sistemaClientes = mapper.getByCliente(idCliente);
@@ -59,7 +60,7 @@ public class SistemaClienteServiceDao {
 		return sistemaClientes;
 	}
 
-	public static List<SistemaCliente> getByPerfil(int idSistema) {
+	public static List<SistemaCliente> getBySistema(int idSistema) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		SistemaClienteMapper mapper = session.getMapper(SistemaClienteMapper.class);
 		List<SistemaCliente> sistemaClientes = mapper.getBySistema(idSistema);
@@ -68,4 +69,13 @@ public class SistemaClienteServiceDao {
 		return sistemaClientes;
 	}
 
+	public static List<Cliente> getCliBySistema(int idSistema) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+		SistemaClienteMapper mapper = session.getMapper(SistemaClienteMapper.class);
+		List<Cliente> clientes = mapper.getClienteBySistema(idSistema);
+		session.commit();
+		session.close();
+		return clientes;
+	}
+	
 }
