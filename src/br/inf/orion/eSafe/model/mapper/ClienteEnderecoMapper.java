@@ -66,7 +66,7 @@ public interface ClienteEnderecoMapper {
 	void update(ClienteEndereco funcionalidade);
 
 	@Delete(deleteById)
-	void delete(int id);
+	void delete(int idCliente, int idSequencia);
 
 	@Insert(insert)
 	void insert(ClienteEndereco funcionalidade);

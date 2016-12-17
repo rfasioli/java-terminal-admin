@@ -93,6 +93,9 @@
    <definition name="management/user/terminals" extends="modal-definition">  
        <put-attribute name="body" value="/WEB-INF/views/pages/management/user/terminals/index.jsp" />  
    </definition>  
+   <definition name="management/user/terminals_ng" extends="modal-definition">  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/user/terminals/index_ng.jsp" />  
+   </definition>  
   
  
 </tiles-definitions>

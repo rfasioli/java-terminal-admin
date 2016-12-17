@@ -8,6 +8,6 @@
     <sqlMapGenerator targetPackage="myBatisConfig-Client.xml" targetProject="eSafe" />
     <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="br.inf.orion.eSafe.model.mapper.gen" targetProject="eSafe" />
     
-    <table schema="public" tableName="TB_USUARIO"></table>
+    <table schema="public" tableName="TB_CLIENTE"></table>
   </context>
 </generatorConfiguration>

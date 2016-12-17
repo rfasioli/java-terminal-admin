@@ -9,7 +9,7 @@
 	</span>
 	</a>&nbsp; {{'DETAILS' | translate}}
 </h4>
-<div class="box box-primary">
+<div class="box box-primary" ng-controller="ngUserInitialize" id="InitializeElement">
 	<c:url var="post_url" value="/management/user/details" />
 	<form:form method="POST" modelAttribute="usuario" class="form-horizontal" action="${post_url}" >
 		<div class="box-header with-border">
@@ -80,10 +80,77 @@
 		</div>
 	</form:form>
 
+	<div class="row">
+	  <div class="col-md-6 col-sm-12">
+		<!-- Lista de terminais para o usuário -->
+		<div class="container">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					{{'TERMINALS' | translate}} 
+					<button class="pull-right btn btn-box-tool" data-toggle="collapse" href="#terminals_panel">
+					  <i class="fa fa-window-minimize" aria-hidden="true"></i></button>
+				</div>
+				<div class="panel-collapse collapse in" id="terminals_panel">
+					<div class="panel-body">
+						<table class="table table-striped table-condensed "
+							ng-controller="listaTerminaisCtrl">
+							<thead>
+								<tr>
+									<th class="hide">{{'ID' | translate}}</th>
+									<th>{{'NR_TERMINAL' | translate}}</th>
+									<th>{{'DS_TERMINAL' | translate}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="terminal in terminais">
+									<td class="hide">{{terminal.idTerminal}}</td>
+									<td>{{terminal.nrTerminal}}</td>
+									<td>{{terminal.dsTerminal}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	  </div>
+	  <div class="col-md-6 col-sm-12">
+
+		<!-- Lista de Clientes para o usuário -->
+		<div class="container">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					{{'CLIENTS' | translate}} 
+					<button class="pull-right btn btn-box-tool" data-toggle="collapse" href="clients_panel">
+					  <i class="fa fa-window-minimize" aria-hidden="true"></i></button>
+				</div>
+				<div class="panel-collapse collapse in" id="clients_panel">
+					<div class="panel-body">
+						<table class="table table-striped table-condensed "
+							ng-controller="listaClientesCtrl">
+							<thead>
+								<tr>
+									<th>{{'CLIENT_ID' | translate}}</th>
+									<th>{{'CLIENT_FANTASY_NAME' | translate}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="cliente in clientes">
+									<td>{{cliente.id}}</td>
+									<td>{{cliente.nomeFantasia}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	  </div>
+  </div> <!-- col-md-6 col-sm-12 -->
+
 </div>
 
-
-
-
-
+<script type="text/javascript" src="<c:url value='/js/controller/user.js' />"></script>
 

@@ -54,7 +54,7 @@ public interface ClienteContatoMapper {
 	void update(ClienteContato funcionalidade);
 
 	@Delete(deleteById)
-	void delete(int id);
+	void delete(int idCliente, int idSequencia);
 
 	@Insert(insert)
 	void insert(ClienteContato funcionalidade);

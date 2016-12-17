@@ -33,7 +33,7 @@ public class FuncionalidadeServiceDao {
 		session.close();
 	}
 	
-	public static Funcionalidade getByCliente(int id) {
+	public static Funcionalidade getById(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		FuncionalidadeMapper mapper = session.getMapper(FuncionalidadeMapper.class);
 		Funcionalidade Funcionalidade = mapper.getById(id);

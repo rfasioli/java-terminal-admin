@@ -25,10 +25,10 @@ public class ClienteContatoServiceDao {
 		session.close();
 	}
 
-	public static void delete(int id) {
+	public static void delete(int idCliente, int idSequencia) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		ClienteContatoMapper mapper = session.getMapper(ClienteContatoMapper.class);
-		mapper.delete(id);
+		mapper.delete(idCliente, idSequencia);
 		session.commit();
 		session.close();
 	}

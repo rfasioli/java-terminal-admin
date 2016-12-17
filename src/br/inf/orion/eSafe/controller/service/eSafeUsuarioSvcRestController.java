@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.inf.orion.eSafe.client.model.Terminal;
 import br.inf.orion.eSafe.client.service.dao.TerminalServiceDao;
+import br.inf.orion.eSafe.model.Cliente;
+import br.inf.orion.eSafe.model.UsuarioCliente;
 import br.inf.orion.eSafe.model.UsuarioTerminal;
+import br.inf.orion.eSafe.service.dao.ClienteServiceDao;
+import br.inf.orion.eSafe.service.dao.UsuarioClienteServiceDao;
 import br.inf.orion.eSafe.service.dao.UsuarioTerminalServiceDao;
 
 @RestController
@@ -94,4 +98,86 @@ public class eSafeUsuarioSvcRestController {
 	   public ResponseEntity removeTerminalGET(Integer idUser, Integer idTerminal) {
 		   return removeTerminal(idUser, idTerminal);
 	   }
+
+	   @SuppressWarnings({ "rawtypes" })
+	   @RequestMapping(value = "/terminal/add", method = RequestMethod.GET)
+	   public ResponseEntity addTerminalGET(Integer idUser, Integer idTerminal) {
+		   return addTerminal(idUser, idTerminal);
+	   }
+
+
+
+	   //Funções usuários para o cliente
+	   @RequestMapping(value = "/client", method = RequestMethod.GET)
+	   public ResponseEntity<List<Cliente>> listAllClientsForUser(Integer idUser) {
+		   List<UsuarioCliente> usrClientes = UsuarioClienteServiceDao.getByUsuario(idUser);
+	       List<Cliente> clientes = new ArrayList<Cliente>();		   
+		   for (UsuarioCliente usuarioCliente : usrClientes) {
+			   clientes.add(ClienteServiceDao.getById(usuarioCliente.getIdCliente()));
+		   }
+	       if(clientes.isEmpty()){
+	           return new ResponseEntity<List<Cliente>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+	       }
+	       return new ResponseEntity<List<Cliente>>(clientes, HttpStatus.OK);
+	   }
+
+	   @RequestMapping(value = "/client/notfrom", method = RequestMethod.GET)
+	   public ResponseEntity<List<Cliente>> listAllClientsNotForUser(Integer idUser) {
+		   List<UsuarioCliente> usrClientes = UsuarioClienteServiceDao.getByUsuario(idUser);
+	       List<Cliente> clientes = new ArrayList<Cliente>();
+	       List<Integer> filter = new ArrayList<Integer>();
+	       
+		   for (UsuarioCliente usuarioCliente : usrClientes) {
+			   filter.add(usuarioCliente.getIdCliente());
+		   }
+		   if (!filter.isEmpty())
+			   clientes = ClienteServiceDao.getByIdNotIn(filter);
+		   else
+			   clientes = ClienteServiceDao.getAll();
+			   
+	       if(clientes.isEmpty()){
+	           return new ResponseEntity<List<Cliente>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+	       }
+	       return new ResponseEntity<List<Cliente>>(clientes, HttpStatus.OK);
+	   }
+
+	   
+	   @SuppressWarnings({ "rawtypes", "unchecked" })
+	   @RequestMapping(value = "/client", method = RequestMethod.POST)
+	   public ResponseEntity addClient(Integer idUser, Integer idClient) {
+		   UsuarioCliente usuarioCliente = new UsuarioCliente(idUser, idClient);
+		   try {
+			   UsuarioClienteServiceDao.save(usuarioCliente);
+			   return new ResponseEntity(HttpStatus.OK);
+		   }
+		   catch(Exception ex) {
+			   return new ResponseEntity(ex, HttpStatus.INTERNAL_SERVER_ERROR);
+		   }
+	   }
+	   
+	   @SuppressWarnings({ "rawtypes", "unchecked" })
+	   @RequestMapping(value = "/client", method = RequestMethod.DELETE)
+	   public ResponseEntity removeClient(Integer idUser, Integer idClient) {
+		   UsuarioCliente usuarioCliente = new UsuarioCliente(idUser, idClient);
+		   try {
+			   UsuarioClienteServiceDao.delete(usuarioCliente);
+			   return new ResponseEntity(HttpStatus.OK);
+		   }
+		   catch(Exception ex) {
+			   return new ResponseEntity(ex, HttpStatus.INTERNAL_SERVER_ERROR);
+		   }
+	   }
+
+	   @SuppressWarnings({ "rawtypes" })
+	   @RequestMapping(value = "/client/delete", method = RequestMethod.GET)
+	   public ResponseEntity removeClientGET(Integer idUser, Integer idClient) {
+		   return removeClient(idUser, idClient);
+	   }
+
+	   @SuppressWarnings({ "rawtypes" })
+	   @RequestMapping(value = "/client/add", method = RequestMethod.GET)
+	   public ResponseEntity addClientGET(Integer idUser, Integer idClient) {
+		   return addClient(idUser, idClient);
+	   }
+	   
 }

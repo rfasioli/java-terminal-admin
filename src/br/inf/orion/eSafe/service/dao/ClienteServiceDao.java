@@ -1,5 +1,7 @@
 package br.inf.orion.eSafe.service.dao;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -42,6 +44,22 @@ public class ClienteServiceDao {
 		session.close();
 		return cliente;
 	}
+	
+	public static List<Cliente> getByIdNotIn(List<Integer> ids) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+		ClienteMapper mapper = session.getMapper(ClienteMapper.class);
+		//TODO - implementar not in no mapper (o que está lá não funciona)
+		List<Cliente> clientes = mapper.getAll();
+		List<Cliente> clientesnotin = new ArrayList<Cliente>();
+		for (Cliente cliente : clientes) {
+			if (!ids.contains(cliente.getId())) {
+				clientesnotin.add(cliente);
+			}
+		}
+		session.commit();
+		session.close();
+		return clientesnotin;
+	}
 
 	public static List<Cliente> getAll() {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
@@ -51,5 +69,15 @@ public class ClienteServiceDao {
 		session.close();
 		return clientes;
 	}
-	
+
+//	private static int[] convertIntegers(List<Integer> integers)
+//	{
+//	    int[] ret = new int[integers.size()];
+//	    Iterator<Integer> iterator = integers.iterator();
+//	    for (int i = 0; i < ret.length; i++)
+//	    {
+//	        ret[i] = iterator.next().intValue();
+//	    }
+//	    return ret;
+//	}
 }

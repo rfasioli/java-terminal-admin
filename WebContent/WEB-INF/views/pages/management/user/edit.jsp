@@ -9,7 +9,7 @@
 	</span>
 	</a>&nbsp; {{'EDIT' | translate}}
 </h4>
-<div class="box box-primary">
+<div class="box box-primary" ng-controller="ngUserInitialize" id="InitializeElement">
 	<c:url var="post_url" value="/management/user/edit" />
 	<form:form method="POST" modelAttribute="usuario" class="form-horizontal" action="${post_url}" >
 		<div class="box-header with-border">
@@ -86,60 +86,260 @@
 			</div>
 		</div>
 	</form:form>
+	
+	<div class="row">
+	  <div class="col-md-6 col-sm-12">
+		<!-- Lista de terminais para o usuário -->
+		<div class="container">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					{{'TERMINALS' | translate}} 
+					<button class="pull-right btn btn-box-tool" data-toggle="collapse" href="#terminals_panel">
+					  <i class="fa fa-window-minimize" aria-hidden="true"></i></button>
+				</div>
+				<div class="panel-collapse collapse in" id="terminals_panel">
+					<div class="panel-body">
+						<table class="table table-striped table-condensed "
+							ng-controller="listaTerminaisCtrl">
+							<thead>
+								<tr>
+									<th class="hide">{{'ID' | translate}}</th>
+									<th>{{'NR_TERMINAL' | translate}}</th>
+									<th>{{'DS_TERMINAL' | translate}}</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="terminal in terminais">
+									<td class="hide">{{terminal.idTerminal}}</td>
+									<td>{{terminal.nrTerminal}}</td>
+									<td>{{terminal.dsTerminal}}</td>
+									
+									<td><i class="fa fa-eraser" aria-hidden="true" 
+										   ng-click="removeTerminal(terminal.idTerminal);"></i></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<button type="button" class="btn btn-info"
+							data-toggle="modal" data-target="#terminalModal">{{'ADD' |
+							translate}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	  </div>
+	  <div class="col-md-6 col-sm-12">
 
-	<table class="table table-striped table-condensed " ng-app="userApp" ng-controller="listaTerminaisCtrl">
-	  <thead>
-	    <tr>
-			<th>{{'ID' | translate}}</th>
-			<th>{{'NR_TERMINAL' | translate}}</th>
-			<th>{{'DS_TERMINAL' | translate}}</th>
-			<th></th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr ng-repeat="terminal in terminais">
-	      <td>{{terminal.idTerminal}}</td>
-	      <td>{{terminal.nrTerminal}}</td>      
-	      <td>{{terminal.dsTerminal}}</td>      
-		  <td><a href="<c:url value='/service/user/terminal/delete'/>?idUser=${usuario.id}&idTerminal=${terminal.id}"><i class="fa fa-eraser" aria-hidden="true"></i></a></td>
-	    </tr>
-	  </tbody>
-	</table>
+		<!-- Lista de Clientes para o usuário -->
+		<div class="container">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					{{'CLIENTS' | translate}} 
+					<button class="pull-right btn btn-box-tool" data-toggle="collapse" href="clients_panel">
+					  <i class="fa fa-window-minimize" aria-hidden="true"></i></button>
+				</div>
+				<div class="panel-collapse collapse in" id="clients_panel">
+					<div class="panel-body">
+						<table class="table table-striped table-condensed "
+							ng-controller="listaClientesCtrl">
+							<thead>
+								<tr>
+									<th>{{'CLIENT_ID' | translate}}</th>
+									<th>{{'CLIENT_FANTASY_NAME' | translate}}</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="cliente in clientes">
+									<td>{{cliente.id}}</td>
+									<td>{{cliente.nomeFantasia}}</td>
+									<td><i class="fa fa-eraser" aria-hidden="true" 
+										   ng-click="removeClient(cliente.id);"></i></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<button type="button" class="btn btn-info"
+							data-toggle="modal" data-target="#clientModal">{{'ADD' |
+							translate}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" data-remote="modal.html">Open Modal</button>
-    <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <p>Falha no carregando dos terminais.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+	  </div>
+  </div> <!-- col-md-6 col-sm-12 -->
 
-		
-<%-- 		<button type="button" class="btn" data-toggle="modal" data-target="#myModal" data-remote="<c:url value='/management/user/terminals'/>?idUser=${usuario.id}">Launch modal</button>
-		<button type="button" class="btn" data-toggle="modal" data-target="#myModal" >Launch modal</button>
-		
-		<div id="myModal" class="modal hide fade">
-		    <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> × </button>
-		        <h3 id="myModalLabel">Modal header</h3>
-		    </div>
-		    <div class="modal-body">
-		       <!-- remote content will be inserted here via jQuery load() -->
-		       <p>Modal content</p>
-		    </div>
-		    <div class="modal-footer">
-		        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		    </div>
-		</div>		
- --%>		
+	<!-- Modal inclusão de terminais -->
+	<div id="terminalModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<i class="fa fa-window-close" aria-hidden="true"></i>
+					</button>
+					<h4 class="modal-title">{{'AVAILABLE_TERMINALS' | translate}}</h4>
+				</div>
+				<div class="modal-body">
+				  <div ng-controller="listaTerminaisDisponiveisCtrl">
+					<div ng-controller="RowClickEventCtrl as cnf">
+						<table id="terminais" class="table table-striped table-condensed "
+							datatable="ng" dt-options="cnf.dtOptions" width="100%">
+							<thead>
+								<tr>
+									<th class='hide'>{{'TERMINAL_ID' | translate}}</th>
+									<th>{{'NR_TERMINAL' | translate}}</th>
+									<th>{{'DS_TERMINAL' | translate}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="terminal in disponiveis">
+									<td id="idTerminal" class='hide'>{{terminal.idTerminal}}</td>
+									<td id="nrTerminal">{{terminal.nrTerminal}}</td>
+									<td id="dsTerminal">{{terminal.dsTerminal}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				  </div>
+				</div>
+				<div class="modal-footer">
+					<div class="panel-footer">
+						<button id="btnAdd" type="button" class="close" data-dismiss="modal">
+							{{'ADD' | translate}}</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal inclusão de clientes -->
+	<div id="clientModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<i class="fa fa-window-close" aria-hidden="true"></i>
+					</button>
+					<h4 class="modal-title">{{'AVAILABLE_CLIENTS' | translate}}</h4>
+				</div>
+				<div class="modal-body">
+				  <div ng-controller="listaClientesDisponiveisCtrl">
+					<div ng-controller="ClientRowClickEventCtrl as cnfCli">
+						<table id="clientes" class="table table-striped table-condensed "
+							datatable="ng" dt-options="cnfCli.dtOptions" width="100%">
+							<thead>
+								<tr>
+									<th>{{'CLIENT_ID' | translate}}</th>
+									<th>{{'CLIENT_FANTASY_NAME' | translate}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="cliente in clientesdisponiveis">
+									<td id="idCliente">{{cliente.id}}</td>
+									<td id="dsRazaoSocial">{{cliente.nomeFantasia}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				  </div>
+				</div>
+				<div class="modal-footer">
+					<div class="panel-footer">
+						<button id="btnAddClient" type="button">{{'ADD' | translate}}</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <script>
-	$("#dataCriacao").datepicker();
-	$("#dataAlteracao").datepicker();
+  $("#dataCriacao").datepicker();
+  $("#dataAlteracao").datepicker();
+
+  $(document).ready(function() {
+    $('#btnAdd').click( function () {
+    	$('#terminais > tbody > tr.selected > #idTerminal')
+    	.each(function(index, elem) {
+        	angular.element(document.getElementById('InitializeElement')).scope().addTerminal(elem.innerText);
+        });
+        
+    });
+    $('#btnAddClient').click( function () {
+    	$('#clientes > tbody > tr.selected > #idCliente')
+    	.each(function(index, elem) {
+        	angular.element(document.getElementById('InitializeElement')).scope().addClient(elem.innerText);
+        });  
+    });
+  });
+
+  //Controles Terminais
+  app.controller('ngDtTblConfig', ngDtTblConfig)
+     .controller('RowClickEventCtrl', RowClickEventCtrl);
+
+  function ngDtTblConfig ($scope, DTOptionsBuilder) {
+	  var vm = this;
+	  vm.dtOptions = DTOptionsBuilder.newOptions().withDisplayLength(10);
+  };
+
+  function RowClickEventCtrl($scope, DTOptionsBuilder, DTColumnBuilder) {
+     var vm = this;
+     vm.someClickHandler = someClickHandler;
+     vm.dtOptions = DTOptionsBuilder.newOptions()
+         .withOption('rowCallback', rowCallback);
+     
+     function someClickHandler(info, nRow) {
+         $(nRow).toggleClass('selected');
+     }
+     function rowCallback(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+         $('td', nRow).unbind('click');
+         $('td', nRow).bind('click', function() {
+             $scope.$apply(function() {
+                 vm.someClickHandler(aData, nRow);
+             });
+         });
+         
+         return nRow;
+     } 
+  }
+ 
+  //Controles Cliente
+  app.controller('ngClientDtTblConfig', ngClientDtTblConfig)
+     .controller('ClientRowClickEventCtrl', ClientRowClickEventCtrl);
+
+  function ngClientDtTblConfig ($scope, DTOptionsBuilder) {
+	  var vm = this;
+	  vm.dtOptions = DTOptionsBuilder.newOptions().withDisplayLength(5);
+  };
+
+  function ClientRowClickEventCtrl($scope, DTOptionsBuilder, DTColumnBuilder) {
+     var vm = this;
+     vm.someClickHandler = someClickHandler;
+     vm.dtOptions = DTOptionsBuilder.newOptions()
+         .withOption('rowCallback', rowCallback);
+     
+     function someClickHandler(info, nRow) {
+         $(nRow).toggleClass('selected');
+     }
+     function rowCallback(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+         $('td', nRow).unbind('click');
+         $('td', nRow).bind('click', function() {
+             $scope.$apply(function() {
+                 vm.someClickHandler(aData, nRow);
+             });
+         });
+         
+         return nRow;
+     } 
+  }
 </script>
 
 <script type="text/javascript" src="<c:url value='/js/controller/user.js' />"></script>
