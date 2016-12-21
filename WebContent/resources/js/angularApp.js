@@ -109,6 +109,7 @@ app.config(function ($translateProvider) {
 		CONTACT_TYPE: 'Tipo de Contato',
 		CONTACT_TYPE_ID: 'ID',
 		CONTACT_TYPE_DESCRIPTION: 'Descrição',
+		CONTACT_TYPE_DELETE_MESSAGE: 'Deseja apagar o tipo do contato?',
 		CLIENT_ADRESSES: 'Endereços',
 		CLIENT_ADDRESS_SEQUENCE: 'Seq',
 		CLIENT_ADDRESS_TYPE: 'Tipo',

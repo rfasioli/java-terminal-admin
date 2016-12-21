@@ -97,8 +97,6 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/management/user/terminals/index_ng.jsp" />  
    </definition>  
   
-  
-
    <!-- contacttype -->
    <definition name="management/contacttype" extends="base-definition">  
        <put-attribute name="title" value="Tipos de Contato" />  
@@ -108,12 +106,41 @@
        <put-attribute name="title" value="Tipos de Contato" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/management/contacttype/create.jsp" />  
    </definition>
+   <definition name="management/contacttype/delete" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de Contato" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/contacttype/delete.jsp" />  
+   </definition>
+   <definition name="management/contacttype/details" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de Contato" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/contacttype/details.jsp" />  
+   </definition>
+   <definition name="management/contacttype/edit" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de Contato" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/contacttype/edit.jsp" />  
+   </definition>
 
    <!-- addresstype -->
    <definition name="management/addresstype" extends="base-definition">  
        <put-attribute name="title" value="Tipos de endereço" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/management/addresstype/index.jsp" />  
    </definition>
+   <definition name="management/addresstype/create" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de endereço" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/addresstype/create.jsp" />  
+   </definition>
+   <definition name="management/addresstype/delete" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de endereço" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/addresstype/delete.jsp" />  
+   </definition>
+   <definition name="management/addresstype/details" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de endereço" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/addresstype/details.jsp" />  
+   </definition>
+   <definition name="management/addresstype/edit" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de endereço" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/addresstype/edit.jsp" />  
+   </definition>
+ 
  
    <!-- clientaddress -->
    <definition name="management/client/address" extends="base-definition">  
