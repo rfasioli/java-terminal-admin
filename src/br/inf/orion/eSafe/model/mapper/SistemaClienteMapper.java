@@ -15,7 +15,7 @@ public interface SistemaClienteMapper {
 	final String getAll = "SELECT \"idSistema\", \"idCliente\"  FROM \"TB_SISTEMA_CLIENTE\"";
 	final String getBySistema = "SELECT \"idSistema\", \"idCliente\"  FROM \"TB_SISTEMA_CLIENTE\" WHERE \"idSistema\" = #{idSistema}";
 	final String getByCliente = "SELECT \"idSistema\", \"idCliente\"  FROM \"TB_SISTEMA_CLIENTE\" WHERE \"idCliente\" = #{idCliente}";
-	final String getClienteBySistema = "SELECT \"cli.idCliente\", \"cli.dsNomeFantasia\", \"cli.dsRazaoSocial\", \"cli.dsCnpj\", \"cli.dtCadastro\", \"cli.icAtivo\", \"cli.dsConexao\"  FROM \"TB_SISTEMA_CLIENTE\" scl LEFT OUTER JOIN \"TB_CLIENTE\" cli ON cli.\"idCliente\" = scl.\"idCliente\" WHERE scl.\"idSistema\" = #{idSistema}";
+	final String getClienteBySistema = "SELECT cli.\"idCliente\", cli.\"dsNomeFantasia\", cli.\"dsRazaoSocial\", cli.\"dsCnpj\", cli.\"dtCadastro\", cli.\"icAtivo\", cli.\"dsConexao\"  FROM \"TB_SISTEMA_CLIENTE\" scl LEFT OUTER JOIN \"TB_CLIENTE\" cli ON cli.\"idCliente\" = scl.\"idCliente\" WHERE scl.\"idSistema\" = #{idSistema}";
 	final String deleteBySistema = "DELETE FROM \"TB_SISTEMA_CLIENTE\" WHERE \"idSistema\" = #{idSistema}";
 	final String deleteByCliente = "DELETE FROM \"TB_SISTEMA_CLIENTE\" WHERE \"idSistema\" = #{idCliente}";
 	final String deleteUnique = "DELETE FROM \"TB_SISTEMA_CLIENTE\" WHERE \"idSistema\" = #{idSistema} AND \"idCliente\" = #{idCliente}";

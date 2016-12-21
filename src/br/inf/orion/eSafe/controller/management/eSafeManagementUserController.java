@@ -1,6 +1,5 @@
 package br.inf.orion.eSafe.controller.management;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,13 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.inf.orion.eSafe.client.model.Terminal;
-import br.inf.orion.eSafe.client.service.dao.TerminalServiceDao;
 import br.inf.orion.eSafe.model.Usuario;
-import br.inf.orion.eSafe.model.UsuarioTerminal;
 import br.inf.orion.eSafe.service.dao.PerfilServiceDao;
 import br.inf.orion.eSafe.service.dao.UsuarioServiceDao;
-import br.inf.orion.eSafe.service.dao.UsuarioTerminalServiceDao;
 
 @Controller
 @RequestMapping("/" + eSafeManagementUserController.base_url)

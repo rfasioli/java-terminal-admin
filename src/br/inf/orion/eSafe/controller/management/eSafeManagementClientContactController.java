@@ -15,18 +15,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.inf.orion.eSafe.model.ClienteContato;
 import br.inf.orion.eSafe.service.dao.ClienteContatoServiceDao;
+import br.inf.orion.eSafe.service.dao.ClienteServiceDao;
 import br.inf.orion.eSafe.service.dao.TipoContatoServiceDao;
 
 @Controller
-@RequestMapping("/" + eSafeManagementUserController.base_url)
+@RequestMapping("/" + eSafeManagementClientContactController.base_url)
 public class eSafeManagementClientContactController {
 	protected final static String base_url = "management/client/contact";
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getPage(ModelMap model) {
+	public String getPage(ModelMap model, @RequestParam(value="idCliente", required=false) Integer idCliente) {
 		List<ClienteContato> clienteContatos = ClienteContatoServiceDao.getAll();
 		model.addAttribute("clienteContatos", clienteContatos);
 		model.addAttribute("tiposContato", TipoContatoServiceDao.getAll());
+		if (idCliente == null) {
+			model.addAttribute("clientes", ClienteServiceDao.getAll());
+		}
+		else {
+			model.addAttribute("cliente", ClienteServiceDao.getById(idCliente));
+		}
 		return base_url;
 	}
 	

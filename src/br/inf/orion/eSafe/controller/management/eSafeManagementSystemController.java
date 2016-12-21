@@ -16,8 +16,7 @@ import br.inf.orion.eSafe.model.Sistema;
 import br.inf.orion.eSafe.service.dao.SistemaServiceDao;
 
 @Controller
-@RequestMapping
-("/" + eSafeManagementSystemController.base_url)
+@RequestMapping("/" + eSafeManagementSystemController.base_url)
 public class eSafeManagementSystemController {
 	protected final static String base_url = "management/system";
 

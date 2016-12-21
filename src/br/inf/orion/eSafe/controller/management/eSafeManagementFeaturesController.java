@@ -18,7 +18,7 @@ import br.inf.orion.eSafe.service.dao.FuncionalidadeServiceDao;
 import br.inf.orion.eSafe.service.dao.SistemaServiceDao;
 
 @Controller
-@RequestMapping("/" + eSafeManagementUserController.base_url)
+@RequestMapping("/" + eSafeManagementFeaturesController.base_url)
 public class eSafeManagementFeaturesController {
 	protected final static String base_url = "management/features";
 	

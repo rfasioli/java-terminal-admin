@@ -97,5 +97,34 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/management/user/terminals/index_ng.jsp" />  
    </definition>  
   
+  
+
+   <!-- contacttype -->
+   <definition name="management/contacttype" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de Contato" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/contacttype/index.jsp" />  
+   </definition>
+   <definition name="management/contacttype/create" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de Contato" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/contacttype/create.jsp" />  
+   </definition>
+
+   <!-- addresstype -->
+   <definition name="management/addresstype" extends="base-definition">  
+       <put-attribute name="title" value="Tipos de endereço" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/addresstype/index.jsp" />  
+   </definition>
  
+   <!-- clientaddress -->
+   <definition name="management/client/address" extends="base-definition">  
+       <put-attribute name="title" value="Endereços do cliente" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/address/index.jsp" />  
+   </definition>
+
+   <!-- clientaddress -->
+   <definition name="management/client/contact" extends="base-definition">  
+       <put-attribute name="title" value="Contatos do cliente" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/contact/index.jsp" />  
+   </definition>
+
 </tiles-definitions>

@@ -15,18 +15,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.inf.orion.eSafe.model.ClienteEndereco;
 import br.inf.orion.eSafe.service.dao.ClienteEnderecoServiceDao;
+import br.inf.orion.eSafe.service.dao.ClienteServiceDao;
 import br.inf.orion.eSafe.service.dao.TipoEnderecoServiceDao;
 
 @Controller
-@RequestMapping("/" + eSafeManagementUserController.base_url)
+@RequestMapping("/" + eSafeManagementClientAddressController.base_url)
 public class eSafeManagementClientAddressController {
 	protected final static String base_url = "management/client/address";
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getPage(ModelMap model) {
+	public String getPage(ModelMap model, @RequestParam(value="idCliente", required=false) Integer idCliente) {
 		List<ClienteEndereco> clienteEnderecos = ClienteEnderecoServiceDao.getAll();
 		model.addAttribute("clienteEnderecos", clienteEnderecos);
-		model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
+		model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
+		if (idCliente == null) {
+			model.addAttribute("clientes", ClienteServiceDao.getAll());
+		}
+		else {
+			model.addAttribute("cliente", ClienteServiceDao.getById(idCliente));
+		}
 		return base_url;
 	}
 	
@@ -34,7 +41,7 @@ public class eSafeManagementClientAddressController {
 	public String getCreatePage(ModelMap model) {
 		ClienteEndereco clienteEndereco = new ClienteEndereco();
 		model.addAttribute("clienteEndereco", clienteEndereco);
-		model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
+		model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
 		return base_url + "/create";
 	}
 	
@@ -43,12 +50,12 @@ public class eSafeManagementClientAddressController {
 		if(!result.hasErrors()){
 			List<ClienteEndereco> clienteEnderecos = ClienteEnderecoServiceDao.getAll();
 			model.addAttribute("clienteEnderecos", clienteEnderecos);
-			model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
+			model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
 			return new ModelAndView("redirect:/" + base_url, "clienteEnderecos", clienteEnderecos);
 		}
 		else {
 			model.addAttribute("clienteEndereco", clienteEndereco);
-			model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
+			model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
 			return new ModelAndView(base_url + "/create", "clienteEndereco", clienteEndereco);
 		}
 	}	
@@ -57,7 +64,7 @@ public class eSafeManagementClientAddressController {
 	public String getDeletePage(ModelMap model, @RequestParam int idCliente, int idSequencia) {
 		ClienteEndereco clienteEndereco = ClienteEnderecoServiceDao.getByUnique(idCliente, idSequencia);
 		model.addAttribute("clienteEndereco", clienteEndereco);
-		model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
+		model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
 		return base_url + "/delete";
 	}
 	
@@ -68,7 +75,7 @@ public class eSafeManagementClientAddressController {
 			ClienteEnderecoServiceDao.delete(clienteEndereco.getIdCliente(), clienteEndereco.getIdSequencia());
 		}
 		model.addAttribute("clienteEnderecos", ClienteEnderecoServiceDao.getAll());
-		model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
+		model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
 		return "redirect:/" + base_url;
 	}
 	
@@ -76,7 +83,7 @@ public class eSafeManagementClientAddressController {
 	public String getDetailsPage(ModelMap model, @RequestParam int idCliente, @RequestParam int idSequencia) {
 		ClienteEndereco clienteEndereco = ClienteEnderecoServiceDao.getByUnique(idCliente, idSequencia);
 		model.addAttribute("clienteEndereco", clienteEndereco);
-		model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
+		model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
 		return base_url + "/details";
 	}
 	
@@ -84,7 +91,7 @@ public class eSafeManagementClientAddressController {
 	public String getEditPage(ModelMap model, @RequestParam int idCliente, @RequestParam int idSequencia) {
 		ClienteEndereco clienteEndereco = ClienteEnderecoServiceDao.getByUnique(idCliente, idSequencia);
 		model.addAttribute("clienteEndereco", clienteEndereco);
-		model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
+		model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
 		return base_url + "/edit";
 	}
 
@@ -95,7 +102,7 @@ public class eSafeManagementClientAddressController {
 			ClienteEnderecoServiceDao.update(clienteEndereco);
 		}
 		model.addAttribute("clienteEnderecos", ClienteEnderecoServiceDao.getAll());
-		model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
+		model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
 		return "redirect:/" + base_url;
 	}
 
@@ -107,8 +114,8 @@ public class eSafeManagementClientAddressController {
 	public String getPageByClient(ModelMap model, int idCliente) {
 		List<ClienteEndereco> clienteEnderecos = ClienteEnderecoServiceDao.getByIdCliente(idCliente);
 		model.addAttribute("clienteEnderecos", clienteEnderecos);
-		model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
-		return base_url + "/byclient";
+		model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
+		return base_url;
 	}
 	
 	@RequestMapping(value = "/create/byclient", method = RequestMethod.GET)
@@ -116,8 +123,8 @@ public class eSafeManagementClientAddressController {
 		ClienteEndereco clienteEndereco = new ClienteEndereco();
 		clienteEndereco.setIdCliente(idCliente);
 		model.addAttribute("clienteEndereco", clienteEndereco);
-		model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
-		return base_url + "/create/byclient";
+		model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
+		return base_url + "/create";
 	}
 	
 	@RequestMapping(value="/create/byclient", method=RequestMethod.POST)
@@ -125,13 +132,13 @@ public class eSafeManagementClientAddressController {
 		if(!result.hasErrors()){
 			List<ClienteEndereco> clienteEnderecos = ClienteEnderecoServiceDao.getAll();
 			model.addAttribute("clienteEnderecos", clienteEnderecos);
-			model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
-			return new ModelAndView("redirect:/" + base_url + "/byclient&idCliente=" + clienteEndereco.getIdCliente(), "clienteEnderecos", clienteEnderecos);
+			model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
+			return new ModelAndView("redirect:/" + base_url + "&idCliente=" + clienteEndereco.getIdCliente(), "clienteEnderecos", clienteEnderecos);
 		}
 		else {
 			model.addAttribute("clienteEndereco", clienteEndereco);
-			model.addAttribute("tiposContato", TipoEnderecoServiceDao.getAll());
-			return new ModelAndView(base_url + "/create/byclient", "clienteEndereco", clienteEndereco);
+			model.addAttribute("tiposEndereco", TipoEnderecoServiceDao.getAll());
+			return new ModelAndView(base_url + "/create", "clienteEndereco", clienteEndereco);
 		}
 	}	
 	
