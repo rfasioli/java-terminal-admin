@@ -47,17 +47,6 @@ public class eSafeManagementClientController {
 			return new ModelAndView(base_url + "/create", "client", client);
 		}
 	}	
-//	public String postCreatePage(@Valid @ModelAttribute(value="client") Cliente client, BindingResult result, ModelMap model){
-//		//validator.validate(user, result);
-//		if(!result.hasErrors()){
-//			ClienteServiceDao.save(client);
-//		}
-//		else {
-//			return base_url + "/create";
-//		}
-//		model.addAttribute("clients", ClienteServiceDao.getAll());
-//		return base_url;
-//	}	
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String getDeletePage(ModelMap model, @RequestParam int id) {
@@ -70,7 +59,7 @@ public class eSafeManagementClientController {
 	public String postDeletePage(@ModelAttribute(value="client") Cliente client, BindingResult result, ModelMap model) {
 		//validator.validate(user, result);
 		if(!result.hasErrors()){
-			ClienteServiceDao.delete(client.getId());
+			ClienteServiceDao.delete(client.getIdCliente());
 		}
 		model.addAttribute("clients", ClienteServiceDao.getAll());
 		return base_url;

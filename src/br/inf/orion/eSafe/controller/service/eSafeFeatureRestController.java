@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.inf.orion.eSafe.model.Cliente;
-import br.inf.orion.eSafe.model.FuncionalidadeCliente;
-import br.inf.orion.eSafe.model.FuncionalidadePerfil;
+import br.inf.orion.eSafe.model.FuncionalidadeClienteKey;
+import br.inf.orion.eSafe.model.FuncionalidadePerfilKey;
 import br.inf.orion.eSafe.model.Perfil;
 import br.inf.orion.eSafe.service.dao.ClienteServiceDao;
 import br.inf.orion.eSafe.service.dao.FuncionalidadeClienteServiceDao;
@@ -49,7 +49,9 @@ public class eSafeFeatureRestController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/client", method = RequestMethod.POST)
 	public ResponseEntity addFuncionalidade(Integer idClient, Integer idFeature) {
-		FuncionalidadeCliente funcCli = new FuncionalidadeCliente(idClient, idFeature);		
+		FuncionalidadeClienteKey funcCli = new FuncionalidadeClienteKey();
+		funcCli.setIdCliente(idClient);
+		funcCli.setIdFuncionalidade(idFeature);
 		try {
 			FuncionalidadeClienteServiceDao.save(funcCli);
 			return new ResponseEntity(HttpStatus.OK);
@@ -62,7 +64,9 @@ public class eSafeFeatureRestController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/client", method = RequestMethod.DELETE)
 	public ResponseEntity removeFuncionalidade(Integer idClient, Integer idFeature) {
-		FuncionalidadeCliente funcCli = new FuncionalidadeCliente(idClient, idFeature);
+		FuncionalidadeClienteKey funcCli = new FuncionalidadeClienteKey();
+		funcCli.setIdCliente(idClient);
+		funcCli.setIdFuncionalidade(idFeature);
 		try {
 			FuncionalidadeClienteServiceDao.delete(funcCli);
 			return new ResponseEntity(HttpStatus.OK);
@@ -115,9 +119,11 @@ public class eSafeFeatureRestController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
 	public ResponseEntity addProfile(Integer idFeature, Integer idProfile) {
-		FuncionalidadePerfil funcCli = new FuncionalidadePerfil(idFeature, idProfile);		
+		FuncionalidadePerfilKey funcPer = new FuncionalidadePerfilKey();
+		funcPer.setIdPerfil(idProfile);
+		funcPer.setIdFuncionalidade(idFeature);
 		try {
-			FuncionalidadePerfilServiceDao.save(funcCli);
+			FuncionalidadePerfilServiceDao.save(funcPer);
 			return new ResponseEntity(HttpStatus.OK);
 		}
 		catch(Exception ex) {
@@ -128,9 +134,11 @@ public class eSafeFeatureRestController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/profile", method = RequestMethod.DELETE)
 	public ResponseEntity removeProfile(Integer idFeature, Integer idProfile) {
-		FuncionalidadePerfil funcCli = new FuncionalidadePerfil(idFeature, idProfile);
+		FuncionalidadePerfilKey funcPer = new FuncionalidadePerfilKey();
+		funcPer.setIdPerfil(idProfile);
+		funcPer.setIdFuncionalidade(idFeature);
 		try {
-			FuncionalidadePerfilServiceDao.delete(funcCli);
+			FuncionalidadePerfilServiceDao.delete(funcPer);
 			return new ResponseEntity(HttpStatus.OK);
 		}
 		catch(Exception ex) {

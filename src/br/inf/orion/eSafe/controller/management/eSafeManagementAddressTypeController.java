@@ -57,7 +57,7 @@ public class eSafeManagementAddressTypeController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String postAddressTypeDeletePage(@ModelAttribute(value="addressType") TipoEndereco addressType, BindingResult result, ModelMap model) {
 		if(!result.hasErrors()){
-			TipoEnderecoServiceDao.delete(addressType.getTipo());
+			TipoEnderecoServiceDao.delete(addressType.getTpEndereco());
 		}
 		model.addAttribute("addressTypes", TipoEnderecoServiceDao.getAll());
 		return "redirect:/" + base_url;

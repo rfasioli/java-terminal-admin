@@ -8,8 +8,8 @@
 	</div>
 	<div class="panel-body fixed-panel">
 		<c:if test="${!empty cliente}">
-			<label>{{'CLIENT' | translate}}</label>
-			<label><c:out value="${cliente.nomeFantasia}"/></label>
+			<label class="control-label col-sm-2">{{'CLIENT' | translate}}</label>
+			<label class="col-sm-10"><c:out value="${cliente.nomeFantasia}"/></label>
 		</c:if>
 		<c:if test="${!empty clientes}">
 			<form class="form-inline">
@@ -36,19 +36,19 @@
 			</tr>
 		  </thead>
 		  <tbody>
-			<c:if test="${!empty clienteEnderecos}">
-				<c:forEach items="${clienteEnderecos}" var="clEndereco">			
+			<c:if test="${!empty clienteContatos}">
+				<c:forEach items="${clienteContatos}" var="clContato">			
 					<tr>
-						<td><c:out value="${clEndereco.idCliente}"/></td>
+						<td><c:out value="${clContato.idCliente}"/></td>
 						<td>
 					      <c:forEach items="${tiposContato}" var="option">
-					      	<c:if test="${clEndereco.tipoContato == option.tipo}">{{"<c:out value='${option.descricao}'></c:out>" | translate}}</c:if> 
+					      	<c:if test="${clContato.tipoContato == option.tipo}">{{"<c:out value='${option.descricao}'></c:out>" | translate}}</c:if> 
 						  </c:forEach>
 						</td>
-						<td><c:out value="${clEndereco.descricao}"/></td>
-						<td><a href="<c:url value='/management/profile/edit'/>?id=${profile.id}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-						  | <a href="<c:url value='/management/profile/details'/>?id=${profile.id}"><i class="fa fa-search" aria-hidden="true"></i></a>
-						  | <a href="<c:url value='/management/profile/delete'/>?id=${profile.id}"><i class="fa fa-eraser" aria-hidden="true"></i></a>
+						<td><c:out value="${clContato.descricao}"/></td>
+						<td><a href="<c:url value='/management/client/contact/edit'/>?idCliente=${clContato.idCliente}&idSequencia=${clContato.idSequencia}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						  | <a href="<c:url value='/management/client/contact/details'/>?idCliente=${clContato.idCliente}&idSequencia=${clContato.idSequencia}"><i class="fa fa-search" aria-hidden="true"></i></a>
+						  | <a href="<c:url value='/management/client/contact/delete'/>?idCliente=${clContato.idCliente}&idSequencia=${clContato.idSequencia}"><i class="fa fa-eraser" aria-hidden="true"></i></a>
 						</td>
 					</tr>
 				</c:forEach>

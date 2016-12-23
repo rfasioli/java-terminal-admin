@@ -28,34 +28,44 @@ public class eSafeManagementClientContactController {
 		List<ClienteContato> clienteContatos = ClienteContatoServiceDao.getAll();
 		model.addAttribute("clienteContatos", clienteContatos);
 		model.addAttribute("tiposContato", TipoContatoServiceDao.getAll());
-		if (idCliente == null) {
+		
+		if (idCliente == null)
 			model.addAttribute("clientes", ClienteServiceDao.getAll());
-		}
-		else {
+		else
 			model.addAttribute("cliente", ClienteServiceDao.getById(idCliente));
-		}
+		
 		return base_url;
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public String getCreatePage(ModelMap model) {
+	public String getCreatePage(ModelMap model, @RequestParam(value="idCliente", required=false) Integer idCliente) {
 		ClienteContato clienteContato = new ClienteContato();
 		model.addAttribute("clienteContato", clienteContato);
 		model.addAttribute("tiposContato", TipoContatoServiceDao.getAll());
+		
+		if (idCliente == null) 
+			model.addAttribute("clientes", ClienteServiceDao.getAll());
+		else
+			model.addAttribute("cliente", ClienteServiceDao.getById(idCliente));
+		
 		return base_url + "/create";
 	}
 	
 	@RequestMapping(value="/create", method=RequestMethod.POST)
-	public ModelAndView postCreatePage(@Valid @ModelAttribute(value="clienteContato") ClienteContato clienteContato, BindingResult result, ModelMap model){
+	public ModelAndView postCreatePage(@Valid @ModelAttribute(value="clienteContato") ClienteContato clienteContato, BindingResult result, ModelMap model, @RequestParam(value="idCliente", required=false) Integer idCliente){
 		if(!result.hasErrors()){
-			List<ClienteContato> clienteContatos = ClienteContatoServiceDao.getAll();
-			model.addAttribute("clienteContatos", clienteContatos);
-			model.addAttribute("tiposContato", TipoContatoServiceDao.getAll());
-			return new ModelAndView("redirect:/" + base_url, "clienteContatos", clienteContatos);
+			ClienteContatoServiceDao.save(clienteContato);
+			return new ModelAndView("redirect:/" + base_url);
 		}
 		else {
 			model.addAttribute("clienteContato", clienteContato);
 			model.addAttribute("tiposContato", TipoContatoServiceDao.getAll());
+			
+			if (idCliente == null) 
+				model.addAttribute("clientes", ClienteServiceDao.getAll());
+			else
+				model.addAttribute("cliente", ClienteServiceDao.getById(idCliente));
+			
 			return new ModelAndView(base_url + "/create", "clienteContato", clienteContato);
 		}
 	}	
@@ -80,18 +90,20 @@ public class eSafeManagementClientContactController {
 	}
 	
 	@RequestMapping(value = "/details", method = RequestMethod.GET)
-	public String getDetailsPage(ModelMap model, @RequestParam int idCliente, @RequestParam int idSequencia) {
+	public String getDetailsPage(ModelMap model, @RequestParam Integer idCliente, @RequestParam Integer idSequencia) {
 		ClienteContato clienteContato = ClienteContatoServiceDao.getByUnique(idCliente, idSequencia);
 		model.addAttribute("clienteContato", clienteContato);
 		model.addAttribute("tiposContato", TipoContatoServiceDao.getAll());
+		model.addAttribute("cliente", ClienteServiceDao.getById(idCliente));
 		return base_url + "/details";
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String getEditPage(ModelMap model, @RequestParam int idCliente, @RequestParam int idSequencia) {
+	public String getEditPage(ModelMap model, @RequestParam Integer idCliente, @RequestParam Integer idSequencia) {
 		ClienteContato clienteContato = ClienteContatoServiceDao.getByUnique(idCliente, idSequencia);
 		model.addAttribute("clienteContato", clienteContato);
 		model.addAttribute("tiposContato", TipoContatoServiceDao.getAll());
+		model.addAttribute("cliente", ClienteServiceDao.getById(idCliente));
 		return base_url + "/edit";
 	}
 
@@ -103,6 +115,7 @@ public class eSafeManagementClientContactController {
 		}
 		model.addAttribute("clienteContatos", ClienteContatoServiceDao.getAll());
 		model.addAttribute("tiposContato", TipoContatoServiceDao.getAll());
+		model.addAttribute("cliente", ClienteServiceDao.getById(clienteContato.getIdCliente()));
 		return "redirect:/" + base_url;
 	}
 

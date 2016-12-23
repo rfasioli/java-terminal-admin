@@ -21,15 +21,15 @@
 			<c:if test="${!empty clients}">
 				<c:forEach items="${clients}" var="client">			
 					<tr>
-						<td><c:out value="${client.id}"/></td>
-						<td><c:out value="${client.nomeFantasia}"/></td>
-						<td><c:out value="${client.razaoSocial}"/></td>
-						<td><c:out value="${client.cnpj}"/></td>
-						<td><c:out value="${client.ativo}"/></td>
-						<td><c:out value="${client.dataCadastro}"/></td>
-						<td><a href="<c:url value='/management/client/edit'/>?id=${client.id}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-						  | <a href="<c:url value='/management/client/details'/>?id=${client.id}"><i class="fa fa-search" aria-hidden="true"></i></a>
-						  | <a href="<c:url value='/management/client/delete'/>?id=${client.id}"><i class="fa fa-eraser" aria-hidden="true"></i></a>
+						<td><c:out value="${client.idCliente}"/></td>
+						<td><c:out value="${client.dsNomeFantasia}"/></td>
+						<td><c:out value="${client.dsRazaoSocial}"/></td>
+						<td><c:out value="${client.dsCnpj}"/></td>
+						<td><c:out value="${client.icAtivo}"/></td>
+						<td><c:out value="${client.dtCadastro}"/></td>
+						<td><a href="<c:url value='/management/client/edit'/>?id=${client.idCliente}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						  | <a href="<c:url value='/management/client/details'/>?id=${client.idCliente}"><i class="fa fa-search" aria-hidden="true"></i></a>
+						  | <a href="<c:url value='/management/client/delete'/>?id=${client.idCliente}"><i class="fa fa-eraser" aria-hidden="true"></i></a>
 						</td>
 					</tr>
 				</c:forEach>

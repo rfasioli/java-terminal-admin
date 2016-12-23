@@ -43,7 +43,7 @@ public class eSafeManagementUserController {
 		if(!result.hasErrors()){
 			UsuarioServiceDao.save(usuario);
 			model.addAttribute("perfis", PerfilServiceDao.getAll());
-			return new ModelAndView("redirect:/" + base_url + "/edit?id=" + usuario.getId(), "usuario", usuario);
+			return new ModelAndView("redirect:/" + base_url + "/edit?id=" + usuario.getIdUsuario(), "usuario", usuario);
 		}
 		else {
 			model.addAttribute("usuario", usuario);
@@ -64,7 +64,7 @@ public class eSafeManagementUserController {
 	public String postDeletePage(@ModelAttribute(value="usuario") Usuario usuario, BindingResult result, ModelMap model) {
 		//validator.validate(user, result);
 		if(!result.hasErrors()){
-			UsuarioServiceDao.delete(usuario.getId());
+			UsuarioServiceDao.delete(usuario.getIdUsuario());
 		}
 		model.addAttribute("usuarios", UsuarioServiceDao.getAll());
 		model.addAttribute("perfis", PerfilServiceDao.getAll());
@@ -98,39 +98,4 @@ public class eSafeManagementUserController {
 		return "redirect:/" + base_url;
 	}
 	
-//	@RequestMapping(value = "/terminals", method = RequestMethod.GET)
-//	public String getTerminalsPage(ModelMap model, @RequestParam int id) {
-//		Usuario usuario = UsuarioServiceDao.getById(id);
-//		model.addAttribute("usuario", usuario);
-//		
-//	   List<UsuarioTerminal> usrTerminais = UsuarioTerminalServiceDao.getByUsuario(id);
-//       List<Terminal> terminais = new ArrayList<Terminal>();
-//       List<Integer> filter = new ArrayList<Integer>();
-//       Integer idCliente = 1; //TODO - obter cliente para o terminal local...
-//	       
-//	   for (UsuarioTerminal usuarioTerminal : usrTerminais) {
-//		   br.inf.orion.eSafe.model.Terminal terminal = 
-//				   br.inf.orion.eSafe.service.dao.TerminalServiceDao.getByTerminal
-//				   (usuarioTerminal.getIdTerminal());
-//		   if(terminal != null) {
-//			   idCliente = terminal.getIdCliente();
-//			   filter.add(terminal.getIdTerminal());
-//		   }
-//	   }
-//	   if (!filter.isEmpty())
-//		   terminais = TerminalServiceDao.getByIdNotIn(idCliente, filter);
-//	   else
-//		   terminais = TerminalServiceDao.getAll(idCliente);
-//	   
-//		model.addAttribute("terminais", terminais);
-//			   
-//		return base_url + "/terminals";
-//	}
-//
-//	@RequestMapping(value = "/terminals_ng", method = RequestMethod.GET)
-//	public String getTerminalsPageWithAngular(ModelMap model, @RequestParam int id) {
-//		Usuario usuario = UsuarioServiceDao.getById(id);
-//		model.addAttribute("usuario", usuario);
-//		return base_url + "/terminals_ng";
-//	}
 }

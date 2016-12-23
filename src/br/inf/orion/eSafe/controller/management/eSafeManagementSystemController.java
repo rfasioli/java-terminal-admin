@@ -58,7 +58,7 @@ public class eSafeManagementSystemController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String postSistemaDeletePage(@ModelAttribute(value="sistema") Sistema sistema, BindingResult result, ModelMap model) {
 		if(!result.hasErrors()){
-			SistemaServiceDao.delete(sistema.getId());
+			SistemaServiceDao.delete(sistema.getIdSistema());
 		}
 		model.addAttribute("sistemas", SistemaServiceDao.getAll());
 		return "redirect:/" + base_url;

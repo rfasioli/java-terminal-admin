@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.inf.orion.eSafe.model.Cliente;
-import br.inf.orion.eSafe.model.SistemaCliente;
+import br.inf.orion.eSafe.model.SistemaClienteKey;
 import br.inf.orion.eSafe.service.dao.ClienteServiceDao;
 import br.inf.orion.eSafe.service.dao.SistemaClienteServiceDao;
 
@@ -45,7 +45,9 @@ public class eSafeSystemRestController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/client", method = RequestMethod.POST)
 	public ResponseEntity addCliente(Integer idSystem, Integer idClient) {
-		SistemaCliente sisCliente = new SistemaCliente(idSystem, idClient);		
+		SistemaClienteKey sisCliente = new SistemaClienteKey();
+		sisCliente.setIdCliente(idClient);
+		sisCliente.setIdSistema(idSystem);
 		try {
 			SistemaClienteServiceDao.save(sisCliente);
 			return new ResponseEntity(HttpStatus.OK);
@@ -58,7 +60,9 @@ public class eSafeSystemRestController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/client", method = RequestMethod.DELETE)
 	public ResponseEntity removeCliente(Integer idSystem, Integer idClient) {
-		SistemaCliente sisCliente = new SistemaCliente(idSystem, idClient);
+		SistemaClienteKey sisCliente = new SistemaClienteKey();
+		sisCliente.setIdCliente(idClient);
+		sisCliente.setIdSistema(idSystem);
 		try {
 			SistemaClienteServiceDao.delete(sisCliente);
 			return new ResponseEntity(HttpStatus.OK);

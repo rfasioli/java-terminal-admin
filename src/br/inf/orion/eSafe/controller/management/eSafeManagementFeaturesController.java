@@ -45,7 +45,7 @@ public class eSafeManagementFeaturesController {
 		if(!result.hasErrors()){
 			FuncionalidadeServiceDao.save(funcionalidade);
 			model.addAttribute("sistemas", SistemaServiceDao.getAll());
-			return new ModelAndView("redirect:/" + base_url + "/edit?id=" + funcionalidade.getId(), "funcionalidade", funcionalidade);
+			return new ModelAndView("redirect:/" + base_url + "/edit?id=" + funcionalidade.getIdFuncionalidade(), "funcionalidade", funcionalidade);
 		}
 		else {
 			model.addAttribute("funcionalidade", funcionalidade);
@@ -66,7 +66,7 @@ public class eSafeManagementFeaturesController {
 	public String postDeletePage(@ModelAttribute(value="funcionalidade") Funcionalidade funcionalidade, BindingResult result, ModelMap model) {
 		//validator.validate(user, result);
 		if(!result.hasErrors()){
-			FuncionalidadeServiceDao.delete(funcionalidade.getId());
+			FuncionalidadeServiceDao.delete(funcionalidade.getIdFuncionalidade());
 		}
 		model.addAttribute("funcionalidades", FuncionalidadeServiceDao.getAll());
 		model.addAttribute("sistemas", SistemaServiceDao.getAll());

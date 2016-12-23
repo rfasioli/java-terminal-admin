@@ -57,7 +57,7 @@ public class eSafeManagementContactTypeController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String postContactTypeDeletePage(@ModelAttribute(value="contactType") TipoContato contactType, BindingResult result, ModelMap model) {
 		if(!result.hasErrors()){
-			TipoContatoServiceDao.delete(contactType.getTipo());
+			TipoContatoServiceDao.delete(contactType.getTpContato());
 		}
 		model.addAttribute("contactTypes", TipoContatoServiceDao.getAll());
 		return "redirect:/" + base_url;

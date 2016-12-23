@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.inf.orion.eSafe.client.model.Terminal;
 import br.inf.orion.eSafe.client.service.dao.TerminalServiceDao;
 import br.inf.orion.eSafe.model.Cliente;
-import br.inf.orion.eSafe.model.UsuarioCliente;
-import br.inf.orion.eSafe.model.UsuarioTerminal;
+import br.inf.orion.eSafe.model.UsuarioClienteKey;
+import br.inf.orion.eSafe.model.UsuarioTerminalKey;
 import br.inf.orion.eSafe.service.dao.ClienteServiceDao;
 import br.inf.orion.eSafe.service.dao.UsuarioClienteServiceDao;
 import br.inf.orion.eSafe.service.dao.UsuarioTerminalServiceDao;
@@ -23,9 +23,9 @@ import br.inf.orion.eSafe.service.dao.UsuarioTerminalServiceDao;
 public class eSafeUsuarioSvcRestController {
 	   @RequestMapping(value = "/terminal", method = RequestMethod.GET)
 	   public ResponseEntity<List<Terminal>> listAllTerminalsForUser(Integer idUser) {
-		   List<UsuarioTerminal> usrTerminais = UsuarioTerminalServiceDao.getByUsuario(idUser);
+		   List<UsuarioTerminalKey> usrTerminais = UsuarioTerminalServiceDao.getByUsuario(idUser);
 	       List<Terminal> terminais = new ArrayList<Terminal>();		   
-		   for (UsuarioTerminal usuarioTerminal : usrTerminais) {
+		   for (UsuarioTerminalKey usuarioTerminal : usrTerminais) {
 			   br.inf.orion.eSafe.model.Terminal terminal = 
 					   br.inf.orion.eSafe.service.dao.TerminalServiceDao.getByTerminal
 					   (usuarioTerminal.getIdTerminal());
@@ -41,12 +41,12 @@ public class eSafeUsuarioSvcRestController {
 
 	   @RequestMapping(value = "/terminal/notfrom", method = RequestMethod.GET)
 	   public ResponseEntity<List<Terminal>> listAllTerminalsNotForUser(Integer idUser) {
-		   List<UsuarioTerminal> usrTerminais = UsuarioTerminalServiceDao.getByUsuario(idUser);
+		   List<UsuarioTerminalKey> usrTerminais = UsuarioTerminalServiceDao.getByUsuario(idUser);
 	       List<Terminal> terminais = new ArrayList<Terminal>();
 	       List<Integer> filter = new ArrayList<Integer>();
 	       Integer idCliente = 1; //TODO - obter cliente para usuario
 	       
-		   for (UsuarioTerminal usuarioTerminal : usrTerminais) {
+		   for (UsuarioTerminalKey usuarioTerminal : usrTerminais) {
 			   br.inf.orion.eSafe.model.Terminal terminal = 
 					   br.inf.orion.eSafe.service.dao.TerminalServiceDao.getByTerminal
 					   (usuarioTerminal.getIdTerminal());
@@ -70,7 +70,9 @@ public class eSafeUsuarioSvcRestController {
 	   @SuppressWarnings({ "rawtypes", "unchecked" })
 	   @RequestMapping(value = "/terminal", method = RequestMethod.POST)
 	   public ResponseEntity addTerminal(Integer idUser, Integer idTerminal) {
-		   UsuarioTerminal usuarioTerminal = new UsuarioTerminal(idUser, idTerminal);
+		   UsuarioTerminalKey usuarioTerminal = new UsuarioTerminalKey();
+		   usuarioTerminal.setIdUsuario(idUser);
+		   usuarioTerminal.setIdTerminal(idTerminal);
 		   try {
 			   UsuarioTerminalServiceDao.save(usuarioTerminal);
 			   return new ResponseEntity(HttpStatus.OK);
@@ -83,7 +85,9 @@ public class eSafeUsuarioSvcRestController {
 	   @SuppressWarnings({ "rawtypes", "unchecked" })
 	   @RequestMapping(value = "/terminal", method = RequestMethod.DELETE)
 	   public ResponseEntity removeTerminal(Integer idUser, Integer idTerminal) {
-		   UsuarioTerminal usuarioTerminal = new UsuarioTerminal(idUser, idTerminal);
+		   UsuarioTerminalKey usuarioTerminal = new UsuarioTerminalKey();
+		   usuarioTerminal.setIdUsuario(idUser);
+		   usuarioTerminal.setIdTerminal(idTerminal);
 		   try {
 			   UsuarioTerminalServiceDao.delete(usuarioTerminal);
 			   return new ResponseEntity(HttpStatus.OK);
@@ -110,9 +114,9 @@ public class eSafeUsuarioSvcRestController {
 	   //Funções usuários para o cliente
 	   @RequestMapping(value = "/client", method = RequestMethod.GET)
 	   public ResponseEntity<List<Cliente>> listAllClientsForUser(Integer idUser) {
-		   List<UsuarioCliente> usrClientes = UsuarioClienteServiceDao.getByUsuario(idUser);
+		   List<UsuarioClienteKey> usrClientes = UsuarioClienteServiceDao.getByUsuario(idUser);
 	       List<Cliente> clientes = new ArrayList<Cliente>();		   
-		   for (UsuarioCliente usuarioCliente : usrClientes) {
+		   for (UsuarioClienteKey usuarioCliente : usrClientes) {
 			   clientes.add(ClienteServiceDao.getById(usuarioCliente.getIdCliente()));
 		   }
 	       if(clientes.isEmpty()){
@@ -123,11 +127,11 @@ public class eSafeUsuarioSvcRestController {
 
 	   @RequestMapping(value = "/client/notfrom", method = RequestMethod.GET)
 	   public ResponseEntity<List<Cliente>> listAllClientsNotForUser(Integer idUser) {
-		   List<UsuarioCliente> usrClientes = UsuarioClienteServiceDao.getByUsuario(idUser);
+		   List<UsuarioClienteKey> usrClientes = UsuarioClienteServiceDao.getByUsuario(idUser);
 	       List<Cliente> clientes = new ArrayList<Cliente>();
 	       List<Integer> filter = new ArrayList<Integer>();
 	       
-		   for (UsuarioCliente usuarioCliente : usrClientes) {
+		   for (UsuarioClienteKey usuarioCliente : usrClientes) {
 			   filter.add(usuarioCliente.getIdCliente());
 		   }
 		   if (!filter.isEmpty())
@@ -145,7 +149,9 @@ public class eSafeUsuarioSvcRestController {
 	   @SuppressWarnings({ "rawtypes", "unchecked" })
 	   @RequestMapping(value = "/client", method = RequestMethod.POST)
 	   public ResponseEntity addClient(Integer idUser, Integer idClient) {
-		   UsuarioCliente usuarioCliente = new UsuarioCliente(idUser, idClient);
+		   UsuarioClienteKey usuarioCliente = new UsuarioClienteKey();
+		   usuarioCliente.setIdCliente(idClient);
+		   usuarioCliente.setIdUsuario(idUser);
 		   try {
 			   UsuarioClienteServiceDao.save(usuarioCliente);
 			   return new ResponseEntity(HttpStatus.OK);
@@ -158,7 +164,9 @@ public class eSafeUsuarioSvcRestController {
 	   @SuppressWarnings({ "rawtypes", "unchecked" })
 	   @RequestMapping(value = "/client", method = RequestMethod.DELETE)
 	   public ResponseEntity removeClient(Integer idUser, Integer idClient) {
-		   UsuarioCliente usuarioCliente = new UsuarioCliente(idUser, idClient);
+		   UsuarioClienteKey usuarioCliente = new UsuarioClienteKey();
+		   usuarioCliente.setIdCliente(idClient);
+		   usuarioCliente.setIdUsuario(idUser);
 		   try {
 			   UsuarioClienteServiceDao.delete(usuarioCliente);
 			   return new ResponseEntity(HttpStatus.OK);

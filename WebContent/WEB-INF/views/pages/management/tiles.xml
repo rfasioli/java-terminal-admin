@@ -153,5 +153,21 @@
        <put-attribute name="title" value="Contatos do cliente" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/management/client/contact/index.jsp" />  
    </definition>
+   <definition name="management/client/contact/create" extends="base-definition">  
+       <put-attribute name="title" value="Contatos do cliente" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/contact/create.jsp" />  
+   </definition>
+   <definition name="management/client/contact/delete" extends="base-definition">  
+       <put-attribute name="title" value="Contatos do cliente" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/contact/delete.jsp" />  
+   </definition>
+   <definition name="management/client/contact/details" extends="base-definition">  
+       <put-attribute name="title" value="Contatos do cliente" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/contact/details.jsp" />  
+   </definition>
+   <definition name="management/client/contact/edit" extends="base-definition">  
+       <put-attribute name="title" value="Contatos do cliente" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/client/contact/edit.jsp" />  
+   </definition>
 
 </tiles-definitions>

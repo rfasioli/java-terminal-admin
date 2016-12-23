@@ -20,48 +20,45 @@
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="nomeFantasia">{{'CLIENT_FANTASY_NAME' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsNomeFantasia">{{'CLIENT_FANTASY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<!--
-						<input type="text" name="nomeFantasia" value="${client.nomeFantasia}" id="nomeFantasia" />
-						-->
-						<form:input type="text" path="nomeFantasia" id="nomeFantasia"  class="form-control input-sm"/>
-						<form:errors path="nomeFantasia" cssStyle="error" />
+						<form:input type="text" path="dsNomeFantasia" id="dsNomeFantasia"  class="form-control input-sm"/>
+						<form:errors path="dsNomeFantasia" cssStyle="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="razaoSocial">{{'CLIENT_COMPANY_NAME' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsRazaoSocial">{{'CLIENT_COMPANY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="razaoSocial" value="${client.razaoSocial}" id="razaoSocial" />
-						<form:errors path="razaoSocial" cssClass="error" />
+						<form:input type="text" path="dsRazaoSocial" id="dsRazaoSocial"  class="form-control input-sm"/>
+						<form:errors path="dsRazaoSocial" cssStyle="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="cnpj">{{'CLIENT_DOCUMENT' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsCnpj">{{'CLIENT_DOCUMENT' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="cnpj" value="${client.cnpj}" id="cnpj" />
-						<form:errors path="cnpj" cssClass="error" />
+						<form:input type="text" path="dsCnpj" id="dsCnpj" class="form-control input-sm"/>
+						<form:errors path="dsCnpj" cssStyle="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="dataCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dtCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
 					<div class="col-sm-10" ng-controller="loadDate">
-					  <input class="datepicker" type="date" name="dataCadastro" value="${myDate}" id="dataCadastro" readonly />
-					  <form:errors path="dataCadastro" cssClass="error" />
+					  <%-- <input class="datepicker" type="date" name="dataCadastro" value="${myDate}" id="dataCadastro" readonly /> --%>
+					  <form:input type="datepicker" path="dtCadastro" id="dataCadastro" class="form-control input-sm"/>
+					  <form:errors path="dtCadastro" cssStyle="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="ativo">{{'CLIENT_ACTIVE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="icAtivo">{{'CLIENT_ACTIVE' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:checkbox path="ativo" />
-						<!-- <input type="checkbox" name="ativo" value="${client.ativo}" id="ativo" />  -->
+						<form:checkbox path="icAtivo" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="conexao">{{'CLIENT_CONNECTION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsConexao">{{'CLIENT_CONNECTION' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="conexao" value="${client.conexao}" id="conexao" />
-						<form:errors path="conexao" cssClass="error" />
+						<form:input type="text" path="dsConexao" id="dsConexao" class="form-control input-sm"/>
+						<form:errors path="dsConexao" cssClass="error" />
 					</div>
 				</div>
 			</div>

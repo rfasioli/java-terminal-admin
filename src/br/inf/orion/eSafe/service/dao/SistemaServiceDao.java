@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import br.inf.orion.eSafe.model.Sistema;
+import br.inf.orion.eSafe.model.example.SistemaExample;
 import br.inf.orion.eSafe.model.mapper.SistemaMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
@@ -20,7 +21,7 @@ public class SistemaServiceDao {
 	public static void update(Sistema Sistema) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		SistemaMapper mapper = session.getMapper(SistemaMapper.class);
-		mapper.update(Sistema);
+		mapper.updateByPrimaryKey(Sistema);
 		session.commit();
 		session.close();
 	}
@@ -28,7 +29,7 @@ public class SistemaServiceDao {
 	public static void delete(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		SistemaMapper mapper = session.getMapper(SistemaMapper.class);
-		mapper.delete(id);
+		mapper.deleteByPrimaryKey(id);
 		session.commit();
 		session.close();
 	}
@@ -36,7 +37,7 @@ public class SistemaServiceDao {
 	public static Sistema getByType(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		SistemaMapper mapper = session.getMapper(SistemaMapper.class);
-		Sistema Sistema = mapper.getById(id);
+		Sistema Sistema = mapper.selectByPrimaryKey(id);
 		session.commit();
 		session.close();
 		return Sistema;
@@ -45,7 +46,7 @@ public class SistemaServiceDao {
 	public static List<Sistema> getAll() {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		SistemaMapper mapper = session.getMapper(SistemaMapper.class);
-		List<Sistema> Sistemas = mapper.getAll();
+		List<Sistema> Sistemas = mapper.selectByExample(new SistemaExample());
 		session.commit();
 		session.close();
 		return Sistemas;

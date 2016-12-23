@@ -3,32 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/DB_ESAFE_MASTER" />
-        <property name="username" value="postgres"/>
-        <property name="password" value="Orion@123"/>
-      </dataSource>
-    </environment>
-  </environments>
-  <mappers>
-    <mapper class="br.inf.orion.eSafe.model.mapper.ClienteMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.ClienteContatoMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.ClienteEnderecoMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.FuncionalidadeMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.FuncionalidadeClienteMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.FuncionalidadePerfilMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.PerfilMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.SistemaMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.SistemaClienteMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.TerminalMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.TipoContatoMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.TipoEnderecoMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.UsuarioMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.UsuarioClienteMapper" />
-    <mapper class="br.inf.orion.eSafe.model.mapper.UsuarioTerminalMapper" />
-  </mappers>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="org.postgresql.Driver" />
+				<property name="url"
+					value="jdbc:postgresql://127.0.0.1:5432/DB_ESAFE_MASTER_NEW" />
+				<property name="username" value="postgres" />
+				<property name="password" value="Orion@123" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper class="br.inf.orion.eSafe.model.mapper.ClienteMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.ClienteContatoMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.ClienteEnderecoMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.FuncionalidadeMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.FuncionalidadeClienteMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.FuncionalidadePerfilMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.PerfilMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.SistemaMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.SistemaClienteMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.TerminalMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.TipoContatoMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.TipoEnderecoMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.UsuarioMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.UsuarioClienteMapper" />
+		<mapper class="br.inf.orion.eSafe.model.mapper.UsuarioTerminalMapper" />
+	</mappers>
 </configuration> 

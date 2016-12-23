@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.inf.orion.eSafe.model.Perfil;
+import br.inf.orion.eSafe.model.PerfilContants;
 import br.inf.orion.eSafe.service.dao.PerfilServiceDao;
 
 @Controller
@@ -63,7 +64,7 @@ public class eSafeManagementProfileController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String postProfileDeletePage(@ModelAttribute(value="profile") Perfil profile, BindingResult result, ModelMap model) {
 		if(!result.hasErrors()){
-			PerfilServiceDao.delete(profile.getId());
+			PerfilServiceDao.delete(profile.getIdPerfil());
 		}
 		model.addAttribute("profiles", PerfilServiceDao.getAll());
 		AddListData(model);		
@@ -99,10 +100,10 @@ public class eSafeManagementProfileController {
 	}
 
 	public void AddListData(ModelMap model) {
-		List<Perfil.TipoPerfilEnum> profileTypes = new ArrayList<Perfil.TipoPerfilEnum>(Arrays.asList(Perfil.TipoPerfilEnum.values()));
+		List<PerfilContants.TipoPerfilEnum> profileTypes = new ArrayList<PerfilContants.TipoPerfilEnum>(Arrays.asList(PerfilContants.TipoPerfilEnum.values()));
 		model.addAttribute("profileTypes", profileTypes);
 
-		List<Perfil.NivelPerfilEnum> profileLevels = new ArrayList<Perfil.NivelPerfilEnum>(Arrays.asList(Perfil.NivelPerfilEnum.values()));
+		List<PerfilContants.NivelPerfilEnum> profileLevels = new ArrayList<PerfilContants.NivelPerfilEnum>(Arrays.asList(PerfilContants.NivelPerfilEnum.values()));
 		model.addAttribute("profileLevels", profileLevels);
 				
 	}

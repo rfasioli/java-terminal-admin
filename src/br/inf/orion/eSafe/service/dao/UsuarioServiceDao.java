@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import br.inf.orion.eSafe.model.Usuario;
+import br.inf.orion.eSafe.model.example.UsuarioExample;
 import br.inf.orion.eSafe.model.mapper.UsuarioMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
@@ -20,7 +21,7 @@ public class UsuarioServiceDao {
 	public static void update(Usuario usuario) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		UsuarioMapper mapper = session.getMapper(UsuarioMapper.class);
-		mapper.update(usuario);
+		mapper.updateByPrimaryKey(usuario);
 		session.commit();
 		session.close();
 	}
@@ -28,7 +29,7 @@ public class UsuarioServiceDao {
 	public static void delete(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		UsuarioMapper mapper = session.getMapper(UsuarioMapper.class);
-		mapper.deleteById(id);
+		mapper.deleteByPrimaryKey(id);
 		session.commit();
 		session.close();
 	}
@@ -36,7 +37,7 @@ public class UsuarioServiceDao {
 	public static List<Usuario> getAll() {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		UsuarioMapper mapper = session.getMapper(UsuarioMapper.class);
-		List<Usuario> usuarios = mapper.getAll();
+		List<Usuario> usuarios = mapper.selectByExample(new UsuarioExample());
 		session.commit();
 		session.close();
 		return usuarios;
@@ -45,7 +46,7 @@ public class UsuarioServiceDao {
 	public static Usuario getById(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		UsuarioMapper mapper = session.getMapper(UsuarioMapper.class);
-		Usuario usuario = mapper.getById(id);
+		Usuario usuario = mapper.selectByPrimaryKey(id);
 		session.commit();
 		session.close();
 		return usuario;
@@ -54,7 +55,9 @@ public class UsuarioServiceDao {
 	public static Usuario getByLogin(String login) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		UsuarioMapper mapper = session.getMapper(UsuarioMapper.class);
-		Usuario usuario = mapper.getByLogin(login);
+		UsuarioExample filter = new UsuarioExample();
+		filter.createCriteria().andDsLoginEqualTo(login);
+		Usuario usuario = mapper.selectByExample(filter).iterator().next();
 		session.commit();
 		session.close();
 		return usuario;

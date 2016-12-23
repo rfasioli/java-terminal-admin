@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import br.inf.orion.eSafe.model.Perfil;
+import br.inf.orion.eSafe.model.example.PerfilExample;
 import br.inf.orion.eSafe.model.mapper.PerfilMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
@@ -21,7 +22,7 @@ public class PerfilServiceDao {
 	public static void update(Perfil perfil) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		PerfilMapper mapper = session.getMapper(PerfilMapper.class);
-		mapper.update(perfil);
+		mapper.updateByPrimaryKey(perfil);
 		session.commit();
 		session.close();
 	}
@@ -29,7 +30,7 @@ public class PerfilServiceDao {
 	public static void delete(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		PerfilMapper mapper = session.getMapper(PerfilMapper.class);
-		mapper.delete(id);
+		mapper.deleteByPrimaryKey(id);
 		session.commit();
 		session.close();
 	}
@@ -37,7 +38,7 @@ public class PerfilServiceDao {
 	public static Perfil getById(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		PerfilMapper mapper = session.getMapper(PerfilMapper.class);
-		Perfil perfil = mapper.getById(id);
+		Perfil perfil = mapper.selectByPrimaryKey(id);
 		session.commit();
 		session.close();
 		return perfil;
@@ -46,7 +47,7 @@ public class PerfilServiceDao {
 	public static List<Perfil> getAll() {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		PerfilMapper mapper = session.getMapper(PerfilMapper.class);
-		List<Perfil> perfis = mapper.getAll();
+		List<Perfil> perfis = mapper.selectByExample(new PerfilExample());
 		session.commit();
 		session.close();
 		return perfis;

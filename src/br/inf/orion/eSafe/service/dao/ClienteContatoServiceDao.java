@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import br.inf.orion.eSafe.model.ClienteContato;
+import br.inf.orion.eSafe.model.ClienteContatoKey;
+import br.inf.orion.eSafe.model.example.ClienteContatoExample;
 import br.inf.orion.eSafe.model.mapper.ClienteContatoMapper;
 import br.inf.orion.eSafe.util.MyBatisUtil;
 
@@ -20,7 +22,7 @@ public class ClienteContatoServiceDao {
 	public static void update(ClienteContato clienteContato) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		ClienteContatoMapper mapper = session.getMapper(ClienteContatoMapper.class);
-		mapper.update(clienteContato);
+		mapper.updateByPrimaryKey(clienteContato);
 		session.commit();
 		session.close();
 	}
@@ -28,7 +30,10 @@ public class ClienteContatoServiceDao {
 	public static void delete(int idCliente, int idSequencia) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		ClienteContatoMapper mapper = session.getMapper(ClienteContatoMapper.class);
-		mapper.delete(idCliente, idSequencia);
+		ClienteContatoKey key = new ClienteContatoKey();
+		key.setIdCliente(idCliente);
+		key.setIdSequencia(idSequencia);
+		mapper.deleteByPrimaryKey(key);
 		session.commit();
 		session.close();
 	}
@@ -36,7 +41,10 @@ public class ClienteContatoServiceDao {
 	public static ClienteContato getByUnique(int idCliente, int idSequencia) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		ClienteContatoMapper mapper = session.getMapper(ClienteContatoMapper.class);
-		ClienteContato clienteContato = mapper.getUnique(idCliente, idSequencia);
+		ClienteContatoKey key = new ClienteContatoKey();
+		key.setIdCliente(idCliente);
+		key.setIdSequencia(idSequencia);
+		ClienteContato clienteContato = mapper.selectByPrimaryKey(key);
 		session.commit();
 		session.close();
 		return clienteContato;
@@ -45,7 +53,9 @@ public class ClienteContatoServiceDao {
 	public static List<ClienteContato> getByIdCliente(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		ClienteContatoMapper mapper = session.getMapper(ClienteContatoMapper.class);
-		List<ClienteContato> clienteContatos = mapper.getByIdCliente(id);
+		ClienteContatoExample filter = new ClienteContatoExample();
+		filter.createCriteria().andIdClienteEqualTo(id);
+		List<ClienteContato> clienteContatos = mapper.selectByExample(filter);
 		session.commit();
 		session.close();
 		return clienteContatos;
@@ -54,7 +64,7 @@ public class ClienteContatoServiceDao {
 	public static List<ClienteContato> getAll() {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		ClienteContatoMapper mapper = session.getMapper(ClienteContatoMapper.class);
-		List<ClienteContato> clienteContatos = mapper.getAll();
+		List<ClienteContato> clienteContatos = mapper.selectByExample(new ClienteContatoExample());
 		session.commit();
 		session.close();
 		return clienteContatos;
