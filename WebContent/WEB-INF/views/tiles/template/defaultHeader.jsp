@@ -41,10 +41,10 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="/profile" class="btn btn-default btn-flat">Perfil</a>
+                <a href="/profile" target="_self" class="btn btn-default btn-flat">Perfil</a>
               </div>
               <div class="pull-right">
-                <a href="/logout" class="btn btn-default btn-flat">Sair</a>
+                <a href="/logout" target="_self" class="btn btn-default btn-flat">Sair</a>
               </div>
             </li>
           </ul>
@@ -53,27 +53,3 @@
     </div>
   </nav>
 </header>
-
-<!-- 
-<script>
-  var ptButton = document.getElementById('pt-btn');
-  var enButton = document.getElementById('en-btn');
-  var esButton = document.getElementById('es-btn');
-  var i18n = domI18n({
-    selector: '[data-translatable]',
-    separator: ' // ',
-    languages: ['pt-BR', 'en', 'es'],
-    defaultLanguage: 'pt-BR',
-    currentLanguage: 'pt-BR'
-  });
-  ptButton.onclick = function () {
-    i18n.changeLanguage('pt-BR');
-  };
-  enButton.onclick = function () {
-    i18n.changeLanguage('en');
-  };
-  esButton.onclick = function () {
-    i18n.changeLanguage('es');
-  };
-</script>
- -->

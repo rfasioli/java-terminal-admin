@@ -10,6 +10,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import br.inf.orion.eSafe.service.dao.ClienteServiceDao;
+
 public class MyBatisUtil {
 	private static Map<Integer, SqlSessionFactory> sqlSessionClients;
 	static {
@@ -52,9 +54,9 @@ public class MyBatisUtil {
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
 			Properties properties = new Properties();
-			properties.setProperty("username", "postgres");
-			properties.setProperty("password", "Orion@123");
-			properties.setProperty("url", "jdbc:postgresql://127.0.0.1:5432/DB_ESAFE_CLIENT");
+			properties.setProperty("username", "postgres");  //TODO - definir parametro
+			properties.setProperty("password", "Orion@123"); //TODO - definir parametro
+			properties.setProperty("url", ClienteServiceDao.getById(idCliente).getDsConexao());
 			session = new SqlSessionFactoryBuilder().build(inputStream, properties);
 		} catch (IOException e) {
 			e.printStackTrace();

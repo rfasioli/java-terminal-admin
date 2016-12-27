@@ -282,17 +282,20 @@
 
   $(document).ready(function() {
     $('#btnAdd').click( function () {
-    	$('#terminais > tbody > tr.selected > #idTerminal')
-    	.each(function(index, elem) {
-        	angular.element(document.getElementById('InitializeElement')).scope().addTerminal(elem.innerText);
-        });
-        
+    	var obj = $('#terminais > tbody > tr.selected > #idTerminal');
+       	for(var i = 0; i < obj.length; i++) {
+        	angular.element(document.getElementById('InitializeElement')).scope().addTerminal(obj[i].innerText);
+        };
+       	angular.element(document.getElementById('InitializeElement')).scope().updateTerminalTables();
     });
+    
     $('#btnAddClient').click( function () {
-    	$('#clientes > tbody > tr.selected > #idCliente')
-    	.each(function(index, elem) {
-        	angular.element(document.getElementById('InitializeElement')).scope().addClient(elem.innerText);
-        });  
+    	var obj = $('#clientes > tbody > tr.selected > #idCliente');
+    	for(var i = 0; i < obj.length; i++) {
+        	angular.element(document.getElementById('InitializeElement')).scope().addClient(obj[i].innerText);
+	    };
+    	angular.element(document.getElementById('InitializeElement')).scope().updateClientTables();
+    	angular.element(document.getElementById('InitializeElement')).scope().updateTerminalTables();
     });
   });
 

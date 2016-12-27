@@ -4,91 +4,95 @@ app.controller('ngUserInitialize', function($scope, $http, $location) {
     //Funções terminais x usuário
 	$scope.atualizaListaTerminais = function atualizaListaTerminais() {
 	    $http.get('/eSafe/service/user/terminal?idUser=' + userId)
-	    .success(function(data) {
-		    $scope.terminais = data;
-	    })
-	    .error(function(data) {
-	        console.log('atualizaListaTerminais - Error: ' + data);
+	    .then(function successCallback(response) {
+	    	if (response.status >= 200 && response.status <= 299)
+	    		$scope.terminais = response.data;
+	    	else
+	            console.log('atualizaListaTerminais - Error: ' + response.status + ' - ' + response.statusText );    		
+	     }, function errorCallback(response) {
+	        console.log('atualizaListaTerminais - Error: ' + response.status + ' - ' + response.statusText );
 	    });	
 	}
 
 	$scope.atualizaListaTerminaisDisponiveis = function atualizaListaTerminaisDisponiveis() {
 	    $http.get('/eSafe/service/user/terminal/notfrom?idUser=' + userId)
-	    .success(function(data) {
-		    $scope.disponiveis = data;
-	    })
-	    .error(function(data) {
-	        console.log('atualizaListaTerminaisDisponiveis - Error: ' + data);
+	    .then(function successCallback(response) {
+	    	if (response.status >= 200 && response.status <= 299)
+	    		$scope.disponiveis = response.data;
+	    	else
+	            console.log('atualizaListaTerminaisDisponiveis - Error: ' + response.status + ' - ' + response.statusText );    		
+	     }, function errorCallback(response) {
+	        console.log('atualizaListaTerminaisDisponiveis - Error: ' + response.status + ' - ' + response.statusText );
 	    });	
 	}
 
 	$scope.addTerminal = function(idTerminal) {
 		$http.get('/eSafe/service/user/terminal/add?idUser=' + userId + '&idTerminal='+ idTerminal)
-		.success(function(data){
-			$scope.atualizaListaTerminais();
-			$scope.atualizaListaTerminaisDisponiveis();
-		})
-		.error(function(data){
-			console.log('addTerminal - Error: ' + data);
-		});
+	    .then(function successCallback(response) {
+
+	    }, function errorCallback(response) {
+	        console.log('addTerminal - Error: ' + response.status + ' - ' + response.statusText );
+	    });	
 	};
 	
 	$scope.removeTerminal  = function(idTerminal) {
 		$http.get('/eSafe/service/user/terminal/delete?idUser=' + userId + '&idTerminal='+ idTerminal)
-		.success(function(data){
+	    .then(function successCallback(response) {
 			$scope.atualizaListaTerminais();
-			$scope.atualizaListaTerminaisDisponiveis();
-		})
-		.error(function(data){
-			console.log('removeTerminal - Error: ' + data);
-		});
+    		$scope.atualizaListaTerminaisDisponiveis();
+	     }, function errorCallback(response) {
+	        console.log('removeTerminal - Error: ' + response.status + ' - ' + response.statusText );
+	    });	
 	};
-	
+
+	$scope.updateTerminalTables = function() {
+		$scope.atualizaListaTerminais();
+		$scope.atualizaListaTerminaisDisponiveis();
+	};
+
 	//Funções cliente x usuario
 	$scope.atualizaListaClientes = function atualizaListaClientes() {
 	    $http.get('/eSafe/service/user/client?idUser=' + userId)
-	    .success(function(data) {
-		    $scope.clientes = data;
-	    })
-	    .error(function(data) {
-	        console.log('atualizaListaClientes - Error: ' + data);
+	    .then(function successCallback(response) {
+		    $scope.clientes = response.data;
+	     }, function errorCallback(response) {
+	        console.log('atualizaListaClientes - Error: ' + response.status + ' - ' + response.statusText );
 	    });	
 	}
 
 	$scope.atualizaListaClientesDisponiveis = function atualizaListaClientesDisponiveis() {
 	    $http.get('/eSafe/service/user/client/notfrom?idUser=' + userId)
-	    .success(function(data) {
-		    $scope.clientesdisponiveis = data;
-	    })
-	    .error(function(data) {
-	        console.log('atualizaListaClientesDisponiveis - Error: ' + data);
+	    .then(function successCallback(response) {
+		    $scope.clientesdisponiveis = response.data;
+	     }, function errorCallback(response) {
+	        console.log('atualizaListaClientesDisponiveis - Error: ' + response.status + ' - ' + response.statusText );
 	    });	
 	}
 
 	$scope.addClient = function(idClient) {
 		$http.get('/eSafe/service/user/client/add?idUser=' + userId + '&idClient='+ idClient)
-		.success(function(data){
-			$scope.atualizaListaClientes();
-			$scope.atualizaListaClientesDisponiveis();
-			$scope.atualizaListaTerminais();
-			$scope.atualizaListaTerminaisDisponiveis();
-		})
-		.error(function(data){
-			console.log('addClient Error: ' + data);
+	    .then(function successCallback(response) {
+
+	    }, function errorCallback(response) {
+			console.log('addClient - Error: ' + response.status + ' - ' + response.statusText );
 		});
 	};
 	
 	$scope.removeClient  = function(idClient) {
 		$http.get('/eSafe/service/user/client/delete?idUser=' + userId + '&idClient='+ idClient)
-		.success(function(data){
+	    .then(function successCallback(response) {
 			$scope.atualizaListaClientes();
 			$scope.atualizaListaClientesDisponiveis();
 			$scope.atualizaListaTerminais();
 			$scope.atualizaListaTerminaisDisponiveis();
-		})
-		.error(function(data){
-			console.log('removeClient Error: ' + data);
+		}, function errorCallback(response) {
+			console.log('removeClient - Error: ' + response.status + ' - ' + response.statusText );
 		});
+	};
+
+	$scope.updateClientTables = function() {
+		$scope.atualizaListaClientes();
+		$scope.atualizaListaClientesDisponiveis();
 	};
 	
 });

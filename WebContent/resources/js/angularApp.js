@@ -5,10 +5,11 @@ var app = angular.module('app', ['pascalprecht.translate',
                                  'datatables']);
 
 app.config(['$locationProvider', function($locationProvider) {
+    //$locationProvider.html5Mode(true).hashPrefix('*');
     $locationProvider.html5Mode({
-    	  enabled: true,
-    	  requireBase: false
-    	});
+      	  enabled: true,
+      	  requireBase: false
+      	}).hashPrefix('*');
 }]);
 
 app.config(function ($translateProvider) {
@@ -39,6 +40,12 @@ app.config(function ($translateProvider) {
 		MENU_MANAGEMENT_TERMINAL: 'Cadastro de Terminal',
 		MENU_MANAGEMENT_STORE: 'Cadastro de Estabelecimento',
 		MENU_MANAGEMENT_CLIENT: 'Cadastro de Cliente',
+		MENU_MANAGEMENT_SYSTEM: 'Cadastro de Sistemas',
+		MENU_MANAGEMENT_FEATURE: 'Cadastro de Funcionalidades',
+		MENU_MANAGEMENT_CONTACT_TYPE: 'Tipos de contato',
+		MENU_MANAGEMENT_ADDRESS_TYPE: 'Tipos de endereço',
+		MENU_MANAGEMENT_CLIENT_ADDRESS: 'Endereços de Cliente',
+		MENU_MANAGEMENT_CLIENT_CONTACT: 'Contatos de Cliente',
 		MENU_MONITORING: 'Monitoração',
 		MENU_MONITORING_OVERVIEW: 'Visão Geral',
 		MENU_MONITORING_TERMINALS: 'Monitoração de Terminais',

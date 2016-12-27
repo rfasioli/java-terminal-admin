@@ -1,10 +1,12 @@
-app.controller('ngMenu', function($scope, $http, $location) {
-    var userId = $location.search().id;
+app.controller('ngMenu', function($scope, $http) {
+    //var userId = $location.search().id;
     $http.get('/eSafe/service/feature/menu')
-    .success(function(data) {
-	    $scope.menu = data;
-    })
-    .error(function(data) {
-        console.log('ngMenu - Error: ' + data);
+    .then(function successCallback(response) {
+    	if (response.status >= 200 && response.status <= 299)
+    		$scope.menu = response.data;
+    	else
+            console.log('ngMenu - Error: ' + response.status + ' - ' + response.statusText );    		
+     }, function errorCallback(response) {
+        console.log('ngMenu - Error: ' + response.status + ' - ' + response.statusText );
     });	
 });
