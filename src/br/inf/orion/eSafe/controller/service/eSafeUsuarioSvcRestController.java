@@ -44,21 +44,29 @@ public class eSafeUsuarioSvcRestController {
 		   List<UsuarioTerminalKey> usrTerminais = UsuarioTerminalServiceDao.getByUsuario(idUser);
 	       List<Terminal> terminais = new ArrayList<Terminal>();
 	       List<Integer> filter = new ArrayList<Integer>();
-	       Integer idCliente = 1; //TODO - obter cliente para usuario
+	       
+	       List<UsuarioClienteKey> clientes = UsuarioClienteServiceDao.getByUsuario(idUser);
 	       
 		   for (UsuarioTerminalKey usuarioTerminal : usrTerminais) {
 			   br.inf.orion.eSafe.model.Terminal terminal = 
 					   br.inf.orion.eSafe.service.dao.TerminalServiceDao.getByTerminal
 					   (usuarioTerminal.getIdTerminal());
 			   if(terminal != null) {
-				   idCliente = terminal.getIdCliente();
 				   filter.add(terminal.getIdTerminal());
 			   }
 		   }
-		   if (!filter.isEmpty())
-			   terminais = TerminalServiceDao.getByIdNotIn(idCliente, filter);
-		   else
-			   terminais = TerminalServiceDao.getAll(idCliente);
+		   
+		   for (UsuarioClienteKey usuarioClienteKey : clientes) {
+			   System.out.println("listAllTerminalsNotForUser -> Cliente: " + usuarioClienteKey.getIdCliente());
+			   if (!filter.isEmpty()) {
+				   System.out.println("listAllTerminalsNotForUser -> terminais: " + TerminalServiceDao.getByIdNotIn(usuarioClienteKey.getIdCliente(), filter).size());
+				   terminais.addAll(TerminalServiceDao.getByIdNotIn(usuarioClienteKey.getIdCliente(), filter));
+			   }
+			   else {
+				   System.out.println("listAllTerminalsNotForUser -> terminais: " + TerminalServiceDao.getAll(usuarioClienteKey.getIdCliente()).size());
+				   terminais.addAll(TerminalServiceDao.getAll(usuarioClienteKey.getIdCliente()));
+			   }
+		   }
 			   
 	       if(terminais.isEmpty()){
 	           return new ResponseEntity<List<Terminal>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND

@@ -19,67 +19,82 @@
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="id">{{'USER_ID' | translate}}:</label>
+					<label class="control-label col-sm-2" for="idUsuario">{{'USER_ID'
+						| translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="id" id="id" class="form-control input-sm" readonly="true" />
+						<form:input type="text" path="idUsuario" 
+							class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="login">{{'USER_LOGIN' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsLogin">{{'USER_LOGIN'
+						| translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="login" id="login" class="form-control input-sm"/>
-						<form:errors path="login" cssClass="error" />
+						<form:input type="text" path="dsLogin" 
+							class="form-control input-sm" />
+						<form:errors path="dsLogin" cssClass="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">{{'USER_EMAIL' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsEmail">{{'USER_EMAIL'
+						| translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="email" id="email" class="form-control input-sm"/>
-						<form:errors path="email" cssStyle="color: red;" />
+						<form:input type="text" path="dsEmail" 
+							class="form-control input-sm" />
+						<form:errors path="dsEmail" cssStyle="color: red;" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="senha">{{'USER_PASSWORD' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsSenha">{{'USER_PASSWORD'
+						| translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="password" path="senha" id="senha" class="form-control input-sm"/>
-						<form:errors path="senha" cssClass="error" />
+						<form:input type="password" path="dsSenha" 
+							class="form-control input-sm" />
+						<form:errors path="dsSenha" cssClass="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="nome">{{'USER_NAME' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsNomeUsuario">{{'USER_NAME'
+						| translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="nome" id="nome" class="form-control input-sm"/>
-						<form:errors path="nome" cssClass="error" />
+						<form:input type="text" path="dsNomeUsuario" 
+							class="form-control input-sm" />
+						<form:errors path="dsNomeUsuario" cssClass="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="dataCriacao">{{'USER_DT_CREATE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dtCriacao">{{'USER_DT_CREATE'
+						| translate}}:</label>
+					<div class="col-sm-10" >
+						<form:input type="date" path="dtCriacao" id="dataCriacao" value="${now}"
+							class="datepicker form-control input-sm" readonly="true" />
+						<form:errors path="dtCriacao" cssClass="error" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="dtAlteracao">{{'USER_DT_UPDATE'
+						| translate}}:</label>
 					<div class="col-sm-10" ng-controller="loadDate">
-					  <form:input type="date" path="dataCriacao" id="dataCriacao" class="datepicker form-control input-sm" readonly="true" />
-					  <form:errors path="dataCriacao" cssClass="error" />
+						<form:input type="date" path="dtAlteracao" id="dataAlteracao"
+							class="datepicker form-control input-sm" readonly="true" />
+						<form:errors path="dtAlteracao" cssClass="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="dataAlteracao">{{'USER_DT_UPDATE' | translate}}:</label>
-					<div class="col-sm-10" ng-controller="loadDate">
-					  <form:input type="date" path="dataAlteracao" id="dataAlteracao" class="datepicker form-control input-sm" readonly="true" />
-					  <form:errors path="dataAlteracao" cssClass="error" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="ativo">{{'USER_ACTIVE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="icAtivo">{{'USER_ACTIVE'
+						| translate}}:</label>
 					<div class="col-sm-10">
-						<form:checkbox path="ativo" />
+						<form:checkbox path="icAtivo" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="idPerfil">{{'USER_PROFILE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="idPerfil">{{'USER_PROFILE'
+						| translate}}:</label>
 					<div class="col-sm-10">
-					    <select class="form-control" id="idPerfil" name="idPerfil">
-					      <c:forEach items="${perfis}" var="option">
-					      	<option value="<c:out value="${option.id}"></c:out>" <c:if test="${usuario.idPerfil == option.id}">selected</c:if>>{{"<c:out value='${option.descricao}'></c:out>" | translate}}</option> 
-						  </c:forEach>
-					    </select>
+					 	<form:select class="form-control" path="idPerfil">							
+							<form:option value="-1">-- {{"SELECT" | translate}} --</form:option>
+							<form:options items="${perfis}" itemValue="idPerfil" itemLabel="dsPerfil" />
+						</form:select>					     
 						<form:errors path="idPerfil" cssClass="error" />
 					</div>
 				</div>
@@ -154,10 +169,10 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="cliente in clientes">
-									<td>{{cliente.id}}</td>
-									<td>{{cliente.nomeFantasia}}</td>
+									<td>{{cliente.idCliente}}</td>
+									<td>{{cliente.dsNomeFantasia}}</td>
 									<td><i class="fa fa-eraser" aria-hidden="true" 
-										   ng-click="removeClient(cliente.id);"></i></td>
+										   ng-click="removeClient(cliente.idCliente);"></i></td>
 								</tr>
 							</tbody>
 						</table>
@@ -241,8 +256,8 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="cliente in clientesdisponiveis">
-									<td id="idCliente">{{cliente.id}}</td>
-									<td id="dsRazaoSocial">{{cliente.nomeFantasia}}</td>
+									<td id="idCliente">{{cliente.idCliente}}</td>
+									<td id="dsRazaoSocial">{{cliente.dsNomeFantasia}}</td>
 								</tr>
 							</tbody>
 						</table>

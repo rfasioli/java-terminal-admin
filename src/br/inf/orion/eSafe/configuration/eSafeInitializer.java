@@ -8,7 +8,6 @@ public class eSafeInitializer extends AbstractAnnotationConfigDispatcherServletI
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-//		System.out.println("eSafeInitializer::getRootConfigClasses");
         return new Class[] { eSafeConfiguration.class };
 	}
 
@@ -19,7 +18,6 @@ public class eSafeInitializer extends AbstractAnnotationConfigDispatcherServletI
 
 	@Override
 	protected String[] getServletMappings() {
-//		System.out.println("eSafeInitializer::getServletMappings");
 		return new String[] { "/" };
 	}
 

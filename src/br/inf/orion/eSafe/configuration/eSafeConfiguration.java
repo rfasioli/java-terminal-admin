@@ -31,6 +31,7 @@ public class eSafeConfiguration extends WebMvcConfigurerAdapter {
 	    registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/").setCachePeriod(31556926);
 	    registry.addResourceHandler("/fonts/**").addResourceLocations("/resources/fonts/").setCachePeriod(31556926);
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+	    registry.addResourceHandler("/data/**").addResourceLocations("/resources/data/").setCachePeriod(31556926);
  	}	
 
 	@Override

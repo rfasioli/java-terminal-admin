@@ -9,8 +9,8 @@ import javax.validation.constraints.*;
 public class PerfilContants implements Serializable {
 
 	public enum TipoPerfilEnum{
-		MASTER(0, "TIPO_PERFIL_MASTER"),
-		CLIENTE(1, "TIPO_PERFIL_CLIENTE");
+		MASTER(0, "{{'TIPO_PERFIL_MASTER' | translate}}"),
+		CLIENTE(1, "{{'TIPO_PERFIL_CLIENTE' | translate}}");
 
 		private final int valor;
 		private final String tag;
@@ -29,12 +29,12 @@ public class PerfilContants implements Serializable {
 	}
 
 	public enum NivelPerfilEnum{
-		MASTER(0, "NIVEL_PERFIL_MASTER"),
-		CLIENTE(1, "NIVEL_PERFIL_CLIENTE"),
-		REGIAO(2, "NIVEL_PERFIL_REGIAO"),
-		FILIAL(3, "NIVEL_PERFIL_FILIAL"),
-		FORNECEDOR(4, "NIVEL_PERFIL_FORNECEDOR"),
-		ESTABELECIMENTO(5, "NIVEL_PERFIL_ESTABELECIMENTO");
+		MASTER(0, "{{'NIVEL_PERFIL_MASTER' | translate}}"),
+		CLIENTE(1, "{{'NIVEL_PERFIL_CLIENTE' | translate}}"),
+		REGIAO(2, "{{'NIVEL_PERFIL_REGIAO' | translate}}"),
+		FILIAL(3, "{{'NIVEL_PERFIL_FILIAL' | translate}}"),
+		FORNECEDOR(4, "{{'NIVEL_PERFIL_FORNECEDOR' | translate}}"),
+		ESTABELECIMENTO(5, "{{'NIVEL_PERFIL_ESTABELECIMENTO' | translate}}");
 
 		private final int valor;
 		private final String tag;

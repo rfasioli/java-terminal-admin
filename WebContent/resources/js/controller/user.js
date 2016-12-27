@@ -70,6 +70,8 @@ app.controller('ngUserInitialize', function($scope, $http, $location) {
 		.success(function(data){
 			$scope.atualizaListaClientes();
 			$scope.atualizaListaClientesDisponiveis();
+			$scope.atualizaListaTerminais();
+			$scope.atualizaListaTerminaisDisponiveis();
 		})
 		.error(function(data){
 			console.log('addClient Error: ' + data);
@@ -81,9 +83,11 @@ app.controller('ngUserInitialize', function($scope, $http, $location) {
 		.success(function(data){
 			$scope.atualizaListaClientes();
 			$scope.atualizaListaClientesDisponiveis();
+			$scope.atualizaListaTerminais();
+			$scope.atualizaListaTerminaisDisponiveis();
 		})
 		.error(function(data){
-			console.log('addClient Error: ' + data);
+			console.log('removeClient Error: ' + data);
 		});
 	};
 	

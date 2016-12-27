@@ -10,7 +10,8 @@
 	</a>&nbsp; {{'DELETE' | translate}}
 </h4>
 <div class="box box-primary">
-	<form action="<c:url value=''/>" method="POST" class="form-horizontal">
+	<c:url var="post_url" value="/management/client/delete" />	
+	<form:form method="POST" modelAttribute="client" class="form-horizontal" action="${post_url}">
 		<div class="box-header with-border">
 			<input type="submit" value="{{'CONFIRM' | translate}}"
 				class="btn btn-success btn-flat pull-right" />
@@ -19,50 +20,50 @@
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">{{'CLIENTE_ID' | translate}}:</label>
+					<label class="control-label col-sm-2" for="idCliente">{{'CLIENT_ID' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="id" id="id">${client.id}</label>
+						<form:input type="text" path="idCliente" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="nomeFantasia">{{'CLIENT_FANTASY_NAME' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsNomeFantasia">{{'CLIENT_FANTASY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="nomeFantasia" id="nomeFantasia">${client.nomeFantasia}</label>
+						<form:input type="text" path="dsNomeFantasia" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="razaoSocial">{{'CLIENT_COMPANY_NAME' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsRazaoSocial">{{'CLIENT_COMPANY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="razaoSocial" id="razaoSocial">${client.razaoSocial}</label>
+						<form:input type="text" path="dsRazaoSocial" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="cnpj">{{'CLIENT_DOCUMENT' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsCnpj">{{'CLIENT_DOCUMENT' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="cnpj" id="cnpj">${client.cnpj}</label>
+						<form:input type="text" path="dsCnpj" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="dataCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dtCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="dataCadastro" id="dataCadastro">${client.dataCadastro}</label>
+					  <form:input type="datepicker" path="dtCadastro" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="ativo">{{'CLIENT_ACTIVE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="icAtivo">{{'CLIENT_ACTIVE' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="ativo" id="ativo">${client.ativo}</label>
+						<form:checkbox path="icAtivo" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="conexao">{{'CLIENT_CONNECTION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsConexao">{{'CLIENT_CONNECTION' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="conexao" id="conexao">${client.conexao}</label>
+						<form:input type="text" path="dsConexao" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+	</form:form>
 </div>
 
 

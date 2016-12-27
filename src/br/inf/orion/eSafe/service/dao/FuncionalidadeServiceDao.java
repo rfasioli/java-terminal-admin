@@ -37,19 +37,41 @@ public class FuncionalidadeServiceDao {
 	public static Funcionalidade getById(int id) {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		FuncionalidadeMapper mapper = session.getMapper(FuncionalidadeMapper.class);
-		Funcionalidade Funcionalidade = mapper.selectByPrimaryKey(id);
+		Funcionalidade funcionalidade = mapper.selectByPrimaryKey(id);
 		session.commit();
 		session.close();
-		return Funcionalidade;
+		return funcionalidade;
 	}
 
 	public static List<Funcionalidade> getAll() {
 		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 		FuncionalidadeMapper mapper = session.getMapper(FuncionalidadeMapper.class);
-		List<Funcionalidade> Funcionalidades = mapper.selectByExample(new FuncionalidadeExample());
+		List<Funcionalidade> funcionalidade = mapper.selectByExample(new FuncionalidadeExample());
 		session.commit();
 		session.close();
-		return Funcionalidades;
+		return funcionalidade;
 	}
 
+	public static List<Funcionalidade> getRootFeatures() {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+		FuncionalidadeMapper mapper = session.getMapper(FuncionalidadeMapper.class);
+		FuncionalidadeExample filter = new FuncionalidadeExample();
+		filter.createCriteria().andIdFuncionalidadeAnteriorIsNull();
+		List<Funcionalidade> funcionalidades = mapper.selectByExample(filter);
+		session.commit();
+		session.close();
+		return funcionalidades;
+	}
+	
+	public static List<Funcionalidade> getByPreviousId(int id) {
+		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+		FuncionalidadeMapper mapper = session.getMapper(FuncionalidadeMapper.class);
+		FuncionalidadeExample filter = new FuncionalidadeExample();
+		filter.createCriteria().andIdFuncionalidadeAnteriorEqualTo(id);
+		List<Funcionalidade> funcionalidades = mapper.selectByExample(filter);
+		session.commit();
+		session.close();
+		return funcionalidades;
+	}
+	
 }

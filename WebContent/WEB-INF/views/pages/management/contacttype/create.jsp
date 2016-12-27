@@ -22,19 +22,19 @@
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="descricao">{{'CONTACT_TYPE_ID' | translate}}:</label>
+					<label class="control-label col-sm-2" for="tpContato">{{'CONTACT_TYPE_ID' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="tipo" id="tipo"
+						<form:input type="text" path="tpContato" id="tpContato"
 							class="form-control input-sm" />
-						<form:errors path="tipo" cssClass="error" />
+						<form:errors path="tpContato" cssClass="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="descricao">{{'CONTACT_TYPE_DESCRIPTION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsTipoContato">{{'CONTACT_TYPE_DESCRIPTION' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="descricao" id="descricao"
+						<form:input type="text" path="dsTipoContato" id="dsTipoContato"
 							class="form-control input-sm" />
-						<form:errors path="descricao" cssClass="error" />
+						<form:errors path="dsTipoContato" cssClass="error" />
 					</div>
 				</div>
 			</div>

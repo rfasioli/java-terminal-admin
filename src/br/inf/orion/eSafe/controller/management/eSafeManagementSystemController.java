@@ -49,8 +49,8 @@ public class eSafeManagementSystemController {
 	}	
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String getSistemaDeletePage(ModelMap model, @RequestParam int type) {
-		Sistema sistema = SistemaServiceDao.getByType(type);
+	public String getSistemaDeletePage(ModelMap model, @RequestParam int idSistema) {
+		Sistema sistema = SistemaServiceDao.getByType(idSistema);
 		model.addAttribute("sistema", sistema);
 		return base_url + "/delete";
 	}
@@ -65,15 +65,15 @@ public class eSafeManagementSystemController {
 	}
 	
 	@RequestMapping(value = "/details", method = RequestMethod.GET)
-	public String getSistemaDetailsPage(ModelMap model, @RequestParam int type) {
-		Sistema sistema = SistemaServiceDao.getByType(type);
+	public String getSistemaDetailsPage(ModelMap model, @RequestParam int idSistema) {
+		Sistema sistema = SistemaServiceDao.getByType(idSistema);
 		model.addAttribute("sistema", sistema);
 		return base_url + "/details";
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String getSistemaEditPage(ModelMap model, @RequestParam int type) {
-		Sistema sistema = SistemaServiceDao.getByType(type);
+	public String getSistemaEditPage(ModelMap model, @RequestParam int idSistema) {
+		Sistema sistema = SistemaServiceDao.getByType(idSistema);
 		model.addAttribute("sistema", sistema);
 		return base_url + "/edit";
 	}

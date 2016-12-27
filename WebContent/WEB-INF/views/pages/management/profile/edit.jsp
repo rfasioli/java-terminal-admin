@@ -11,7 +11,7 @@
 </h4>
 <div class="box box-primary">
 	<c:url value="#" var="theAction"/>
-	<form:form action="${theAction}" method="POST" class="form-horizontal">
+	<form:form modelAttribute="profile" action="${theAction}" method="POST" class="form-horizontal">
 		<div class="box-header with-border">
 			<input type="submit" value="{{'SAVE' | translate}}"	class="btn btn-success btn-flat pull-right" />
 			<h5>{{'PROFILE' | translate}}</h5>
@@ -19,37 +19,36 @@
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="id">{{'PROFILE_ID' | translate}}:</label>
+					<label class="control-label col-sm-2" for="idPerfil">{{'PROFILE_ID' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="id" id="id">${profile.id}</label>
+						<form:input type="text" path="idPerfil" id="idPerfil"  class="form-control input-sm" readonly="true"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="descricao">{{'PROFILE_DESCRIPTION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsPerfil">{{'PROFILE_DESCRIPTION' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="descricao" value="${profile.descricao}" id="descricao" />
+						<form:input type="text" path="dsPerfil" id="dsPerfil"  class="form-control input-sm" />
+						<form:errors path="dsPerfil" cssClass="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="tipo">{{'PROFILE_TYPE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="tpPerfil">{{'PROFILE_TYPE' | translate}}:</label>
 					<div class="col-sm-10">
-					    <select class="form-control" id="tipo" name="tipo">
-					      <c:forEach items="${profileTypes}" var="option">
-					      	<option value="<c:out value="${option.valor}"></c:out>" <c:if test="${profile.tipo == option.valor}">selected</c:if>>{{"<c:out value='${option.tag}'></c:out>" | translate}}</option> 
-						  </c:forEach>
-					    </select>
-						<form:errors path="tipo" cssClass="error" />
+					 	<form:select class="form-control" path="tpPerfil">							
+							<form:option value="-1">-- {{"SELECT" | translate}} --</form:option>
+							<form:options items="${profileTypes}" itemValue="valor" itemLabel="tag" />
+						</form:select>					     
+						<form:errors path="tpPerfil" cssClass="error" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="nivel">{{'PROFILE_LEVEL' | translate}}:</label>
+					<label class="control-label col-sm-2" for="icNivel">{{'PROFILE_LEVEL' | translate}}:</label>
 					<div class="col-sm-10">
-					    <select class="form-control" id="nivel" name="nivel">
-					      <c:forEach items="${profileLevels}" var="option">
-					      	<option value="<c:out value="${option.valor}"></c:out>" <c:if test="${profile.nivel == option.valor}">selected</c:if>>{{"<c:out value='${option.tag}'></c:out>" | translate}}</option> 
-						  </c:forEach>
-					    </select>
-						<form:errors path="nivel" cssClass="error" />
+					 	<form:select class="form-control" path="icNivel">							
+							<form:option value="-1">-- {{"SELECT" | translate}} --</form:option>
+							<form:options items="${profileLevels}" itemValue="valor" itemLabel="tag" />
+						</form:select>					     
+						<form:errors path="icNivel" cssClass="error" />
 					</div>
 				</div>
 			</div>

@@ -18,7 +18,7 @@
 				    <select class="form-control" id="cliente" name="cliente" onclick="">
 						<option value="-1" > -- {{"SELECT" | translate}} -- </option> 
 						<c:forEach items="${clientes}" var="option">
-							<option value="<c:out value="${option.id}"></c:out>" ><c:out value='${option.nomeFantasia}'></c:out></option> 
+							<option value="<c:out value="${option.idCliente}"></c:out>" ><c:out value='${option.dsNomeFantasia}'></c:out></option> 
 						</c:forEach>
 					</select>
 				</div>
@@ -26,7 +26,7 @@
 		</c:if>
 		
 
-		<table class="table table-striped table-condensed ">
+		<table id="contacts" class="table table-striped table-condensed ">
 		  <thead>
 			<tr>
 				<th>{{'CLIENT' | translate}}</th>
@@ -42,7 +42,7 @@
 						<td><c:out value="${clContato.idCliente}"/></td>
 						<td>
 					      <c:forEach items="${tiposContato}" var="option">
-					      	<c:if test="${clContato.tipoContato == option.tipo}">{{"<c:out value='${option.descricao}'></c:out>" | translate}}</c:if> 
+					      	<c:if test="${clContato.tpContato == option.tpContato}">{{"<c:out value='${option.dsContato}'></c:out>" | translate}}</c:if> 
 						  </c:forEach>
 						</td>
 						<td><c:out value="${clContato.descricao}"/></td>
@@ -58,6 +58,12 @@
 	</div>
 </div>
 
-
-
+<script>
+$(document).ready(function() {
+    var table = $('#contacts').DataTable({
+    	        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+			    "language": { "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json" }
+    	    }); 
+} );
+</script>
 

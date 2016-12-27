@@ -1,7 +1,5 @@
 package br.inf.orion.eSafe.controller.management;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -24,16 +22,16 @@ public class eSafeManagementFeaturesController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getPage(ModelMap model) {
-		List<Funcionalidade> funcionalidades = FuncionalidadeServiceDao.getAll();
-		model.addAttribute("funcionalidades", funcionalidades);
+		model.addAttribute("funcionalidades", FuncionalidadeServiceDao.getAll());
+		model.addAttribute("funcAnteriores", FuncionalidadeServiceDao.getRootFeatures());
 		model.addAttribute("sistemas", SistemaServiceDao.getAll());
 		return base_url;
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String getCreatePage(ModelMap model) {
-		Funcionalidade funcionalidade = new Funcionalidade();
-		model.addAttribute("funcionalidade", funcionalidade);
+		model.addAttribute("funcionalidade", new Funcionalidade());
+		model.addAttribute("funcAnteriores", FuncionalidadeServiceDao.getRootFeatures());
 		model.addAttribute("sistemas", SistemaServiceDao.getAll());
 		return base_url + "/create";
 	}
@@ -45,10 +43,11 @@ public class eSafeManagementFeaturesController {
 		if(!result.hasErrors()){
 			FuncionalidadeServiceDao.save(funcionalidade);
 			model.addAttribute("sistemas", SistemaServiceDao.getAll());
-			return new ModelAndView("redirect:/" + base_url + "/edit?id=" + funcionalidade.getIdFuncionalidade(), "funcionalidade", funcionalidade);
+			return new ModelAndView("redirect:/" + base_url, "funcionalidades", FuncionalidadeServiceDao.getAll());
 		}
 		else {
 			model.addAttribute("funcionalidade", funcionalidade);
+			model.addAttribute("funcAnteriores", FuncionalidadeServiceDao.getRootFeatures());
 			model.addAttribute("sistemas", SistemaServiceDao.getAll());
 			return new ModelAndView(base_url + "/create", "funcionalidade", funcionalidade);
 		}
@@ -56,8 +55,8 @@ public class eSafeManagementFeaturesController {
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String getDeletePage(ModelMap model, @RequestParam int id) {
-		Funcionalidade funcionalidade = FuncionalidadeServiceDao.getById(id);
-		model.addAttribute("funcionalidade", funcionalidade);
+		model.addAttribute("funcionalidade", FuncionalidadeServiceDao.getById(id));
+		model.addAttribute("funcAnteriores", FuncionalidadeServiceDao.getRootFeatures());
 		model.addAttribute("sistemas", SistemaServiceDao.getAll());
 		return base_url + "/delete";
 	}
@@ -69,22 +68,23 @@ public class eSafeManagementFeaturesController {
 			FuncionalidadeServiceDao.delete(funcionalidade.getIdFuncionalidade());
 		}
 		model.addAttribute("funcionalidades", FuncionalidadeServiceDao.getAll());
+		model.addAttribute("funcAnteriores", FuncionalidadeServiceDao.getRootFeatures());
 		model.addAttribute("sistemas", SistemaServiceDao.getAll());
 		return "redirect:/" + base_url;
 	}
 	
 	@RequestMapping(value = "/details", method = RequestMethod.GET)
 	public String getDetailsPage(ModelMap model, @RequestParam int id) {
-		Funcionalidade funcionalidade = FuncionalidadeServiceDao.getById(id);
-		model.addAttribute("funcionalidade", funcionalidade);
+		model.addAttribute("funcionalidade", FuncionalidadeServiceDao.getById(id));
+		model.addAttribute("funcAnteriores", FuncionalidadeServiceDao.getRootFeatures());
 		model.addAttribute("sistemas", SistemaServiceDao.getAll());
 		return base_url + "/details";
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String getEditPage(ModelMap model, @RequestParam int id) {
-		Funcionalidade funcionalidade = FuncionalidadeServiceDao.getById(id);
-		model.addAttribute("funcionalidade", funcionalidade);
+		model.addAttribute("funcionalidade", FuncionalidadeServiceDao.getById(id));
+		model.addAttribute("funcAnteriores", FuncionalidadeServiceDao.getRootFeatures());
 		model.addAttribute("sistemas", SistemaServiceDao.getAll());
 		return base_url + "/edit";
 	}
@@ -98,6 +98,7 @@ public class eSafeManagementFeaturesController {
 			FuncionalidadeServiceDao.update(funcionalidade);
 		}
 		model.addAttribute("funcionalidades", FuncionalidadeServiceDao.getAll());
+		model.addAttribute("funcAnteriores", FuncionalidadeServiceDao.getRootFeatures());
 		model.addAttribute("sistemas", SistemaServiceDao.getAll());
 		return "redirect:/" + base_url;
 	}

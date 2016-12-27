@@ -67,7 +67,7 @@
 </div>
 
 <script>
-	$("#dataCadastro").datepicker();
+	$("#dataCadastro").datepicker({dateFormat: 'dd/mm/yy'});
 </script>
 
 

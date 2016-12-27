@@ -10,59 +10,67 @@
 	</a>&nbsp; {{'EDIT' | translate}}
 </h4>
 <div class="box box-primary">
-	<form action="<c:url value=''/>" method="POST" class="form-horizontal">
+	<c:url var="post_url" value="/management/client/edit" />	
+	<form:form method="POST" modelAttribute="client" class="form-horizontal" action="${post_url}">
 		<div class="box-header with-border">
 			<input type="submit" value="{{'SAVE' | translate}}"	class="btn btn-success btn-flat pull-right" />
 			<h5>{{'CLIENT' | translate}}</h5>
 		</div>
 		<div class="form-container">
 			<div class="box-body form-horizontal">
+				<c:forEach items="${errors}" var="error">
+				    <%-- do want you want with ${error} --%>
+				    <c:out value="${error.defaultMessage}" />
+				</c:forEach>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="id">{{'CLIENT_ID' | translate}}:</label>
+					<label class="control-label col-sm-2" for="idCliente">{{'CLIENT_ID' | translate}}:</label>
 					<div class="col-sm-10">
-						<label for="id" id="id">${client.id}</label>
+						<form:input type="text" path="idCliente" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="nomeFantasia">{{'CLIENT_FANTASY_NAME' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsNomeFantasia">{{'CLIENT_FANTASY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="nomeFantasia" value="${client.nomeFantasia}" id="nomeFantasia" />
+						<form:input type="text" path="dsNomeFantasia" class="form-control input-sm"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="razaoSocial">{{'CLIENT_COMPANY_NAME' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsRazaoSocial">{{'CLIENT_COMPANY_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="razaoSocial" value="${client.razaoSocial}" id="razaoSocial" />
+						<form:input type="text" path="dsRazaoSocial" class="form-control input-sm"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="cnpj">{{'CLIENT_DOCUMENT' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsCnpj">{{'CLIENT_DOCUMENT' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="cnpj" value="${client.cnpj}" id="cnpj" />
+						<form:input type="text" path="dsCnpj" class="form-control input-sm"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="dataCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
-					<div class="col-sm-10">
-						<input type="text" name="dataCadastro" value="${client.dataCadastro}" id="dataCadastro" />
+					<label class="control-label col-sm-2" for="dtCadastro">{{'CLIENT_DATE_INCLUSION' | translate}}:</label>
+					<div class="col-sm-10" ng-controller="loadDate">
+					  <form:input type="datepicker" path="dtCadastro" id="dataCadastro" class="form-control input-sm"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="ativo">{{'CLIENT_ACTIVE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="icAtivo">{{'CLIENT_ACTIVE' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="ativo" value="${client.ativo}" id="ativo" />
+						<form:checkbox path="icAtivo" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="conexao">{{'CLIENT_CONNECTION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsConexao">{{'CLIENT_CONNECTION' | translate}}:</label>
 					<div class="col-sm-10">
-						<input type="text" name="conexao" value="${client.conexao}" id="conexao" />
+						<form:input type="text" path="dsConexao" class="form-control input-sm"/>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+	</form:form>
 </div>
 
+<script>
+	$("#dataCadastro").datepicker({dateFormat: 'dd/mm/yy'});
+</script>
 
 

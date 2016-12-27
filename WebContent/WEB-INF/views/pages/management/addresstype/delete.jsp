@@ -20,16 +20,16 @@
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="descricao">{{'ADDRESS_TYPE_ID' | translate}}:</label>
+					<label class="control-label col-sm-2" for="tpEndereco">{{'ADDRESS_TYPE_ID' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="tipo" id="tipo"
+						<form:input type="text" path="tpEndereco" id="tpEndereco"
 							class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="descricao">{{'ADDRESS_TYPE_DESCRIPTION' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsTipoEndereco">{{'ADDRESS_TYPE_DESCRIPTION' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="descricao" id="descricao"
+						<form:input type="text" path="dsTipoEndereco" id="dsTipoEndereco"
 							class="form-control input-sm" readonly="true" />
 					</div>
 				</div>

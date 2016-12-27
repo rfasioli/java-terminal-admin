@@ -1,12 +1,17 @@
 package br.inf.orion.eSafe.controller.management;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +27,11 @@ public class eSafeManagementClientController {
 
 	protected final static String base_url = "management/client";
 		
+	@InitBinder     
+	public void initBinder(WebDataBinder binder){
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true, 10));   
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getPage(ModelMap model) {
 		List<Cliente> clients = ClienteServiceDao.getAll();
@@ -40,7 +50,7 @@ public class eSafeManagementClientController {
 	public ModelAndView postCreatePage(@Valid @ModelAttribute(value="client") Cliente client, BindingResult result, ModelMap model){
 		if(!result.hasErrors()){
 			ClienteServiceDao.save(client);
-			return new ModelAndView(base_url, "clients", ClienteServiceDao.getAll());
+			return new ModelAndView("redirect:/" + base_url, "clients", ClienteServiceDao.getAll());
 		}
 		else {
 			model.addAttribute("client", client);
@@ -62,7 +72,7 @@ public class eSafeManagementClientController {
 			ClienteServiceDao.delete(client.getIdCliente());
 		}
 		model.addAttribute("clients", ClienteServiceDao.getAll());
-		return base_url;
+		return "redirect:/" + base_url;
 	}
 	
 	@RequestMapping(value = "/details", method = RequestMethod.GET)
@@ -80,13 +90,17 @@ public class eSafeManagementClientController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public String postEditPage(@ModelAttribute(value="client") Cliente client, BindingResult result, ModelMap model) {
+	public ModelAndView postEditPage(@ModelAttribute(value="client") Cliente client, BindingResult result, ModelMap model) {
 		//validator.validate(user, result);
 		if(!result.hasErrors()){
 			ClienteServiceDao.update(client);
+			model.addAttribute("clients", ClienteServiceDao.getAll());
+			return new ModelAndView("redirect:/" + base_url);
 		}
-		model.addAttribute("clients", ClienteServiceDao.getAll());
-		return base_url;
+		else {
+			model.addAttribute("errors", result.getAllErrors());
+			return new ModelAndView(base_url + "/edit", "client", client);
+		}
 	}
 	
 }

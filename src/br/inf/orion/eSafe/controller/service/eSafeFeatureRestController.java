@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.inf.orion.eSafe.model.Cliente;
+import br.inf.orion.eSafe.model.Funcionalidade;
 import br.inf.orion.eSafe.model.FuncionalidadeClienteKey;
 import br.inf.orion.eSafe.model.FuncionalidadePerfilKey;
+import br.inf.orion.eSafe.model.Menu;
 import br.inf.orion.eSafe.model.Perfil;
 import br.inf.orion.eSafe.service.dao.ClienteServiceDao;
 import br.inf.orion.eSafe.service.dao.FuncionalidadeClienteServiceDao;
 import br.inf.orion.eSafe.service.dao.FuncionalidadePerfilServiceDao;
+import br.inf.orion.eSafe.service.dao.FuncionalidadeServiceDao;
 import br.inf.orion.eSafe.service.dao.PerfilServiceDao;
 
 @RestController
@@ -156,6 +159,25 @@ public class eSafeFeatureRestController {
 	@RequestMapping(value = "/profile/add", method = RequestMethod.GET)
 	public ResponseEntity addProfileGET(Integer idFeature, Integer idProfile) {
 		return addProfile(idFeature, idProfile);
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/menu", method = RequestMethod.GET)
+	public ResponseEntity<List<Menu>> getMenu(Integer idUser) {
+		List<Menu> menus =  new ArrayList<Menu>();
+		List<Funcionalidade> rootFeatures = FuncionalidadeServiceDao.getRootFeatures();
+		for (Funcionalidade rootFeature : rootFeatures) {
+			Menu menu = new Menu(rootFeature);
+			menu.setSubmenus(FuncionalidadeServiceDao.getByPreviousId(rootFeature.getIdFuncionalidade()));
+			menus.add (menu);
+		}
+		
+		if(menus.isEmpty())
+			return new ResponseEntity<List<Menu>>(HttpStatus.NO_CONTENT);
+		
+		return new ResponseEntity<List<Menu>>(menus, HttpStatus.OK);
 	}
 	
 }

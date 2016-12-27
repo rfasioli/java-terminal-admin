@@ -26,7 +26,7 @@
 		</c:if>
 		
 
-		<table class="table table-striped table-condensed ">
+		<table id="adresses" class="table table-striped table-condensed ">
 		  <thead>
 			<tr>
 				<th>{{'CLIENT' | translate}}</th>
@@ -43,14 +43,14 @@
 						<td><c:out value="${clEndereco.idCliente}"/></td>
 						<td>
 					      <c:forEach items="${tiposEndereco}" var="option">
-					      	<c:if test="${clEndereco.tipoEndereco == option.tipo}">{{"<c:out value='${option.descricao}'></c:out>" | translate}}</c:if> 
+					      	<c:if test="${clEndereco.tpEndereco == option.tpEndereco}">{{"<c:out value='${option.dsTipoEndereco}'></c:out>" | translate}}</c:if> 
 						  </c:forEach>
 						</td>
-						<td><c:out value="${clEndereco.logradouro}"/></td>
-						<td><c:out value="${clEndereco.cidade}"/></td>
-						<td><a href="<c:url value='/management/profile/edit'/>?id=${profile.id}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-						  | <a href="<c:url value='/management/profile/details'/>?id=${profile.id}"><i class="fa fa-search" aria-hidden="true"></i></a>
-						  | <a href="<c:url value='/management/profile/delete'/>?id=${profile.id}"><i class="fa fa-eraser" aria-hidden="true"></i></a>
+						<td><c:out value="${clEndereco.dsLogradouro}"/></td>
+						<td><c:out value="${clEndereco.dsCidade}"/></td>
+						<td><a href="<c:url value='/management/client/address/edit'/>?id=${profile.id}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						  | <a href="<c:url value='/management/client/address/details'/>?id=${profile.id}"><i class="fa fa-search" aria-hidden="true"></i></a>
+						  | <a href="<c:url value='/management/client/address/delete'/>?id=${profile.id}"><i class="fa fa-eraser" aria-hidden="true"></i></a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -61,5 +61,13 @@
 </div>
 
 
+<script>
+$(document).ready(function() {
+    var table = $('#adresses').DataTable({
+    	        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+			    "language": { "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json" }
+    	    }); 
+} );
+</script>
 
 

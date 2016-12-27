@@ -125,7 +125,24 @@ app.config(function ($translateProvider) {
 		CLIENT_CONTACT_SEQUENCE: 'Seq',
 		CLIENT_CONTACT_TYPE: 'Tipo',
 		CLIENT_CONTACT_DESCRIPTION: 'Descrição',
-		CLIENT_CONTACT_NOTE: 'Observação'
+		CLIENT_CONTACT_NOTE: 'Observação',
+		SYSTEM: 'Sistema',
+		SYSTEMS: 'Sistemas',
+		SYSTEM_DESCRIPTION: 'Descricao',
+		SYSTEM_ID: 'ID',
+		SYSTEM_DELETE_MESSAGE: 'Deseja apagar o cadastro do sistema?',
+		FEATURE: 'Funcionalidade',
+		FEATURES: 'Funcionalidades',
+		FEATURE_ID: 'ID',
+		FEATURE_DESCRIPTION: 'Descricao',
+		FEATURE_PROGRAM: 'Programa',
+		FEATURE_PREVIOUS: 'Funcionalidade Anterior',
+		FEATURE_SEQUENCE: 'Sequencia',
+		FEATURE_SYSTEM: 'Sistema',
+		FEATURE_ACTIVE: 'Ativa',
+		FEATURE_PATH: 'Caminho',
+		FEATURE_ICON: 'Ícone',
+		FEATURE_DELETE_MESSAGE: 'Deseja apagar o cadastro do sistema?'
 	});
 	$translateProvider.translations('en', {
 		LANG_IMAGE: 'img/en.png',

@@ -18,61 +18,60 @@
 		<div class="form-container">
 			<div class="box-body form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="id">{{'USER_ID' | translate}}:</label>
+					<label class="control-label col-sm-2" for="idUsuario">{{'USER_ID' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="id" id="id" class="form-control input-sm" readonly="true" />
+						<form:input type="text" path="idUsuario" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="login">{{'USER_LOGIN' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsLogin">{{'USER_LOGIN' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="login" id="login" class="form-control input-sm" readonly="true"/>
+						<form:input type="text" path="dsLogin" class="form-control input-sm" readonly="true"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">{{'USER_EMAIL' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsEmail">{{'USER_EMAIL' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="email" id="email" class="form-control input-sm" readonly="true" />
+						<form:input type="text" path="dsEmail" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="senha">{{'USER_PASSWORD' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsSenha">{{'USER_PASSWORD' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="password" path="senha" id="senha" class="form-control input-sm" readonly="true" />
+						<form:input type="password" path="dsSenha" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="nome">{{'USER_NAME' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dsNomeUsuario">{{'USER_NAME' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:input type="text" path="nome" id="nome" class="form-control input-sm" readonly="true" />
+						<form:input type="text" path="dsNomeUsuario" class="form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="dataCriacao">{{'USER_DT_CREATE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dtCriacao">{{'USER_DT_CREATE' | translate}}:</label>
 					<div class="col-sm-10">
-					  <form:input type="date" path="dataCriacao" id="dataCriacao" class="datepicker form-control input-sm" readonly="true" />
+					  <form:input type="date" path="dtCriacao" id="dataCriacao" class="datepicker form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="dataAlteracao">{{'USER_DT_UPDATE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="dtAlteracao">{{'USER_DT_UPDATE' | translate}}:</label>
 					<div class="col-sm-10">
-					  <form:input type="date" path="dataAlteracao" id="dataAlteracao" class="datepicker form-control input-sm" readonly="true" />
+					  <form:input type="date" path="dtAlteracao" id="dataAlteracao" class="datepicker form-control input-sm" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="ativo">{{'USER_ACTIVE' | translate}}:</label>
+					<label class="control-label col-sm-2" for="icAtivo">{{'USER_ACTIVE' | translate}}:</label>
 					<div class="col-sm-10">
-						<form:checkbox path="ativo" readonly="true" />
+						<form:checkbox path="icAtivo" readonly="true" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="idPerfil">{{'USER_PROFILE' | translate}}:</label>
 					<div class="col-sm-10">
-					    <select class="form-control" id="idPerfil" name="idPerfil" readonly="true" >
-					      <c:forEach items="${perfis}" var="option">
-					      	<option value="<c:out value="${option.id}"></c:out>" <c:if test="${usuario.idPerfil == option.id}">selected</c:if>>{{"<c:out value='${option.descricao}'></c:out>" | translate}}</option> 
-						  </c:forEach>
-					    </select>
+					 	<form:select class="form-control" path="idPerfil" readonly="true" >							
+							<form:option value="-1">-- {{"SELECT" | translate}} --</form:option>
+							<form:options items="${perfis}" itemValue="idPerfil" itemLabel="dsPerfil" />
+						</form:select>					     
 						<form:errors path="idPerfil" cssClass="error" />
 					</div>
 				</div>

@@ -148,7 +148,7 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/management/client/address/index.jsp" />  
    </definition>
 
-   <!-- clientaddress -->
+   <!-- clientcontact -->
    <definition name="management/client/contact" extends="base-definition">  
        <put-attribute name="title" value="Contatos do cliente" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/management/client/contact/index.jsp" />  
@@ -169,5 +169,49 @@
        <put-attribute name="title" value="Contatos do cliente" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/management/client/contact/edit.jsp" />  
    </definition>
+
+   <!-- system -->
+   <definition name="management/system" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/system/index.jsp" />  
+   </definition>  
+   <definition name="management/system/create" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/system/create.jsp" />  
+   </definition>  
+   <definition name="management/system/delete" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/system/delete.jsp" />  
+   </definition>  
+   <definition name="management/system/details" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/system/details.jsp" />  
+   </definition>  
+   <definition name="management/system/edit" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/system/edit.jsp" />  
+   </definition>  
+  
+   <!-- features -->
+   <definition name="management/features" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/features/index.jsp" />  
+   </definition>  
+   <definition name="management/features/create" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/features/create.jsp" />  
+   </definition>  
+   <definition name="management/features/delete" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/features/delete.jsp" />  
+   </definition>  
+   <definition name="management/features/details" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/features/details.jsp" />  
+   </definition>  
+   <definition name="management/features/edit" extends="base-definition">  
+       <put-attribute name="title" value="Cadastro de Sistemas" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/management/features/edit.jsp" />  
+   </definition>  
 
 </tiles-definitions>
