@@ -26,14 +26,28 @@ app.controller('ngUserInitialize', function($scope, $http, $location) {
 	    });	
 	}
 
-	$scope.addTerminal = function(idTerminal) {
-		$http.get('/eSafe/service/user/terminal/add?idUser=' + userId + '&idTerminal='+ idTerminal)
-	    .then(function successCallback(response) {
+//	$scope.addTerminal = function(idTerminal) {
+//		$http.get('/eSafe/service/user/terminal/add?idUser=' + userId + '&idTerminal='+ idTerminal)
+//	    .then(function successCallback(response) {
+//
+//	    }, function errorCallback(response) {
+//	        console.log('addTerminal - Error: ' + response.status + ' - ' + response.statusText );
+//	    });	
+//	};
 
-	    }, function errorCallback(response) {
-	        console.log('addTerminal - Error: ' + response.status + ' - ' + response.statusText );
-	    });	
-	};
+	$scope.addTerminals = function(lstTerminals) {
+		if (lstTerminals.length > 0) {			
+			$http.get('/eSafe/service/user/terminal/add?idUser=' + userId + '&idTerminal='+ lstTerminals.pop())
+		    .then(function successCallback(response) {
+		    	$scope.addTerminals(lstTerminals);
+		    }, function errorCallback(response) {
+		        console.log('addTerminal - Error: ' + response.status + ' - ' + response.statusText );
+		    });
+		}
+		else {
+			$scope.updateTerminalTables();
+		}
+	};	
 	
 	$scope.removeTerminal  = function(idTerminal) {
 		$http.get('/eSafe/service/user/terminal/delete?idUser=' + userId + '&idTerminal='+ idTerminal)
@@ -69,13 +83,28 @@ app.controller('ngUserInitialize', function($scope, $http, $location) {
 	    });	
 	}
 
-	$scope.addClient = function(idClient) {
-		$http.get('/eSafe/service/user/client/add?idUser=' + userId + '&idClient='+ idClient)
-	    .then(function successCallback(response) {
+//	$scope.addClient = function(idClient) {
+//		$http.get('/eSafe/service/user/client/add?idUser=' + userId + '&idClient='+ idClient)
+//	    .then(function successCallback(response) {
+//
+//	    }, function errorCallback(response) {
+//			console.log('addClient - Error: ' + response.status + ' - ' + response.statusText );
+//		});
+//	};
 
-	    }, function errorCallback(response) {
-			console.log('addClient - Error: ' + response.status + ' - ' + response.statusText );
-		});
+	$scope.addClients = function(lstClients) {
+		if (lstClients.length > 0) {
+			$http.get('/eSafe/service/user/client/add?idUser=' + userId + '&idClient='+ lstClients.pop())
+		    .then(function successCallback(response) {
+		    	$scope.addClients(lstClients);	
+		    }, function errorCallback(response) {
+				console.log('addClient - Error: ' + response.status + ' - ' + response.statusText );
+			});
+		}
+		else {
+			$scope.updateClientTables();			
+			$scope.updateTerminalTables();			
+		}
 	};
 	
 	$scope.removeClient  = function(idClient) {

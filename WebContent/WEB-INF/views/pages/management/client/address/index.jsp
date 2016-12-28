@@ -18,7 +18,7 @@
 				    <select class="form-control" id="cliente" name="cliente" onclick="">
 						<option value="-1" > -- {{"SELECT" | translate}} -- </option> 
 						<c:forEach items="${clientes}" var="option">
-							<option value="<c:out value="${option.id}"></c:out>" ><c:out value='${option.nomeFantasia}'></c:out></option> 
+							<option value="<c:out value="${option.idCliente}"></c:out>" ><c:out value='${option.dsNomeFantasia}'></c:out></option> 
 						</c:forEach>
 					</select>
 				</div>

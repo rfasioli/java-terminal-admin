@@ -103,91 +103,84 @@
 	</form:form>
 	
 	<div class="row">
-	  <div class="col-md-6 col-sm-12">
+      <div class="container">
 		<!-- Lista de terminais para o usuário -->
-		<div class="container">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					{{'TERMINALS' | translate}} 
-					<button class="pull-right btn btn-box-tool" data-toggle="collapse" href="#terminals_panel">
-					  <i class="fa fa-window-minimize" aria-hidden="true"></i></button>
-				</div>
-				<div class="panel-collapse collapse in" id="terminals_panel">
-					<div class="panel-body">
-						<table class="table table-striped table-condensed "
-							ng-controller="listaTerminaisCtrl">
-							<thead>
-								<tr>
-									<th class="hide">{{'ID' | translate}}</th>
-									<th>{{'NR_TERMINAL' | translate}}</th>
-									<th>{{'DS_TERMINAL' | translate}}</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="terminal in terminais">
-									<td class="hide">{{terminal.idTerminal}}</td>
-									<td>{{terminal.nrTerminal}}</td>
-									<td>{{terminal.dsTerminal}}</td>
-									
-									<td><i class="fa fa-eraser" aria-hidden="true" 
-										   ng-click="removeTerminal(terminal.idTerminal);"></i></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="panel-footer">
-						<button type="button" class="btn btn-info"
-							data-toggle="modal" data-target="#terminalModal">{{'ADD' |
-							translate}}</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-	  </div>
-	  <div class="col-md-6 col-sm-12">
-
+		  <div class="col-md-6 col-sm-12">
+	        <div class="box box-primary">
+	          <div class="box-header with-border">
+	            <h3 class="box-title">{{'TERMINALS' | translate}}</h3>
+	            <div class="box-tools pull-right">
+	              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+	              <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+	            </div>
+	          </div> <!-- box-header with-border -->
+	          <div class="box-body">
+				<table class="table table-striped table-condensed "
+					ng-controller="listaTerminaisCtrl">
+					<thead>
+						<tr>
+							<th class="hide">{{'ID' | translate}}</th>
+							<th>{{'NR_TERMINAL' | translate}}</th>
+							<th>{{'DS_TERMINAL' | translate}}</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="terminal in terminais">
+							<td class="hide">{{terminal.idTerminal}}</td>
+							<td>{{terminal.nrTerminal}}</td>
+							<td>{{terminal.dsTerminal}}</td>
+							
+							<td><i class="fa fa-eraser" aria-hidden="true" 
+								   ng-click="removeTerminal(terminal.idTerminal);"></i></td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+				<button type="button" class="btn btn-default btn-flat"
+					data-toggle="modal" data-target="#terminalModal">{{'ADD' |
+					translate}}</button>
+	          </div> <!-- /.box-body -->
+	        </div> <!-- box box-primary" -->	  
+	    </div>
 		<!-- Lista de Clientes para o usuário -->
-		<div class="container">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					{{'CLIENTS' | translate}} 
-					<button class="pull-right btn btn-box-tool" data-toggle="collapse" href="clients_panel">
-					  <i class="fa fa-window-minimize" aria-hidden="true"></i></button>
-				</div>
-				<div class="panel-collapse collapse in" id="clients_panel">
-					<div class="panel-body">
-						<table class="table table-striped table-condensed "
-							ng-controller="listaClientesCtrl">
-							<thead>
-								<tr>
-									<th>{{'CLIENT_ID' | translate}}</th>
-									<th>{{'CLIENT_FANTASY_NAME' | translate}}</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="cliente in clientes">
-									<td>{{cliente.idCliente}}</td>
-									<td>{{cliente.dsNomeFantasia}}</td>
-									<td><i class="fa fa-eraser" aria-hidden="true" 
-										   ng-click="removeClient(cliente.idCliente);"></i></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="panel-footer">
-						<button type="button" class="btn btn-info"
-							data-toggle="modal" data-target="#clientModal">{{'ADD' |
-							translate}}</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	  </div>
-  </div> <!-- col-md-6 col-sm-12 -->
+	    <div class="col-md-6 col-sm-12">
+	        <div class="box box-primary">
+	          <div class="box-header with-border">
+	            <h3 class="box-title">{{'CLIENTS' | translate}}</h3>
+	            <div class="box-tools pull-right">
+	              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+	              <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+	            </div>
+	          </div> <!-- box-header with-border -->
+	          <div class="box-body">
+				<table class="table table-striped table-condensed "
+					ng-controller="listaClientesCtrl">
+					<thead>
+						<tr>
+							<th>{{'CLIENT_ID' | translate}}</th>
+							<th>{{'CLIENT_FANTASY_NAME' | translate}}</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="cliente in clientes">
+							<td>{{cliente.idCliente}}</td>
+							<td>{{cliente.dsNomeFantasia}}</td>
+							<td><i class="fa fa-eraser" aria-hidden="true" 
+								   ng-click="removeClient(cliente.idCliente);"></i></td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+				<button type="button" class="btn btn-default btn-flat"
+					data-toggle="modal" data-target="#clientModal">{{'ADD' |
+					translate}}</button>
+	          </div> <!-- /.box-body -->
+	        </div> <!-- box box-primary" -->
+	  </div>  <!-- col-md-6 col-sm-12 -->
+    </div>
+  </div>
 
 	<!-- Modal inclusão de terminais -->
 	<div id="terminalModal" class="modal fade" role="dialog">
@@ -224,7 +217,7 @@
 				</div>
 				<div class="modal-footer">
 					<div class="panel-footer">
-						<button id="btnAdd" type="button" class="close" data-dismiss="modal">
+						<button id="btnAdd" type="button" class="btn btn-success btn-flat" data-dismiss="modal">
 							{{'ADD' | translate}}</button>
 					</div>
 				</div>
@@ -266,7 +259,7 @@
 				</div>
 				<div class="modal-footer">
 					<div class="panel-footer">
-						<button id="btnAddClient" type="button">{{'ADD' | translate}}</button>
+						<button id="btnAddClient" class="btn btn-success btn-flat" type="button">{{'ADD' | translate}}</button>
 					</div>
 				</div>
 
@@ -283,19 +276,20 @@
   $(document).ready(function() {
     $('#btnAdd').click( function () {
     	var obj = $('#terminais > tbody > tr.selected > #idTerminal');
+    	var terminais = [];
        	for(var i = 0; i < obj.length; i++) {
-        	angular.element(document.getElementById('InitializeElement')).scope().addTerminal(obj[i].innerText);
+       		terminais.push(obj[i].innerText);
         };
-       	angular.element(document.getElementById('InitializeElement')).scope().updateTerminalTables();
+   		angular.element(document.getElementById('InitializeElement')).scope().addTerminals(terminais);
     });
     
     $('#btnAddClient').click( function () {
     	var obj = $('#clientes > tbody > tr.selected > #idCliente');
+    	var clientes = [];
     	for(var i = 0; i < obj.length; i++) {
-        	angular.element(document.getElementById('InitializeElement')).scope().addClient(obj[i].innerText);
+    		clientes.push(obj[i].innerText);
 	    };
-    	angular.element(document.getElementById('InitializeElement')).scope().updateClientTables();
-    	angular.element(document.getElementById('InitializeElement')).scope().updateTerminalTables();
+   		angular.element(document.getElementById('InitializeElement')).scope().addClients(clientes);
     });
   });
 
