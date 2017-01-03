@@ -742,7 +742,7 @@ CREATE INDEX "FK_STATUS_DISPOSITIVO_STATUS_MONITORACAO"
 CREATE TABLE tb_transacao
 (
   id_transacao serial NOT NULL,
-  ds_transacao character varying(100)[],
+  ds_transacao character varying(100),
   tp_transacao tipo_transacao,
   CONSTRAINT "PK_TRANSACAO" PRIMARY KEY (id_transacao)
 )
@@ -752,6 +752,48 @@ WITH (
 ALTER TABLE tb_transacao
   OWNER TO postgres;
 
+  
+-- Table: tb_moeda
+
+-- DROP TABLE tb_moeda;
+
+CREATE TABLE tb_moeda
+(
+  cd_moeda integer NOT NULL,
+  ds_simbolo character varying(5),
+  ds_sigla character varying(10),
+  tp_conversao "char",
+  dt_exclusao date,
+  CONSTRAINT "PK_MOEDA" PRIMARY KEY (cd_moeda)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE tb_moeda
+  OWNER TO postgres;
+
+  
+-- Table: tb_pais
+
+-- DROP TABLE tb_pais;
+
+CREATE TABLE tb_pais
+(
+  cd_pais integer NOT NULL,
+  ds_pais character varying(100),
+  ds_nome character varying(50),
+  cd_moeda integer,
+  CONSTRAINT "PK_PAIS" PRIMARY KEY (cd_pais),
+  CONSTRAINT "FK_MOEDA_PAIS" FOREIGN KEY (cd_moeda)
+      REFERENCES tb_moeda (cd_moeda) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE tb_pais
+  OWNER TO postgres;
+  
   
 -- Table: tb_operacao
 
@@ -768,6 +810,9 @@ CREATE TABLE tb_operacao
   cd_moeda integer,
   tp_operacao tipo_operacao_financeira,
   CONSTRAINT "PK_OPERACAO" PRIMARY KEY (id_operacao),
+  CONSTRAINT "FK_MOEDA_OPERACAO" FOREIGN KEY (cd_moeda)
+      REFERENCES tb_moeda (cd_moeda) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT "FK_TERMINAL_OPERACAO" FOREIGN KEY (id_terminal)
       REFERENCES tb_terminal (id_terminal) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
@@ -811,4 +856,5 @@ CREATE INDEX "FKI_USUARIO_OPERACAO"
   USING btree
   (id_usuario);
 
+  
   
