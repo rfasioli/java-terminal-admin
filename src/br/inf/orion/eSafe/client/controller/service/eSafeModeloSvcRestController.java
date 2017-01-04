@@ -13,7 +13,7 @@ import br.inf.orion.eSafe.client.service.dao.ModeloServiceDao;
 
 @RestController
 @RequestMapping("/service/client/modelo")
-public class eSafeModeloSvcRestConstroller {
+public class eSafeModeloSvcRestController {
 
 	   @RequestMapping(value = "/list", method = RequestMethod.GET)
 	   public ResponseEntity<List<Modelo>> listAllUsers() {

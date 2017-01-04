@@ -637,6 +637,26 @@ CREATE INDEX "FKI_MODELO_DISPOSITIVO_MODELO"
   (id_modelo);
 
 
+-- Table: tb_sensor
+
+-- DROP TABLE tb_sensor;
+
+CREATE TABLE tb_sensor
+(
+  id_dispositivo integer NOT NULL,
+  id_sensor integer NOT NULL,
+  ds_sensor character varying(50) NOT NULL,
+  CONSTRAINT "PK_SENSOR" PRIMARY KEY (id_dispositivo, id_sensor),
+  CONSTRAINT "FK_DISPOSITIVO_SENSOR" FOREIGN KEY (id_dispositivo)
+      REFERENCES tb_dispositivo (id_dispositivo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE tb_sensor
+  OWNER TO postgres;
+
   
 -- Table: tb_status_dispositivo
 
@@ -645,12 +665,13 @@ CREATE INDEX "FKI_MODELO_DISPOSITIVO_MODELO"
 CREATE TABLE tb_status_dispositivo
 (
   id_dispositivo integer NOT NULL,
+  id_sensor integer NOT NULL,
   cd_status integer NOT NULL,
   ds_status character varying(50) NOT NULL,
   id_severidade integer NOT NULL,
-  CONSTRAINT "PK_STATUS_DISPOSITIVO" PRIMARY KEY (id_dispositivo, cd_status),
-  CONSTRAINT "FK_DISPOSITIVO_STATUS_DISPOSITIVO" FOREIGN KEY (id_dispositivo)
-      REFERENCES tb_dispositivo (id_dispositivo) MATCH SIMPLE
+  CONSTRAINT "PK_STATUS_DISPOSITIVO" PRIMARY KEY (id_dispositivo, id_sensor, cd_status),
+  CONSTRAINT "FK_DISPOSITIVO_STATUS_DISPOSITIVO" FOREIGN KEY (id_dispositivo, id_sensor)
+      REFERENCES tb_sensor (id_dispositivo, id_sensor) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
@@ -668,7 +689,6 @@ CREATE INDEX "IX_STATUS_STATUS_DISPOSITIVO"
   USING btree
   (cd_status);
 
-
   
 -- Table: tb_monitoracao
 
@@ -679,10 +699,12 @@ CREATE TABLE tb_monitoracao
   id_terminal integer NOT NULL,
   dt_envio timestamp with time zone NOT NULL DEFAULT now(),
   ic_status_terminal integer NOT NULL,
+  id_monitoracao uuid,
   CONSTRAINT "PK_MONITORACAO" PRIMARY KEY (id_terminal),
   CONSTRAINT "FK_TERMINAL_MONITORACAO" FOREIGN KEY (id_terminal)
       REFERENCES tb_terminal (id_terminal) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT "UX_id_monitoracao" UNIQUE (id_monitoracao)
 )
 WITH (
   OIDS=FALSE
@@ -698,41 +720,6 @@ CREATE INDEX "IX_STATUS_TERMINAL_MONITORACAO"
   ON tb_monitoracao
   USING btree
   (ic_status_terminal);
-
-
-  
--- Table: tb_status_monitoracao
-
--- DROP TABLE tb_status_monitoracao;
-
-CREATE TABLE tb_status_monitoracao
-(
-  id_terminal integer NOT NULL,
-  id_dispositivo integer NOT NULL,
-  cd_status integer NOT NULL,
-  CONSTRAINT "PK_STATUS_MONITORACAO" PRIMARY KEY (id_terminal, id_dispositivo),
-  CONSTRAINT "FK_MONITORACAO_STATUS_MONITORACAO" FOREIGN KEY (id_terminal)
-      REFERENCES tb_monitoracao (id_terminal) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "FK_STATUS_DISPOSITIVO_STATUS_MONITORACAO" FOREIGN KEY (id_dispositivo, cd_status)
-      REFERENCES tb_status_dispositivo (id_dispositivo, cd_status) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE tb_status_monitoracao
-  OWNER TO postgres;
-
--- Index: "FK_STATUS_DISPOSITIVO_STATUS_MONITORACAO"
-
--- DROP INDEX "FK_STATUS_DISPOSITIVO_STATUS_MONITORACAO";
-
-CREATE INDEX "FK_STATUS_DISPOSITIVO_STATUS_MONITORACAO"
-  ON tb_status_monitoracao
-  USING btree
-  (id_dispositivo, cd_status);
-
 
   
 -- Table: tb_transacao

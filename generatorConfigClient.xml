@@ -7,10 +7,14 @@
     <javaModelGenerator targetPackage="br.inf.orion.eSafe.client.model.gen" targetProject="eSafe" />
     <sqlMapGenerator targetPackage="myBatisConfig-Client.xml" targetProject="eSafe" />
     <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="br.inf.orion.eSafe.client.model.mapper.gen" targetProject="eSafe" />
+
+    <table schema="public" tableName="tb_monitoracao"></table>
+    <table schema="public" tableName="tb_status_monitoracao"></table>
+    <table schema="public" tableName="tb_sensor"></table>
     
     <!-- 
-    <table schema="public" tableName="tb_modelo" alias="Modelo"></table>
-    <table schema="public" tableName="tb_fornecedor" alias="Fornecedor"></table>
+    <table schema="public" tableName="tb_modelo"></table>
+    <table schema="public" tableName="tb_fornecedor"></table>
     <table schema="public" tableName="tb_tipo_contato"></table>
     <table schema="public" tableName="tb_fabricante"></table>
     <table schema="public" tableName="tb_contato_estabelecimento"></table>
@@ -33,7 +37,6 @@
     <table schema="public" tableName="tb_contato_fabricante"></table>
     <table schema="public" tableName="tb_monitoracao"></table>
     <table schema="public" tableName="tb_filial"></table>
-    <table schema="public" tableName="tb_status_dispositivo"></table>
     <table schema="public" tableName="tb_status_monitoracao"></table>
     <table schema="public" tableName="tb_fornecedor"></table>
     <table schema="public" tableName="tb_tipo_contato"></table>
