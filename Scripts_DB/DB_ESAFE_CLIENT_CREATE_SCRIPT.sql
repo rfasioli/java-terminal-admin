@@ -699,7 +699,7 @@ CREATE TABLE tb_monitoracao
   id_terminal integer NOT NULL,
   dt_envio timestamp with time zone NOT NULL DEFAULT now(),
   ic_status_terminal integer NOT NULL,
-  id_monitoracao uuid,
+  id_monitoracao character varying(64),
   CONSTRAINT "PK_MONITORACAO" PRIMARY KEY (id_terminal),
   CONSTRAINT "FK_TERMINAL_MONITORACAO" FOREIGN KEY (id_terminal)
       REFERENCES tb_terminal (id_terminal) MATCH SIMPLE
