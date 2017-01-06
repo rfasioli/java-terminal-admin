@@ -28,7 +28,7 @@ public class StatusTerminal {
 	
 	public StatusTerminal(){}
 	
-	public StatusTerminal(br.inf.orion.eSafe.client.model.mongo.StatusTerminal statusTerminal) {
+	public StatusTerminal(br.inf.orion.eSafe.client.model.morphia.StatusTerminal statusTerminal) {
 		this.idTerminal = statusTerminal.getIdTerminal();
 		this.stTerminal = statusTerminal.getStTerminal();
 		this.Data = statusTerminal.getData();

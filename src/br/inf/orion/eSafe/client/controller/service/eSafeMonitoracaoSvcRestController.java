@@ -15,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.inf.orion.eSafe.client.model.Monitoracao;
 import br.inf.orion.eSafe.client.model.specialized.StatusTerminal;
 import br.inf.orion.eSafe.client.service.dao.MonitoracaoServiceDao;
+import br.inf.orion.eSafe.client.service.dao.mongo.StatusTerminalServiceDao;
 
 @RestController
 @RequestMapping("/service/client/monitoring")
@@ -27,11 +28,6 @@ public class eSafeMonitoracaoSvcRestController {
 			return new ResponseEntity<List<Monitoracao>>(monitoracao, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<List<Monitoracao>>(monitoracao, HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/status", method = RequestMethod.GET)
-	public ResponseEntity<StatusTerminal> listStTerminal() {
-		return new ResponseEntity<StatusTerminal>(new StatusTerminal(), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -50,10 +46,10 @@ public class eSafeMonitoracaoSvcRestController {
 				
 			monitoracao.setDtEnvio(new Date());
 			monitoracao.setIcStatusTerminal(stTerminal.getStTerminal());
-			//TODO - Salvar Data em noSql e gravar id aqui...
-			System.out.println("Gravar no noSql: " + stTerminal.getData());
-			//uuid ->stTerminal.getData()
-			//monitoracao.setIdMonitoracao(uuid);
+
+			String uuid = StatusTerminalServiceDao.save(idClient, stTerminal);
+			monitoracao.setIdMonitoracao(uuid);
+					
 			
 			if (novo)
 				MonitoracaoServiceDao.save(idClient, monitoracao);

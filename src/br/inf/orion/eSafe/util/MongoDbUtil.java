@@ -10,15 +10,19 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
 public class MongoDbUtil {
-	private static MongoClient mongoClient;
-	private static MongoDatabase mongoDatabase;
-	private static Map<Integer, MongoDatabase> mongoDatabaseClients;
-
-	private static Morphia morphia;
-	private static Datastore datastore;
-	private static Map<Integer, Datastore> datastoreClients;
+	private static MongoDbUtil instance = null;
 	
-	static {
+	//MongoDB Objects
+	private MongoClient mongoClient;
+	private MongoDatabase mongoDatabase;
+	private Map<Integer, MongoDatabase> mongoDatabaseClients;
+
+	//Morphia Objects
+	private Morphia morphia;
+	private Datastore datastore;
+	private Map<Integer, Datastore> datastoreClients;
+	
+	private MongoDbUtil() {
 		try {
 			mongoClient = new MongoClient();
 			mongoDatabase = mongoClient.getDatabase("eSafe");
@@ -35,12 +39,29 @@ public class MongoDbUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public void finalize() {
+		instance = null;
+		mongoClient.close();
+		mongoDatabase = null;
+		mongoDatabaseClients.clear();
+		datastore = null;
+		datastoreClients.clear();
+	}
+	
+	public static MongoDbUtil getInstance() {
+		if (instance == null)
+			instance = new MongoDbUtil();
+		return instance;
+	}
+
 		
-	public static MongoDatabase getMongoDatabase(){
+	public MongoDatabase getMongoDatabase(){
 		return mongoDatabase;
 	}
 	
-	public static MongoDatabase getMongoDatabase(int idCliente){
+	public MongoDatabase getMongoDatabase(int idCliente){
 		MongoDatabase session = mongoDatabaseClients.get(idCliente);
 		if (session == null) {
 			session = mongoClient.getDatabase("eSafe_Client_" + idCliente);
@@ -52,11 +73,11 @@ public class MongoDbUtil {
 	}
 
 	
-	public static Datastore getMorphiaDatastore(){
+	public Datastore getMorphiaDatastore(){
 		return datastore;
 	}
 	
-	public static Datastore getMorphiaDatastore(int idCliente){
+	public Datastore getMorphiaDatastore(int idCliente){
 		Datastore session = datastoreClients.get(idCliente);
 		if (session == null) {
 			session = morphia.createDatastore(mongoClient, "eSafe_Client_" + idCliente);
@@ -67,13 +88,6 @@ public class MongoDbUtil {
 			}
 		}
 		return session;		
-	}
-
-	
-	public static void Dispose() {
-		mongoClient.close();
-		mongoDatabase = null;
-		mongoDatabaseClients.clear();
 	}
 	
 }

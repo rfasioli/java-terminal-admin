@@ -47,7 +47,7 @@ public interface MonitoracaoMapper {
 	 */
 	@Insert({ "insert into public.tb_monitoracao (id_terminal, dt_envio, ", "ic_status_terminal, id_monitoracao)",
 			"values (#{idTerminal,jdbcType=INTEGER}, #{dtEnvio,jdbcType=TIMESTAMP}, ",
-			"#{icStatusTerminal,jdbcType=INTEGER}, #{idMonitoracao,jdbcType=OTHER})" })
+			"#{icStatusTerminal,jdbcType=INTEGER}, #{idMonitoracao,jdbcType=OTHER}::uuid)" })
 	int insert(Monitoracao record);
 
 	/**

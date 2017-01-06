@@ -1,29 +1,13 @@
-package br.inf.orion.eSafe.client.model.mongo;
+package br.inf.orion.eSafe.client.model.morphia;
 
-import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Field;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Index;
-import org.mongodb.morphia.annotations.Indexes;
 
-@Entity("statusTerminal")
-@Indexes(
-	@Index(value = "idTerminal", fields = @Field("idTerminal"))
-)
-public class StatusTerminal {
-	@Id
-	private ObjectId id;
+@Entity("StatusTerminal")
+public class StatusTerminal extends BaseEntity 
+{
 	private Integer idTerminal;
 	private Integer stTerminal;
 	private String Data;
-	
-	public ObjectId getId() {
-		return id;
-	}
-	public void setId(ObjectId id) {
-		this.id = id;
-	}
 	
 	public Integer getIdTerminal() {
 		return idTerminal;

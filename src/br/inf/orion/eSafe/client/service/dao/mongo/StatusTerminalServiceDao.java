@@ -13,22 +13,22 @@ public class StatusTerminalServiceDao {
 	public static String save(int idCliente, StatusTerminal statusTerminal) {
 		//MongoDatabase db = MongoDbUtil.getMongoDatabase(idCliente);
 		//db.getCollection("StatusDispositivo").insertOne(new Document(statusDispositivo));
-		Datastore ds = MongoDbUtil.getMorphiaDatastore(idCliente);
-		br.inf.orion.eSafe.client.model.mongo.StatusTerminal elem = 
-				new br.inf.orion.eSafe.client.model.mongo.StatusTerminal(statusTerminal);
+		Datastore ds = MongoDbUtil.getInstance().getMorphiaDatastore(idCliente);
+		br.inf.orion.eSafe.client.model.morphia.StatusTerminal elem = 
+				new br.inf.orion.eSafe.client.model.morphia.StatusTerminal(statusTerminal);
 		ds.save(elem);
 		return elem.getId().toHexString();
 	}
 
 	public static List<StatusTerminal> getAll(int idCliente) {
-		Datastore ds = MongoDbUtil.getMorphiaDatastore(idCliente);
+		Datastore ds = MongoDbUtil.getInstance().getMorphiaDatastore(idCliente);
 		List<StatusTerminal> result = new ArrayList<StatusTerminal>();
 		
-		List<br.inf.orion.eSafe.client.model.mongo.StatusTerminal> lstStatusTerminal =
-				ds.createQuery(br.inf.orion.eSafe.client.model.mongo.StatusTerminal.class)
+		List<br.inf.orion.eSafe.client.model.morphia.StatusTerminal> lstStatusTerminal =
+				ds.createQuery(br.inf.orion.eSafe.client.model.morphia.StatusTerminal.class)
 					.asList();
 
-		for (br.inf.orion.eSafe.client.model.mongo.StatusTerminal statusTerminal : lstStatusTerminal) {
+		for (br.inf.orion.eSafe.client.model.morphia.StatusTerminal statusTerminal : lstStatusTerminal) {
 			result.add(new StatusTerminal(statusTerminal));
 		}
 		
