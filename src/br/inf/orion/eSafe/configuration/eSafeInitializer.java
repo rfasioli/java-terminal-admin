@@ -8,7 +8,8 @@ public class eSafeInitializer extends AbstractAnnotationConfigDispatcherServletI
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { eSafeConfiguration.class };
+        return new Class[] { eSafeConfiguration.class,
+        					 SecurityConfiguration.class };
 	}
 
 	@Override

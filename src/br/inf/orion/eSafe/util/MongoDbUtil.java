@@ -29,7 +29,7 @@ public class MongoDbUtil {
 			mongoDatabaseClients = new Hashtable<Integer, MongoDatabase>();
 			
 			morphia = new Morphia();
-			morphia.mapPackage("br.inf.orion.eSafe.client.model.mongo");
+			morphia.mapPackage("br.inf.orion.eSafe.client.model.morphia");
 			datastore = morphia.createDatastore(mongoClient, "eSafe");
 			datastore.ensureIndexes();
 			datastoreClients = new Hashtable<Integer, Datastore>();

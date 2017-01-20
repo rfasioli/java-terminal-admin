@@ -11,8 +11,6 @@ import br.inf.orion.eSafe.util.MongoDbUtil;
 public class StatusTerminalServiceDao {
 	
 	public static String save(int idCliente, StatusTerminal statusTerminal) {
-		//MongoDatabase db = MongoDbUtil.getMongoDatabase(idCliente);
-		//db.getCollection("StatusDispositivo").insertOne(new Document(statusDispositivo));
 		Datastore ds = MongoDbUtil.getInstance().getMorphiaDatastore(idCliente);
 		br.inf.orion.eSafe.client.model.morphia.StatusTerminal elem = 
 				new br.inf.orion.eSafe.client.model.morphia.StatusTerminal(statusTerminal);
@@ -33,6 +31,15 @@ public class StatusTerminalServiceDao {
 		}
 		
 		return result;
+	}
+
+	public static StatusTerminal getById(int idCliente, String id) {
+		Datastore ds = MongoDbUtil.getInstance().getMorphiaDatastore(idCliente);
+	
+		br.inf.orion.eSafe.client.model.morphia.StatusTerminal result = 
+				ds.get(br.inf.orion.eSafe.client.model.morphia.StatusTerminal.class, id);
+		
+		return new StatusTerminal(result);
 	}
 	
 }
