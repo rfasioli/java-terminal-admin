@@ -1,20 +1,30 @@
 package br.inf.orion.eSafe.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+import br.inf.orion.eSafe.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity 
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+//    @Autowired
+//    @Qualifier("customUserDetailsService")
+    UserDetailsService userDetailsService;
+     
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user").password("user123").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("admin123").roles("ADMIN");
+    	userDetailsService = new CustomUserDetailsService();
+        auth.userDetailsService(userDetailsService);
+//        auth.inMemoryAuthentication().withUser("user").password("user123").roles("USER");
+//        auth.inMemoryAuthentication().withUser("admin").password("admin123").roles("ADMIN");
     }
      
     @Override
@@ -32,8 +42,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .usernameParameter("ssoId").passwordParameter("password")
         .and().csrf()        
         .and().exceptionHandling().accessDeniedPage("/Access_Denied");
-  
     }
-	
-	
+  
 }

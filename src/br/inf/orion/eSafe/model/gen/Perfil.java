@@ -1,4 +1,4 @@
-package br.inf.orion.eSafe.model;
+package br.inf.orion.eSafe.model.gen;
 
 public class Perfil {
     /**

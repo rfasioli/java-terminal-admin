@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.inf.orion.eSafe.model.Perfil;
-import br.inf.orion.eSafe.model.PerfilContants;
+import br.inf.orion.eSafe.model.PerfilConstants;
 import br.inf.orion.eSafe.service.dao.PerfilServiceDao;
 
 @Controller
@@ -100,10 +100,10 @@ public class eSafeManagementProfileController {
 	}
 
 	public void AddListData(ModelMap model) {
-		List<PerfilContants.TipoPerfilEnum> profileTypes = new ArrayList<PerfilContants.TipoPerfilEnum>(Arrays.asList(PerfilContants.TipoPerfilEnum.values()));
+		List<PerfilConstants.TipoPerfilEnum> profileTypes = new ArrayList<PerfilConstants.TipoPerfilEnum>(Arrays.asList(PerfilConstants.TipoPerfilEnum.values()));
 		model.addAttribute("profileTypes", profileTypes);
 
-		List<PerfilContants.NivelPerfilEnum> profileLevels = new ArrayList<PerfilContants.NivelPerfilEnum>(Arrays.asList(PerfilContants.NivelPerfilEnum.values()));
+		List<PerfilConstants.NivelPerfilEnum> profileLevels = new ArrayList<PerfilConstants.NivelPerfilEnum>(Arrays.asList(PerfilConstants.NivelPerfilEnum.values()));
 		model.addAttribute("profileLevels", profileLevels);
 				
 	}

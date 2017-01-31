@@ -6,7 +6,7 @@ import javax.validation.constraints.*;
 
 
 @SuppressWarnings("serial")
-public class PerfilContants implements Serializable {
+public class PerfilConstants implements Serializable {
 
 	public enum TipoPerfilEnum{
 		MASTER(0, "{{'TIPO_PERFIL_MASTER' | translate}}"),

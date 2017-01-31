@@ -7,7 +7,11 @@
     <javaModelGenerator targetPackage="br.inf.orion.eSafe.model.gen" targetProject="eSafe" />
     <sqlMapGenerator targetPackage="myBatisConfig-Client.xml" targetProject="eSafe" />
     <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="br.inf.orion.eSafe.model.mapper.gen" targetProject="eSafe" />
-    
+
+    <table schema="public" tableName="tb_perfil">
+		<generatedKey column="id_perfil" sqlStatement="SELECT currval('tb_perfil_id_perfil_seq')" identity="true" />
+    </table>
+<!--     
     <table schema="public" tableName="tb_cliente">
 		<generatedKey column="id_cliente" sqlStatement="SELECT currval('tb_cliente_id_cliente_seq')" identity="true" />
     </table>
@@ -26,6 +30,7 @@
     <table schema="public" tableName="tb_funcionalidade">
 		<generatedKey column="id_funcionalidade" sqlStatement="SELECT currval('tb_funcionalidade_id_funcionalidade_seq')" identity="true" />
     </table>
+ -->    
 <!--
     <table schema="public" tableName="tb_tipo_endereco"></table>
     <table schema="public" tableName="tb_tipo_contato"></table>
