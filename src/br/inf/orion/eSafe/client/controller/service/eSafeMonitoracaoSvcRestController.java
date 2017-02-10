@@ -37,7 +37,8 @@ public class eSafeMonitoracaoSvcRestController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> addStTerminal(@RequestParam(defaultValue="1") Integer idClient
 			, @RequestBody StatusTerminal stTerminal
-			, UriComponentsBuilder ucBuilder)
+//			, UriComponentsBuilder ucBuilder)
+			)
 	{
 		try {
 			Boolean novo = false;
