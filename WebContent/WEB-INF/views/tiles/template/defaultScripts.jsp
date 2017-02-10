@@ -7,7 +7,10 @@
 <script type="text/javascript" src="<c:url value='/webjars/angularjs/1.6.0/angular-animate.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/webjars/angularjs/1.6.0/angular-aria.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/webjars/angularjs/1.6.0/angular-messages.min.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/webjars/angular-translate/2.5.0/angular-translate.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/webjars/angular-cookies/1.4.0-rc.2/angular-cookies.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/webjars/angular-translate/2.6.1/angular-translate.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/webjars/angular-translate-storage-cookie/2.6.1/angular-translate-storage-cookie.min.js'/>"></script>
+<%-- <script type="text/javascript" src="<c:url value='/webjars/angular-translate-loader-static-files/2.4.0/angular-translate-loader-static-files.min.js'/>"></script> --%>
 <script type="text/javascript" src="<c:url value='/webjars/angularjs/1.6.0/angular-sanitize.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/webjars/angular-material/1.1.1/angular-material.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/webjars/bootstrap/3.3.6/js/bootstrap.js'/>"></script>

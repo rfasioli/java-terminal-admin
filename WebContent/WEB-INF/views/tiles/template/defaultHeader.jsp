@@ -14,10 +14,13 @@
         <!-- Language menu -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <span><img class="img-circle" src="<c:url value='/'/>{{'LANG_IMAGE' | translate}}" /><span class="caret"></span></span>
+              <span>
+              	<img class="img-circle" src="<c:url value='/'/>{{'LANG_IMAGE' | translate}}" />
+                <span class="caret"></span>
+              </span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a id="pt-btn" href="#" ng-click="changeLanguage('pt-BR')"><img class="img-circle" src="<c:url value='/img/pt-br.png'/>"/> Português</a></li>
+            <li><a id="pt-btn" href="#" ng-click="changeLanguage('pt')"><img class="img-circle" src="<c:url value='/img/pt-br.png'/>"/> Português</a></li>
             <li><a id="en-btn" href="#" ng-click="changeLanguage('en')"><img class="img-circle" src="<c:url value='/img/en.png'/>"/> English</a></li>
             <li><a id="es-btn" href="#" ng-click="changeLanguage('es')"><img class="img-circle" src="<c:url value='/img/es.png'/>"/> Español</a></li>
           </ul>
@@ -41,10 +44,10 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="/profile" target="_self" class="btn btn-default btn-flat">Perfil</a>
+                <a href="<c:url value='/profile'/>" target="_self" class="btn btn-default btn-flat">Perfil</a>
               </div>
               <div class="pull-right">
-                <a href="/logout" target="_self" class="btn btn-default btn-flat">Sair</a>
+                <a href="<c:url value='/logout'/>" target="_self" class="btn btn-default btn-flat">Sair</a>
               </div>
             </li>
           </ul>

@@ -12,7 +12,8 @@
 		<li class="active">Geral</li>
 	</ol>
 </section>
-<section class="content"  id="monitoramento" ng-app="monitoramentoApp"
+<!-- <section class="content"  id="monitoramento" ng-app="monitoramentoApp" -->
+<section class="content"  id="monitoramento" ng-app="app"
 	ng-controller="monitoramentoAnaliticoCtrl">
 	<!-- Small boxes (Stat box) -->
 	<!-- Small boxes (Stat box) -->
@@ -106,7 +107,7 @@
 		<!-- ./col -->
 	</div>
 	<!-- /.row -->
-
+	
 	<!-- JSChart -->
 	<!-- JSChart -->
 	<!-- JSChart -->
@@ -166,3 +167,16 @@
 </section>
 
 <script type="text/javascript" src="<c:url value='/js/controller/analitico.js' />"></script>
+
+<script>
+$( document ).ready(function() {
+    $('.navbar-collapse').collapse('hide');
+    $('.sidebar-toggle').collapse('hide');
+    $(".main-sidebar").toggleClass("active");
+    $(".sidebar").toggleClass("active");
+    $(".sidebar-menu").toggleClass("active");
+    $(".main-sidebar").collapse("hide");
+    $(".sidebar").collapse("hide");
+    $(".sidebar-menu").collapse("hide");
+});
+</script>

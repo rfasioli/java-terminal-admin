@@ -45,6 +45,13 @@
 						<form:errors path="icNivel" cssClass="error" />
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="dsRules">{{'PROFILE_RULES' | translate}}:</label>
+					<div class="col-sm-10">
+						<form:input type="text" path="dsRules" id="dsRules"  class="form-control input-sm"/>
+						<form:errors path="dsRules" cssClass="error" />
+					</div>
+				</div>
 			</div>
 		</div>
 	</form:form>

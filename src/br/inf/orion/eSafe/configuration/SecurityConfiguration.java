@@ -23,8 +23,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
     	userDetailsService = new CustomUserDetailsService();
         auth.userDetailsService(userDetailsService);
-//        auth.inMemoryAuthentication().withUser("user").password("user123").roles("USER");
-//        auth.inMemoryAuthentication().withUser("admin").password("admin123").roles("ADMIN");
     }
      
     @Override
@@ -32,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   
       http.authorizeRequests()
         .antMatchers("/", "/home").permitAll() 
-        .antMatchers("/service/**").permitAll()
+        .antMatchers("/service/**").permitAll() //.authenticated()
         .antMatchers("/management/**").access("hasRole('ADMIN')")
         .antMatchers("/system/**").access("hasRole('ADMIN')")
         .antMatchers("/monitoring/**").access("hasRole('ADMIN') or hasRole('USER')")

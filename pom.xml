@@ -135,11 +135,29 @@
 			<artifactId>angularjs</artifactId>
 			<version>1.6.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars.bower/angular-cookies -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>angular-cookies</artifactId>
+		    <version>1.6.0</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.webjars/angular-translate -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>angular-translate</artifactId>
-			<version>2.5.0</version>
+			<version>2.6.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars.bower/angular-translate-storage-cookie -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>angular-translate-storage-cookie</artifactId>
+		    <version>2.6.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars/angular-translate-loader-static-files -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>angular-translate-loader-static-files</artifactId>
+		    <version>2.4.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.webjars/angular-material -->
 		<dependency>

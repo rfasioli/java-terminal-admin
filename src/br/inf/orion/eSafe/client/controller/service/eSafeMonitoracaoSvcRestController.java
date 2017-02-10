@@ -51,7 +51,8 @@ public class eSafeMonitoracaoSvcRestController {
 			monitoracao.setDtEnvio(new Date());
 			monitoracao.setIcStatusTerminal(stTerminal.getStTerminal());
 
-			String uuid = StatusTerminalServiceDao.save(idClient, stTerminal);
+			//String uuid = StatusTerminalServiceDao.save(idClient, stTerminal);
+			String uuid = StatusTerminalServiceDao.update(idClient, stTerminal, monitoracao.getIdMonitoracao());			
 			monitoracao.setIdMonitoracao(uuid);
 					
 			
@@ -91,6 +92,15 @@ public class eSafeMonitoracaoSvcRestController {
 			return new ResponseEntity<List<MonitoracaoTerminais>>(monitoracaoTerminais, HttpStatus.INTERNAL_SERVER_ERROR);			
 		}
 		return new ResponseEntity<List<MonitoracaoTerminais>>(monitoracaoTerminais, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/details", method = RequestMethod.GET)
+	public ResponseEntity<StatusTerminal> listaDetalhe(@RequestParam(defaultValue="1") Integer idClient, @RequestParam String idMonitoracao) {
+		StatusTerminal status = StatusTerminalServiceDao.getById(idClient, idMonitoracao);  
+		if(status == null){
+			return new ResponseEntity<StatusTerminal>(status, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<StatusTerminal>(status, HttpStatus.OK);
 	}
 	
 
